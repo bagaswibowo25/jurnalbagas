@@ -14,7 +14,7 @@ Belajar Python - Tipe Data | Jurnal Bagas
 <meta itemprop=description content="Belajar Python - Tipe Data - Coretan engineer">
 <meta property="og:title" content="Belajar Python - Tipe Data">
 <meta property="og:description" content="Belajar Python - Tipe Data - Coretan engineer">
-<meta property="og:image" content="https://www.jurnalbagas.com/tipe_data_thumb.jpg">
+<meta property="og:image" content="https://www.jurnalbagas.com/article/python/basic/tipe_data_thumb.jpg">
 <meta property="og:url" content="https://www.jurnalbagas.com/article/python/basic/tipe_data/">
 <meta property="og:site_name" content="Jurnal Bagas">
 <meta property="og:type" content="article">
@@ -27,7 +27,7 @@ Belajar Python - Tipe Data | Jurnal Bagas
 <nav class="permanentTopNav sticky">
 <div class=container>
 <ul class=topnav>
-<li><a href=https://www.jurnalbagas.com/page/tentang-saya/>Tentang Saya</a></li></ul><div id=search-box class=search>
+<li><a href=https://www.jurnalbagas.com/page/kontak/>Kontak</a></li><li><a href=https://www.jurnalbagas.com/page/tentang-saya/>Tentang Saya</a></li></ul><div id=search-box class=search>
 <i class="fas fa-search"></i>
 <input id=search type=text placeholder="Mencari ...">
 </div></div></nav><header class=sticky>
@@ -56,7 +56,7 @@ Jurnal Bagas
 <article class="default article">
 <div class=featured-image>
 <a href=https://www.jurnalbagas.com/article/python/basic/tipe_data/>
-<img src=/tipe_data_thumb.jpg alt>
+<img src=/article/python/basic/tipe_data_thumb.jpg alt>
 </a>
 </div><div class=content>
 <h1 class=article-title>
@@ -65,11 +65,43 @@ Belajar Python - Tipe Data
 </a>
 </h1><div class=meta>
 <span class="date moment">2021-11-01</span>
-<span class=readingTime>1 menit</span>
+<span class=readingTime>3 menit</span>
 <span class=author>
 <a href=https://www.jurnalbagas.com/author/bagas-wibowo/>Bagas Wibowo</a>
 </span>
-</div><p>Tipe data merupakan konsep yang cukup penting pada Python dan juga bahasa pemrograman lainnya. Pada Python, setiap nilai pasti memiliki tipe datanya tersendiri. Kegunaan dari tipe data ini untuk menglasifikasikan item data atau untuk menyimpan nilai kedalam suatu kategori data. Ini bertujuan untuk agar kita dapat mengetahui kegunaan dari item data tersebut dan operasi apa saja yang dapat dilakukan dengan tipe data tersebut.</p><p>Sebagai contoh, kita memiliki nilai integer <code>123</code>. Nilai tersebut dapat memiliki nilai yang berbeda apabila kita menggunakan tipe data yang lain, semisal <code>string</code> untuk nilai <code>123</code></p></div><div class=footer>
+</div><h1 id=pengenalan>Pengenalan</h1><p>Tipe data merupakan konsep yang cukup penting pada Python dan juga bahasa pemrograman lainnya. Pada Python, setiap nilai pasti memiliki tipe datanya tersendiri. Kegunaan dari tipe data ini untuk menglasifikasikan item data atau untuk menyimpan nilai kedalam suatu kategori data. Ini bertujuan untuk agar kita dapat mengetahui kegunaan dari item data tersebut dan operasi apa saja yang dapat dilakukan dengan tipe data tersebut.</p><p>Sebagai contoh, kita memiliki nilai integer <code>123</code>. Nilai tersebut dapat memiliki nilai yang berbeda apabila kita menggunakan tipe data yang lain, semisal <code>string</code> untuk nilai <code>123</code>. Untuk ujicoba mari kita lakukan skenario berikut:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>a <span style=color:#f92672>=</span> <span style=color:#ae81ff>123</span>
+</span></span><span style=display:flex><span>b <span style=color:#f92672>=</span> <span style=color:#ae81ff>456</span>
+</span></span><span style=display:flex><span>hasil <span style=color:#f92672>=</span> str(a)<span style=color:#f92672>+</span>str(b)
+</span></span><span style=display:flex><span>print(hasil)
+</span></span></code></pre></div><p>Output:</p><pre tabindex=0><code>123456
+</code></pre><p>Maka hasil yang dikeluarkan adalah penggabungan antara nilai dari variable <code>a</code> dan <code>b</code> sebagai <code>string</code> bukan sebagai <code>integer</code>. Apabila operasi penjumlahan dengan menggunakan tipe data integer maka hasil yang dikeluarkan seperti berikut:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>a <span style=color:#f92672>=</span> <span style=color:#ae81ff>123</span>
+</span></span><span style=display:flex><span>b <span style=color:#f92672>=</span> <span style=color:#ae81ff>456</span>
+</span></span><span style=display:flex><span>hasil <span style=color:#f92672>=</span> a<span style=color:#f92672>+</span>b
+</span></span><span style=display:flex><span>print(hasil)
+</span></span></code></pre></div><p>Output:</p><pre tabindex=0><code>579
+</code></pre><p>Dari hasil operasi penjumlahan maka nilai yang dikembalikan adalah integer pula, karena proses pada saat melakukan operasi penjumlahan tipe data yang digunakan adalah integer.</p><h1 id=validasi-tipe-data>Validasi Tipe Data</h1><p>Untuk kalian yang penasaran dan ingin memastikan tipe data yang digunakan oleh sebuah variabel, maka kita dapat menggunakan fungsi <code>type()</code> yang dengan fungsi ini kita dapat mengetahui tipe data yang digunakan oleh variabel yang kita buat.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>a <span style=color:#f92672>=</span> <span style=color:#ae81ff>123</span>
+</span></span><span style=display:flex><span>b <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;123&#39;</span>
+</span></span><span style=display:flex><span>print(type(a))
+</span></span><span style=display:flex><span>print(type(b))
+</span></span></code></pre></div><p>Output:</p><pre tabindex=0><code>&lt;class &#39;int&#39;&gt;
+&lt;class &#39;str&#39;&gt;
+</code></pre><p>Dari hasil output diatas kita dapat melihat bahwa walaupun sekilas variabel <code>a</code> dan <code>b</code> memiliki nilai yang sama, akan tetapi keduanya menggunakan tipe data yang berbeda.</p><p>Lalu apakah tipe data dapat diubah-ubah? Jawabannya, iya tipe data dapat diubah sesuai dengan bentuk yang kita inginkan. Seperti contoh berikut:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>user_input <span style=color:#f92672>=</span> input()
+</span></span><span style=display:flex><span><span style=color:#66d9ef>try</span>:
+</span></span><span style=display:flex><span>    print(int(user_input))
+</span></span><span style=display:flex><span><span style=color:#66d9ef>except</span>:
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;Data yang anda masukkan salah! Masukkan angka&#34;</span>)
+</span></span></code></pre></div><p>Dari contoh diatas input dari user akan dikonversi menjadi integer dan apabila user memasukkan data selain integer maka akan ditolak.</p><h1 id=macam-macam-tipe-data>Macam-macam Tipe Data</h1><p>Pada python ada beragam tipe data yang penting dan umum digunakan. Tipe data tersebut merupakan built-in dari Python, seperti string, integer, float, list, dictionary, dan lainnya. Untuk lengkapnya ada pada tabel berikut:</p><table>
+<thead>
+<tr>
+<th>Data Type</th><th>Type</th></tr></thead><tbody>
+<tr>
+<td>Text Type</td><td>str</td></tr><tr>
+<td>Numeric Types</td><td>int, float, complex</td></tr><tr>
+<td>Sequence Types</td><td>list, tuple, range</td></tr><tr>
+<td>Mapping Type</td><td>dict</td></tr><tr>
+<td>Set Types</td><td>set, frozenset</td></tr><tr>
+<td>Boolean Type</td><td>bool</td></tr><tr>
+<td>Binary Types</td><td>bytes, bytearray, memoryview</td></tr></tbody></table><h1 id=kesimpulan>Kesimpulan</h1><p>Setelah membaca artikel ini, kalian dapat mempelajari beragam tipe data bawaan dan penting pada Python yang dapat kita gunakan. Lalu kita dapat memilih tipe data berdasarkan kegunaan dan operasi yang akan kita lakukan menyesuaikan tipe data yang dipilih. Saya harap sedikit cerita ini dapat membantu teman-teman dapat mengetahui dan memahami tentang tipe data pada Python.</p><p>Sampai jumpa pada artikel berikutnya, apabila ada kiritk, saran, ataupun masukan dapat menghubungi saya melalui halaman kontak diatas yaa. Terima kasih.</p></div><div class=footer>
 <div class=tags>
 <i class="fa fa-tags"></i>
 <div class=links>
@@ -82,9 +114,9 @@ Belajar Python - Tipe Data
 <strong>Post Terbaru</strong>
 <ul>
 <li>
-<a href=https://www.jurnalbagas.com/article/docker/>Support and Discussions</a>
-</li><li>
 <a href=https://www.jurnalbagas.com/article/python/basic/tipe_data/>Belajar Python - Tipe Data</a>
+</li><li>
+<a href=https://www.jurnalbagas.com/article/python/basic/kondisional/>Belajar Python - Kondisional</a>
 </li></ul></div><div class=right>
 <div class=external-profiles>
 <strong>Sosial Media</strong>
