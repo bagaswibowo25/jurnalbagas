@@ -5,7 +5,7 @@ date: 2022-02-09T18:10:14+07:00
 tags: ['Python','Programming']
 author: "Bagas Wibowo"
 noSummary: false
-featuredImage: "/article/python/basic/tipe_data_thumb.jpg" 
+featuredImage: "/article/python/basic/data_type.jpg" 
 ---
 # Pengenalan
 
