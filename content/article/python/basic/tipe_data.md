@@ -1,6 +1,6 @@
 ---
 title: "Belajar Python - Tipe Data"
-date: 2021-11-01T18:10:14+01:00
+date: 2022-02-09T18:10:14+07:00
 
 tags: ['Python','Programming']
 author: "Bagas Wibowo"
