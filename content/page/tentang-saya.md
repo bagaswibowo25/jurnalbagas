@@ -70,9 +70,17 @@ Karir saya dimulai pada awal kuartal 3 sekitar Agustus 2019. Setelah lulus sekol
 
   Disana saya mendapatkan banyak pengalaman baru, mulai dari mengerjakan proyek, riset, implementasi, dan menyiapkan segala kebutuhan client. Disana saya bekerja dengan para *developer* untuk membantu testing dan deploy aplikasi. 
 
-  Setelah melewati masa pandemi yang diawali dari tahun 2020, mulai terjadi kejenuhan dan ketidaknyamanan dalam bekerja. Saya mulai mencari peluang kerja baru dibidang pekerjaan yang berbeda dari saat itu.
+  Setelah melewati masa pandemi yang diawali dari tahun 2020. Saya mulai mencari peluang kerja baru dibidang pekerjaan yang berbeda dari saat itu.
 
-- Cloud Engineer - PT Boer Technology (Maret 2021 - Sekarang)
+- Cloud Engineer - PT Boer Technology (Maret 2021 - Februari 2022)
   
-  Di awal tahun 2021, setelah saya mencari peluang kerja ditempat lain saya mendapatkan kesempatan untuk bekerja sebagai *Cloud Engineer*. Memulai bidang baru disini saatnya untuk mengeksplor hal baru yang belum pernah saya temukan sebelumnya. 
+  Di awal tahun 2021, setelah saya mencari peluang kerja ditempat lain dan saya mendapatkan kesempatan untuk bekerja sebagai *Cloud Engineer*. Memulai bidang baru disini saatnya untuk mengeksplor hal baru yang belum pernah saya temukan sebelumnya. 
+
+  Banyak sekali pengalaman baru yang luar biasa saya dapat juga disini. Pekerjaan saya disini berkecimpung di private cloud dengan menggunakan Openstack dan hal-hal lainnya yang berkaitan dengan tools DevOps.
+  
+  Hingga saya mendapatkan kesempatan baru lagi diawal tahun 2022 ini. Rasanya cukup singkat, namun keputusan perlu diambil dan saya memulai lagi semua dari awal.
+
+- Associate DevOps Engineer - PT Vidio Dot Com (Februari 2022 - Sekarang)
+  
+  Belum banyak yang saya eksplor disini, namun yang pasti ini merupakan role pertama saya sebaga DevOps dan perlu banyak belajar hal-hal baru yang seru dan semoga saya bisa membagikan pengalaman yang saya jalani
 
