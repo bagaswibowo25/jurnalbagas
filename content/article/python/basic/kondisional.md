@@ -1,6 +1,6 @@
 ---
 title: "Belajar Python - Kondisional"
-date: 2021-11-01T18:10:14+01:00
+date: 2022-02-09T19:20:30+07:00
 
 tags: ['Python','Programming']
 author: "Bagas Wibowo"
@@ -132,3 +132,55 @@ Nilai kamu adalah B
 Nilai kamu adalah D
 ```
 Hal lain yang perlu diperhatikan juga adalah urutan kondisi, karena apabila salah dalam mengurutkan kondisi maka output yang dihasilkan bisa tidak sesuai dengan yang kita inginkan.
+
+# Kondisi Nested If
+
+Kondisi ini diperlukan ketika ingin melakukan pengondisian yang bertumpuk, maksudnya kita akan melakukan pengondisian kembali setelah pengondisian awal bernilai `True`.
+
+Salah satu contoh penggunaan nested `If` sebagai berikut:
+```
+Jika nilai 95 - 100 = A+
+Jika nilai 90 - 94 = A-
+Jika nilai 85 - 89 = B+
+Jika nilai 80 - 84 = B-
+Jika nilai 60 - 79 = C
+Jika nilai < 60 = D
+```
+```py
+nilai = int(input())
+
+if nilai >= 90:
+    if nilai >=95:
+        print("Nilai kamu adalah A+")
+    else:
+        print("Nilai kamu adalah A-")
+elif nilai >= 70:
+    if nilai >= 85:
+        print("Nilai kamu adalah B+")
+    else:
+        print("Nilai kamu adalah B-")
+elif nilai >= 60:
+    print("Nilai kamu adalah C")
+elif nilai < 60:
+    print("Nilai kamu adalah D")
+```
+Input:
+```
+94
+95
+70
+88
+60
+```
+Output:
+```
+Nilai kamu adalah A-
+Nilai kamu adalah A+
+Nilai kamu adalah B-
+Nilai kamu adalah B+
+Nilai kamu adalah C
+```
+
+# Kesimpulan
+
+Pengondisian sangat berguna dalam program, karena jika kita membuat pengondisian secara default program akan mengeksekusi setiap statement tiap barisnya, apabila terdapat sebuah pengondisian maka `if` sangat membantu untuk memutuskan apakah program akan mengeksekusi statement tertentu atau tidak. Pengoperasian `if` sangat beragam dan dapat menyesuaikan kebutuhan yang diperlukan. Semoga dari apa yang sudah saya jelaskan dapat dipahami dan bermanfaat. Sampai jumpa pada kesempatan berikutnya. Apabila ada kritik, saran, dan masukkan dapat mengunjungi sosial media saya yang ada di kontak. Terima kasih.
