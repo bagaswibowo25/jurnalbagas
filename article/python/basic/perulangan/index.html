@@ -65,11 +65,67 @@ Belajar Python - Perulangan
 </a>
 </h1><div class=meta>
 <span class="date moment">2022-02-09</span>
-<span class=readingTime>0 menit</span>
+<span class=readingTime>3 menit</span>
 <span class=author>
 <a href=https://www.jurnalbagas.com/author/bagas-wibowo/>Bagas Wibowo</a>
 </span>
-</div></div><div class=footer>
+</div><h1 id=pengenalan>Pengenalan</h1><p>Perulangan merupakan salah satu teknik untuk melakukan pengulangan dari urutan instruksi atau statement sampai dengan kondisi yang diinginkan tercapai. Perulangan memiliki beberapa kegunaan yang biasa digunakan, seperti mencari nilai dari himpunan, menampilkan hasil sebanyak perulangan, melakukan penjumlahan, dan lainnya. Nah selain itu, pada Python sendiri ada 2 teknik perulangan yang dapat digunakan, yaitu <code>while</code> dan <code>for</code>. Mungkin umumnya ada jenis perulangan lain, seperti <code>do...while...</code> dan bisa juga menggunakan teknik rekursif atau memanggil fungsinya sendiri. Pada kesempatan kali ini, saya mencoba untuk share 2 teknik yang umum digunakan, yaitu <code>while</code> dan <code>for</code>.</p><h1 id=perulangan-while>Perulangan While</h1><p>Perulangan while erat kaitannya juga dengan pengondisian karena ketika kita ingin menjalankan statement di dalam while maka kondisi harus terpenuhi, apabila kondisi tidak terpenuhi maka perulangan tidak akan dijalankan. Contohnya sebagai berikut:</p><p>Case:</p><ol>
+<li>User diminta untuk melakukan input string</li><li>Program akan mengecek apakah string yang dimasukkan akan cocok dengan nilai pada variabel <code>kata</code>.</li><li>Apabila cocok maka program akan lanjut</li><li>Apabila tidak cocok maka user harus memasukkan ulang string</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>kata <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;Hello&#34;</span>
+</span></span><span style=display:flex><span>inp_str <span style=color:#f92672>=</span> input()
+</span></span><span style=display:flex><span><span style=color:#66d9ef>while</span> inp_str <span style=color:#f92672>!=</span> kata:
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;Kata tidak cocok, silahkan coba lagi!&#34;</span>)
+</span></span><span style=display:flex><span>    inp_str <span style=color:#f92672>=</span> input()
+</span></span><span style=display:flex><span><span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;Kata cocok!Silahkan lanjut&#34;</span>)
+</span></span></code></pre></div><p>Input:</p><pre tabindex=0><code>a
+Hello
+</code></pre><p>Output:</p><pre tabindex=0><code>Kata tidak cocok, silahkan coba lagi!
+Kata cocok!Silahkan lanjut
+</code></pre><p>Dari contoh diatas program akan terus melakukan perulangan hingga nilai yang dimasukkan oleh user sesuai dengan variabel <code>kata</code>. Jika sesuai perulangan akan berhenti. Pada perulangan <code>while</code> jumlah perulangan yang dilakukan bergantung pada kondisi, dia akan berhenti jika kondisi bernilai <code>False</code> dan akan terus berulang apabila kondisinya <code>True</code>. Apabila terus bernilai <code>True</code> maka program perlu dihentikan secara paksa atau akan terjadi ketakterbatasan perulangan. Kita dapat membatasinya dengan memberikan kondisi tertentu, misal jika telah melebihi 3 perulangan maka akan berhenti <code>while i &lt; 4</code>. Atau kita bisa menggunakan statement <code>break</code> apabila ingin mencari satu nilai dari sekumpulan nilai. Contohnya sebagai berikut:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>kata <span style=color:#f92672>=</span> input()
+</span></span><span style=display:flex><span>huruf <span style=color:#f92672>=</span> input()
+</span></span><span style=display:flex><span>i <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>while</span> i <span style=color:#f92672>&lt;</span> len(kata):
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> kata[i] <span style=color:#f92672>==</span> huruf:
+</span></span><span style=display:flex><span>        print(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;Terdapat huruf </span><span style=color:#e6db74>{</span>huruf<span style=color:#e6db74>}</span><span style=color:#e6db74> di indeks ke&#34;</span>,i)
+</span></span><span style=display:flex><span>        i <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>break</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>        i <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;Huruf tidak ditemukkan&#34;</span>)
+</span></span></code></pre></div><p>Input:</p><pre tabindex=0><code>Kata: Book
+Huruf: o
+</code></pre><p>Output:</p><pre tabindex=0><code>Terdapat huruf o di indeks ke 1
+</code></pre><p>Perulangan akan berhenti setelah statement bernilai <code>True</code> dieksekusi. Apabila tidak ada statement <code>break</code> maka perulangan akan berlanjut hingga jumlah kondisi perulangan terpenuhi, yaitu nilai <code>i &lt; len(kata)</code>. Mari kita coba hilangkan <code>break</code>.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>kata <span style=color:#f92672>=</span> input()
+</span></span><span style=display:flex><span>huruf <span style=color:#f92672>=</span> input()
+</span></span><span style=display:flex><span>i <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>while</span> i <span style=color:#f92672>&lt;</span> len(kata):
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> kata[i] <span style=color:#f92672>==</span> huruf:
+</span></span><span style=display:flex><span>        print(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;Terdapat huruf </span><span style=color:#e6db74>{</span>huruf<span style=color:#e6db74>}</span><span style=color:#e6db74> di indeks ke&#34;</span>,i)
+</span></span><span style=display:flex><span>        i <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>        i <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;Huruf tidak ditemukkan&#34;</span>)
+</span></span></code></pre></div><p>Input:</p><pre tabindex=0><code>Kata: Book
+Huruf: o
+</code></pre><p>Output:</p><pre tabindex=0><code>Terdapat huruf o di indeks ke 1
+Terdapat huruf o di indeks ke 2
+Huruf tidak ditemukkan
+</code></pre><p>Program akan terus melakukan perulangan hingga nilai <code>False</code> tercapai. Apabila nilai terus bernilai <code>True</code> maka akan terus diulang sampai kondisinya tercapai atau selesai.</p><h1 id=perulangan-for>Perulangan For</h1><p>Perulangan for umum digunakan apabila kita telah mengetahui rentang perulangan yang akan dilakukan, kita sudah punya estimasi kapan perulangan itu berjalan dan perulangan ini sedikit berbeda dengan <code>while</code> karena perulangan ini tidak menggunakan pengondisian untuk menjalankan statement yang ada di dalam perulangan, tetapi menggunakan rentang. Selama masih ada dalam rentang perulangan maka akan terus terjadi perulangan. Supaya lebih mudah memahaminya, kita dapat melihat contoh sebagai berikut:</p><ol>
+<li>User memasukkan beberapa nilai integer secara acak</li><li>Program akan mencari nilai terkecil dari sekumpulan nilai integer acak tersebut</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>user_input <span style=color:#f92672>=</span> list(map(int, input()<span style=color:#f92672>.</span>split()))
+</span></span><span style=display:flex><span>min_val <span style=color:#f92672>=</span> user_input[<span style=color:#ae81ff>0</span>]
+</span></span><span style=display:flex><span><span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(len(user_input)):
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> user_input[i] <span style=color:#f92672>&lt;</span> min_val:
+</span></span><span style=display:flex><span>        min_val <span style=color:#f92672>=</span> user_input[i]
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>continue</span>
+</span></span><span style=display:flex><span>print(min_val)
+</span></span></code></pre></div><p>Input:</p><pre tabindex=0><code>2 4 5 6 3 1
+7 10 20 11
+</code></pre><p>Output:</p><pre tabindex=0><code>1
+7
+</code></pre><p>Sekian bahasan kali ini tentang perulangan. Sampai ketemu lagi pada kesempatan berikutnya. Apabila ada kiritk, saran, ataupun masukan dapat menghubungi saya melalui halaman kontak diatas yaa. Terima kasih.</p></div><div class=footer>
 <div class=tags>
 <i class="fa fa-tags"></i>
 <div class=links>
