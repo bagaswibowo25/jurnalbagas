@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pages on Jurnal Bagas</title>
+    <link>https://jurnalbagas.com/en/page/</link>
+    <description>Recent content in Pages on Jurnal Bagas</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 15 Jan 2022 21:41:45 +0700</lastBuildDate><atom:link href="https://jurnalbagas.com/en/page/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About Me</title>
+      <link>https://jurnalbagas.com/en/page/about-me/</link>
+      <pubDate>Sat, 15 Jan 2022 21:41:45 +0700</pubDate>
+      
+      <guid>https://jurnalbagas.com/en/page/about-me/</guid>
+      <description>Hello My name is Bagas Ari Wibowo, my friends call me Bagas, now I work as an engineer and in this platform I try to write and share notes while I work as an engineer.
+The Beginning Every story begins with an opening, first I would like to thank the readers who have visited this page and I hope that what is written can be understood and taken advantage of.</description>
+    </item>
+    
+  </channel>
+</rss>
