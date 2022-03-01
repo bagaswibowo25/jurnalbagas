@@ -1,5 +1,5 @@
 title = "Jurnal Bagas"
-baseURL = "https://jurnalbagas.com/"
+baseURL = "https://www.jurnalbagas.com/"
 theme = "bilberry-hugo-theme"
 
 # Generate the robots.txt file for SEO
