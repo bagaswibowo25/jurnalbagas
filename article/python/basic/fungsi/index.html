@@ -65,7 +65,7 @@ Belajar Python - Fungsi
 </a>
 </h1><div class=meta>
 <span class="date moment">2022-02-10</span>
-<span class=readingTime>4 menit</span>
+<span class=readingTime>7 menit</span>
 <span class=author>
 <a href=https://www.jurnalbagas.com/author/bagas-wibowo/>Bagas Wibowo</a>
 </span>
@@ -112,7 +112,78 @@ Belajar Python - Fungsi
 </span></span><span style=display:flex><span>print(pesan(ucapan<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;Halo Kawan&#39;</span>))
 </span></span></code></pre></div><p>Output:</p><pre tabindex=0><code>Halo Semua
 Halo Kawan
-</code></pre><h1 id=kesimpulan>Kesimpulan</h1><p>Fungsi sesuai namanya akan memberikan sebuah fungsi jika dipanggil. Fungsi dapat dipanggil kapan saja jika kita butuhkan. Kita dapat membuat beragam operasi dalam satu fungsi, tetapi baiknya fungsi hanya memiliki satu kegunaan dan tanggung jawab agar jika terdapat perubahan tidak memiliki dampak yang besar bagi keseluruhan kode.</p><p>Sekian artikel terkait fungsi yang dapat saya sampaikan. Semoga dari apa yang sudah saya jelaskan dapat dipahami dan bermanfaat. Sampai jumpa pada kesempatan berikutnya. Apabila ada kritik, saran, dan masukkan dapat mengunjungi sosial media saya yang ada di kontak. Terima kasih.</p></div><div class=footer>
+</code></pre><h1 id=fungsi-bawaan>Fungsi Bawaan</h1><p>Python juga memiliki beberapa fungsi bawaan, untuk itu fungsi bawaan dapat kita pergunakan sesuai dengan kebutuhan seperti pada tabel berikut:</p><h1 id=builtin-function>Builtin Function</h1><table>
+<thead>
+<tr>
+<th><strong>Function</strong></th><th><strong>Description</strong></th></tr></thead><tbody>
+<tr>
+<td>abs()</td><td>Returns the absolute value of a number</td></tr><tr>
+<td>all()</td><td>Returns True if all items in an iterable object are true</td></tr><tr>
+<td>any()</td><td>Returns True if any item in an iterable object is true</td></tr><tr>
+<td>ascii()</td><td>Returns a readable version of an object. Replaces none-ascii characters with escape character</td></tr><tr>
+<td>bin()</td><td>Returns the binary version of a number</td></tr><tr>
+<td>bool()</td><td>Returns the boolean value of the specified object</td></tr><tr>
+<td>bytearray()</td><td>Returns an array of bytes</td></tr><tr>
+<td>bytes()</td><td>Returns a bytes object</td></tr><tr>
+<td>callable()</td><td>Returns True if the specified object is callable, otherwise False</td></tr><tr>
+<td>chr()</td><td>Returns a character from the specified Unicode code.</td></tr><tr>
+<td>classmethod()</td><td>Converts a method into a class method</td></tr><tr>
+<td>compile()</td><td>Returns the specified source as an object, ready to be executed</td></tr><tr>
+<td>complex()</td><td>Returns a complex number</td></tr><tr>
+<td>delattr()</td><td>Deletes the specified attribute (property or method) from the specified object</td></tr><tr>
+<td>dict()</td><td>Returns a dictionary (Array)</td></tr><tr>
+<td>dir()</td><td>Returns a list of the specified object&rsquo;s properties and methods</td></tr><tr>
+<td>divmod()</td><td>Returns the quotient and the remainder when argument1 is divided by argument2</td></tr><tr>
+<td>enumerate()</td><td>Takes a collection (e.g. a tuple) and returns it as an enumerate object</td></tr><tr>
+<td>eval()</td><td>Evaluates and executes an expression</td></tr><tr>
+<td>exec()</td><td>Executes the specified code (or object)</td></tr><tr>
+<td>filter()</td><td>Use a filter function to exclude items in an iterable object</td></tr><tr>
+<td>float()</td><td>Returns a floating point number</td></tr><tr>
+<td>format()</td><td>Formats a specified value</td></tr><tr>
+<td>frozenset()</td><td>Returns a frozenset object</td></tr><tr>
+<td>getattr()</td><td>Returns the value of the specified attribute (property or method)</td></tr><tr>
+<td>globals()</td><td>Returns the current global symbol table as a dictionary</td></tr><tr>
+<td>hasattr()</td><td>Returns True if the specified object has the specified attribute (property/method)</td></tr><tr>
+<td>hash()</td><td>Returns the hash value of a specified object</td></tr><tr>
+<td>help()</td><td>Executes the built-in help system</td></tr><tr>
+<td>hex()</td><td>Converts a number into a hexadecimal value</td></tr><tr>
+<td>id()</td><td>Returns the id of an object</td></tr><tr>
+<td>input()</td><td>Allowing user input</td></tr><tr>
+<td>int()</td><td>Returns an integer number</td></tr><tr>
+<td>isinstance()</td><td>Returns True if a specified object is an instance of a specified object</td></tr><tr>
+<td>issubclass()</td><td>Returns True if a specified class is a subclass of a specified object</td></tr><tr>
+<td>iter()</td><td>Returns an iterator object</td></tr><tr>
+<td>len()</td><td>Returns the length of an object</td></tr><tr>
+<td>list()</td><td>Returns a list</td></tr><tr>
+<td>locals()</td><td>Returns an updated dictionary of the current local symbol table</td></tr><tr>
+<td>map()</td><td>Returns the specified iterator with the specified function applied to each item</td></tr><tr>
+<td>max()</td><td>Returns the largest item in an iterable</td></tr><tr>
+<td>memoryview()</td><td>Returns a memory view object</td></tr><tr>
+<td>min()</td><td>Returns the smallest item in an iterable</td></tr><tr>
+<td>next()</td><td>Returns the next item in an iterable</td></tr><tr>
+<td>object()</td><td>Returns a new object</td></tr><tr>
+<td>oct()</td><td>Converts a number into an octal</td></tr><tr>
+<td>open()</td><td>Opens a file and returns a file object</td></tr><tr>
+<td>ord()</td><td>Convert an integer representing the Unicode of the specified character</td></tr><tr>
+<td>pow()</td><td>Returns the value of x to the power of y</td></tr><tr>
+<td>print()</td><td>Prints to the standard output device</td></tr><tr>
+<td>property()</td><td>Gets, sets, deletes a property</td></tr><tr>
+<td>range()</td><td>Returns a sequence of numbers, starting from 0 and increments by 1 (by default)</td></tr><tr>
+<td>repr()</td><td>Returns a readable version of an object</td></tr><tr>
+<td>reversed()</td><td>Returns a reversed iterator</td></tr><tr>
+<td>round()</td><td>Rounds a numbers</td></tr><tr>
+<td>set()</td><td>Returns a new set object</td></tr><tr>
+<td>setattr()</td><td>Sets an attribute (property/method) of an object</td></tr><tr>
+<td>slice()</td><td>Returns a slice object</td></tr><tr>
+<td>sorted()</td><td>Returns a sorted list</td></tr><tr>
+<td>staticmethod()</td><td>Converts a method into a static method</td></tr><tr>
+<td>str()</td><td>Returns a string object</td></tr><tr>
+<td>sum()</td><td>Sums the items of an iterator</td></tr><tr>
+<td>super()</td><td>Returns an object that represents the parent class</td></tr><tr>
+<td>tuple()</td><td>Returns a tuple</td></tr><tr>
+<td>type()</td><td>Returns the type of an object</td></tr><tr>
+<td>vars()</td><td>Returns the __dict__ property of an object</td></tr><tr>
+<td>zip()</td><td>Returns an iterator, from two or more iterators</td></tr></tbody></table><h1 id=kesimpulan>Kesimpulan</h1><p>Fungsi sesuai namanya akan memberikan sebuah fungsi jika dipanggil. Fungsi dapat dipanggil kapan saja jika kita butuhkan. Kita dapat membuat beragam operasi dalam satu fungsi, tetapi baiknya fungsi hanya memiliki satu kegunaan dan tanggung jawab agar jika terdapat perubahan tidak memiliki dampak yang besar bagi keseluruhan kode.</p><p>Sekian artikel terkait fungsi yang dapat saya sampaikan. Semoga dari apa yang sudah saya jelaskan dapat dipahami dan bermanfaat. Sampai jumpa pada kesempatan berikutnya. Apabila ada kritik, saran, dan masukkan dapat mengunjungi sosial media saya yang ada di kontak. Terima kasih.</p></div><div class=footer>
 <div class=tags>
 <i class="fa fa-tags"></i>
 <div class=links>
