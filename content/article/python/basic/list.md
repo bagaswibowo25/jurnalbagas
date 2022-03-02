@@ -1,6 +1,6 @@
 ---
 title: "Belajar Python - List"
-date: 2022-02-10T19:13:20+07:00
+date: 2022-02-10T21:18:30+07:00
 
 tags: ['Python','Programming']
 author: "Bagas Wibowo"
@@ -162,7 +162,8 @@ Output:
 Sesuai dengan sifat list, yaitu mutable jadi elemen yang ada di list dapat diubah atau ditambah. Untuk memodifikasi isi dari list kita dapat menggunakan beberapa fungsi, seperti `append()`, `insert()`, `extend()`, `zip()`, `remove()`, dan `pop()`. Mari kita coba
 
 1. Menambah elemen list
-   Untuk menambah elemen list kita dapat menggunakan fungsi `.append()` atau melakukan addition untuk menggabungkan list. Contohnya sebagai berikut:
+
+Untuk menambah elemen list kita dapat menggunakan fungsi `.append()` atau melakukan addition untuk menggabungkan list. Contohnya sebagai berikut:
    ```py
    list1 = [1,2,3,4,5]
    list1.append(6)
@@ -185,7 +186,8 @@ Sesuai dengan sifat list, yaitu mutable jadi elemen yang ada di list dapat diuba
    [6, 1, 2, 3, 4, 5]
    ```
 2. Menghapus elemen list
-   Selanjutnya kita juga dapat menghapus elemen dari sebuah list dengan indeks menggunakan fungsi `remove()` atau kita dapat menghapusnya dengan cara menghapus elemen paling akhir dengan fungsi `pop()`. Berikut adalah contohnya:
+   
+Selanjutnya kita juga dapat menghapus elemen dari sebuah list dengan indeks menggunakan fungsi `remove()` atau kita dapat menghapusnya dengan cara menghapus elemen paling akhir dengan fungsi `pop()`. Berikut adalah contohnya:
    ```py
    list1 = [4,5,6,1,2,3]
    list1.remove(list1[0])
@@ -211,7 +213,8 @@ Sesuai dengan sifat list, yaitu mutable jadi elemen yang ada di list dapat diuba
    ```
 
 3. Menggabungkan elemen list
-   Untuk melakukan penggabungan elemen antar list ada beragam cara yang dapat dilakukan, seperti menggunakan `extend()`, `+`, dan `append()`. Mari kita coba.
+   
+Untuk melakukan penggabungan elemen antar list ada beragam cara yang dapat dilakukan, seperti menggunakan `extend()`, `+`, dan `append()`. Mari kita coba.
 
    ```py
    list1 = [4,5,6,1,2,3]
