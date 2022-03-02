@@ -1,0 +1,161 @@
+<!doctype html><html class=no-js lang=id>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=siteBaseUrl content="https://www.jurnalbagas.com/">
+<meta name=author content="Bagas Wibowo">
+<meta name=description content="Coretan engineer">
+<meta name=keywords content="blog,personal,responsive,search,font awesome,pages,posts,multilingual,highlight.js,syntax highlighting,premium,shortcuts">
+<meta name=generator content="Hugo 0.93.0">
+<title>
+Belajar Python - Fungsi | Jurnal Bagas
+</title><meta name=description content="Belajar Python - Fungsi - Coretan engineer">
+<meta itemprop=name content="Belajar Python - Fungsi">
+<meta itemprop=description content="Belajar Python - Fungsi - Coretan engineer">
+<meta property="og:title" content="Belajar Python - Fungsi">
+<meta property="og:description" content="Belajar Python - Fungsi - Coretan engineer">
+<meta property="og:image" content="https://www.jurnalbagas.com/article/python/basic/function.jpg">
+<meta property="og:url" content="https://www.jurnalbagas.com/article/python/basic/fungsi/">
+<meta property="og:site_name" content="Jurnal Bagas">
+<meta property="og:type" content="article">
+<script src=/modernizr-simple.js></script>
+<link href=/article/python/basic/fungsi/ rel=alternate type=application/rss+xml title="Jurnal Bagas">
+<link href=/article/python/basic/fungsi/ rel=feed type=application/rss+xml title="Jurnal Bagas">
+<link rel=canonical href=https://www.jurnalbagas.com/article/python/basic/fungsi/>
+<link rel=stylesheet href=https://www.jurnalbagas.com/theme.css>
+</head><body class=bilberry-hugo-theme>
+<nav class="permanentTopNav sticky">
+<div class=container>
+<ul class=topnav>
+<li><a href=https://www.jurnalbagas.com/page/kontak/>Kontak</a></li><li><a href=https://www.jurnalbagas.com/page/tentang-saya/>Tentang Saya</a></li></ul><div id=search-box class=search>
+<i class="fas fa-search"></i>
+<input id=search type=text placeholder="Mencari ...">
+</div></div></nav><header class=sticky>
+<div class=container>
+<div class=logo>
+<a href=/ class=logo>
+<img src=https://i.ibb.co/zxRNjvq/1616125814131.jpg alt>
+<span class=overlay><i class="fa fa-home"></i></span>
+</a>
+</div><div class=titles>
+<h3 class=title>
+<a href=/>
+Jurnal Bagas
+</a>
+</h3><span class=subtitle>Berbagi coretan keseharian sebagai engineer</span>
+</div><div class=languages>
+<a href=https://www.jurnalbagas.com/ class=active>id</a>
+<a href=https://www.jurnalbagas.com/en/>en</a>
+</div><div class="toggler permanentTopNav">
+<i class="fa fa-bars" aria-hidden=true></i>
+</div></div></div></header><div class="main container">
+<div class="article-wrapper u-cf single">
+<a class=bubble href=https://www.jurnalbagas.com/article/python/basic/fungsi/>
+<i class="fas fa-fw fa-pencil-alt"></i>
+</a>
+<article class="default article">
+<div class=featured-image>
+<a href=https://www.jurnalbagas.com/article/python/basic/fungsi/>
+<img src=/article/python/basic/function.jpg alt>
+</a>
+</div><div class=content>
+<h1 class=article-title>
+<a href=https://www.jurnalbagas.com/article/python/basic/fungsi/>
+Belajar Python - Fungsi
+</a>
+</h1><div class=meta>
+<span class="date moment">2022-02-10</span>
+<span class=readingTime>4 menit</span>
+<span class=author>
+<a href=https://www.jurnalbagas.com/author/bagas-wibowo/>Bagas Wibowo</a>
+</span>
+</div><h1 id=pengenalan>Pengenalan</h1><p>Sebelumnya kita sudah sempat mempelajari dasar-dasar dari Python terkait tipe data, kondisional, dan perulangan. Pada kesempatan kali ini saya mencoba ingin membagikan terkait fungsi. Fungsi sederhananya merupakan sekumpulan dari kode blok yang akan berjalan hanya ketika dipanggil. Lalu fungsi juga digunakan untuk kita mengelompokkan kumpulan sintaks yang kita punya sesuai dengan fungsinya masing-masing. Mengapa kita perlu membuat fungsi? Secara default di Python sendiri akan mengeksekusi program secara berurutan baris-perbarisnya. Jika kita memiliki kode yang cukup kompleks maka kita perlu mengelompokkannya kedalam fungsi dan kita dapat memanggilnya kapanpun ketika kita butuhkan.</p><p>Lalu bagaimana caranya membuat fungsi, mari kita coba pada contoh berikut:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>fungsi_satu</span>(parameter):
+</span></span><span style=display:flex><span>    statement
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> nilai
+</span></span></code></pre></div><p>Dari contoh gambaran di atas, ketika ingin membuat fungsi maka kita perlu mendefinisikan fungsi terlebih dahulu dengan <code>def</code> dilanjutkan dengan nama fungsi yang akan dibuat. Lalu ada <code>()</code> disana kita bisa membuat parameter yang diambil dari argumen yang diberikan ketika kita memanggil fungsi tersebut. Parameter bersifat opsional, kita juga bisa mengosongkannya jika tidak diperlukan.</p><p>Selanjutnya di dalam fungsi kita dapat memasukan statement atau operasi yang ingin kita jalankan. Operasi yang dapat dilakukan beragam, namun alangkah baiknya setiap fungsi memiliki tanggung jawabnya masing-masing, artinya fungsi tersebut hanya melakukan satu tugas saja. Tapi bukan berarti hanya dapat menjalankan satu statement saja, namun lebih kearah memiliki satu peran. Kenapa? karena apabila terjadi perubahan maka akan berdampak kepada struktur lainnya. Maka dari itu kita perlu mendifinisikan dari awal tujuan dari fungsi itu dibuat sesuai dengan kegunaannya.</p><p>Mungkin ini menjadi salah satu referensi yang dapat kalian baca terkait bahasan tadi, yaitu terkait <strong>Single Responsibility Priciple</strong>:</p><ul>
+<li><a href=https://medium.com/99ridho/konsep-solid-principle-single-responsibility-principle-254c05591d9d>https://medium.com/99ridho/konsep-solid-principle-single-responsibility-principle-254c05591d9d</a></li><li><a href=https://en.wikipedia.org/wiki/Single-responsibility_principle>https://en.wikipedia.org/wiki/Single-responsibility_principle</a></li></ul><h1 id=memanggil-fungsi>Memanggil Fungsi</h1><p>Oke, selanjutnya kita coba bagaimana cara memanggil fungsi yang sudah kita buat. Disini saya akan mencoba membuat fungsi yang akan menampilkan pesan ucapan salam kepada user.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>salam</span>():
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;Halo, selamat datang!&#34;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>salam()
+</span></span></code></pre></div><p>Output:</p><pre tabindex=0><code>Halo, selamat datang!
+</code></pre><p>Untuk memanggil fungsi kita hanya perlu memanggil nama fungsinya saja. Jadi ini sangat memudahkan apabila kita ingin melakukan operasi yang sama berulang kali, kita tidak perlu menuliskan ulang statement, tapi kita tinggal panggil fungsi yang sudah kita buat saja.</p><h1 id=memanggil-fungsi-dengan-argumen>Memanggil Fungsi dengan Argumen</h1><p>Apabila kita memiliki argumen dan ingin digunakan sebagai parameter fungsi yang sudah kita buat, itu juga dapat kita lakukan. Pada contoh kali ini saya akan mencontohnkan user memasukkan input berupa nama, lalu fungsi tersebut akan mengembalikan pesan ucapan beserta nama user.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>salam</span>(nama_depan,nama_belakang):
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;Halo, selamat datang!&#34;</span>,nama_depan,nama_belakang)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>masukkan_nama <span style=color:#f92672>=</span> input()<span style=color:#f92672>.</span>split()
+</span></span><span style=display:flex><span>nama_depan <span style=color:#f92672>=</span> masukkan_nama[<span style=color:#ae81ff>0</span>]
+</span></span><span style=display:flex><span>nama_belakang <span style=color:#f92672>=</span> masukkan_nama[<span style=color:#ae81ff>1</span>]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>salam(nama_depan,nama_belakang)
+</span></span></code></pre></div><p>Input:</p><pre tabindex=0><code>Bagas Wibowo
+</code></pre><p>Output:</p><pre tabindex=0><code>Halo, selamat datang! Bagas Wibowo
+</code></pre><p>Jumlah argumen yang diberikan harus sama dengan jumlah parameter yang disediakan oleh fungsi. Pada contoh diatas fungsi menyediakan 2 parameter, maka kita hanya dapat memberikan 2 argumen pada saat memanggil fungsi tersebut. Apabila kita memiliki beberapa argumen kita dapat menggunakan <code>*args</code> atau <strong>arbitrary argument</strong>.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>buah</span>(<span style=color:#f92672>*</span>nama_buah):
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#39;Buah pertama adalah&#39;</span>,nama_buah[<span style=color:#ae81ff>0</span>])
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>buah(<span style=color:#e6db74>&#34;Anggur&#34;</span>,<span style=color:#e6db74>&#34;Pisang&#34;</span>,<span style=color:#e6db74>&#34;Jeruk&#34;</span>)
+</span></span></code></pre></div><p>Output:</p><pre tabindex=0><code>Buah pertama adalah Anggur
+</code></pre><p>Dengan menggunakan <code>*args</code> kita dapat memanggil argumen berdasarkan indeksnya. Karena kumpulan argumen tersebut disimpan sebagai tuple.</p><h1 id=menggunakan-keyword-argument>Menggunakan Keyword Argument</h1><p>Argumen ini akan menyimpan sebuah value kedalam sebuah variabel yang akan menjadi key dari value tersebut. Pada contoh sebelumnya kita memasukkan data secara langsung tanpa menggunakan key, dengan menggunakan key, kita dapat lebih spesifik untuk menentukkan argumen yang akan diproses oleh fungsi</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>kendaraan</span>(nama_kendaraan,warna,kecepatan):
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;Kendaraan yang digunakan adalah &#34;</span>,nama_kendaraan,<span style=color:#e6db74>&#34;. Memiliki warna &#34;</span>,warna,<span style=color:#e6db74>&#34; dan kecepatan &#34;</span>,kecepatan,sep<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>kendaraan(warna<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;Merah&#34;</span>,kecepatan<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;80 KM/H&#34;</span>,nama_kendaraan<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;Bus&#34;</span>)
+</span></span></code></pre></div><p>Output:</p><pre tabindex=0><code>Kendaraan yang digunakan adalah Bus. Memiliki warna Merah dan kecepatan 80 KM/H
+</code></pre><h1 id=menggunakan-arbitrary-keyword-argument>Menggunakan Arbitrary Keyword Argument</h1><p>Argumen ini sama seperti arbitrary argumen sebelumnya, namun perbedaannya untuk mengakses itemnya kita menggunakan sebuah key bukan sebuah nomor indeks. Contoh penggunaannya sebagai berikut:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>halo</span>(<span style=color:#f92672>**</span>nama):
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;Halo&#34;</span>,nama[<span style=color:#e6db74>&#34;nama_depan&#34;</span>],nama[<span style=color:#e6db74>&#34;nama_belakang&#34;</span>])
+</span></span><span style=display:flex><span>halo(nama_depan<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;Bagas&#34;</span>, nama_belakang<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;Wibowo&#34;</span>)
+</span></span></code></pre></div><h1 id=mengembalikan-nilai-dengan-return>Mengembalikan nilai dengan return</h1><p>Umumnya fungsi akan mengembalikan nilai, karena jika tidak mengembalikan nilai maka nilai yang dikembalikan adalah <strong>None</strong> atau <strong>Null</strong>.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>addition</span>(a,b):
+</span></span><span style=display:flex><span>    result <span style=color:#f92672>=</span> a<span style=color:#f92672>+</span>b
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> result
+</span></span><span style=display:flex><span>print(addition(<span style=color:#ae81ff>5</span>,<span style=color:#ae81ff>10</span>))
+</span></span></code></pre></div><p>Output:</p><pre tabindex=0><code>15
+</code></pre><p>Dari contoh diatas, fungsi yang dibuat adalah untuk melakukan penjumlahan dari <code>a + b</code> dan operasi tersebut disimpan di dalam variabel result. Maka jika ingin mendapatkan hasil dari result perlu dikembalikan nilai dari variabel result tersebut.</p><h1 id=nilai-parameter-default>Nilai Parameter Default</h1><p>Apabila kita membuat fungsi dan tersedia parameter, maka kita wajib memberikan argumen ketika memanggil sebuah fungsi, namun apabila kita tidak ingin memberikan argumen, kita dapat membuat nilai parameter default yang akan menjadi nilai default dari variabel. Contoh penggunaannya adalah sebagai berikut:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>pesan</span>(ucapan<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;Halo Semua&#34;</span>):
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> ucapan
+</span></span><span style=display:flex><span>print(pesan())
+</span></span><span style=display:flex><span>print(pesan(ucapan<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;Halo Kawan&#39;</span>))
+</span></span></code></pre></div><p>Output:</p><pre tabindex=0><code>Halo Semua
+Halo Kawan
+</code></pre><h1 id=kesimpulan>Kesimpulan</h1><p>Fungsi sesuai namanya akan memberikan sebuah fungsi jika dipanggil. Fungsi dapat dipanggil kapan saja jika kita butuhkan. Kita dapat membuat beragam operasi dalam satu fungsi, tetapi baiknya fungsi hanya memiliki satu kegunaan dan tanggung jawab agar jika terdapat perubahan tidak memiliki dampak yang besar bagi keseluruhan kode.</p><p>Sekian artikel terkait fungsi yang dapat saya sampaikan. Semoga dari apa yang sudah saya jelaskan dapat dipahami dan bermanfaat. Sampai jumpa pada kesempatan berikutnya. Apabila ada kritik, saran, dan masukkan dapat mengunjungi sosial media saya yang ada di kontak. Terima kasih.</p></div><div class=footer>
+<div class=tags>
+<i class="fa fa-tags"></i>
+<div class=links>
+<a href=https://www.jurnalbagas.com/tags/python/>Python</a>
+<a href=https://www.jurnalbagas.com/tags/programming/>Programming</a>
+</div></div></div></article></div><div id=comments-container>
+</div></div><footer>
+<div class=container>
+<div class=recent-posts>
+<strong>Post Terbaru</strong>
+<ul>
+<li>
+<a href=https://www.jurnalbagas.com/article/python/basic/fungsi/>Belajar Python - Fungsi</a>
+</li><li>
+<a href=https://www.jurnalbagas.com/article/python/basic/perulangan/>Belajar Python - Perulangan</a>
+</li><li>
+<a href=https://www.jurnalbagas.com/article/python/basic/kondisional/>Belajar Python - Kondisional</a>
+</li><li>
+<a href=https://www.jurnalbagas.com/article/python/basic/tipe_data/>Belajar Python - Tipe Data</a>
+</li></ul></div><div class=right>
+<div class=external-profiles>
+<strong>Sosial Media</strong>
+<a href=https://www.linkedin.com/in/bagas-wibowo/ target=_blank><i class="fab fa-linkedin"></i></a>
+<a href=https://github.com/bagaswibwowo25 target=_blank><i class="fab fa-github"></i></a>
+</div><div class=languages>
+<strong>Bahasa lainnya</strong>
+<a href=https://www.jurnalbagas.com/ class=active>id</a>
+<a href=https://www.jurnalbagas.com/en/>en</a>
+</div></div></div></footer><div class=credits>
+<div class=container>
+<div class=copyright>
+<a href=https://github.com/Lednerb target=_blank>
+&copy;
+2022
+by Lednerb
+</a>
+</div><div class=author>
+<a href=https://github.com/Lednerb/bilberry-hugo-theme target=_blank>Bilberry Hugo Theme</a>
+</div></div></div><script type=text/javascript src=https://www.jurnalbagas.com/theme.js></script>
+<div id=activate-algolia-search class=hidden>
+<input type=hidden id=algolia-search-appId value=45CEN6X6AT>
+<input type=hidden id=algolia-search-apiKey value=16030625f1a4d0dd3b8aefd794fd4cf1>
+<input type=hidden id=algolia-search-indexName value=bilberry-hugo-theme>
+<input type=hidden id=algolia-search-noSearchResults value="Pencarian tidak ditemukan.">
+<input type=hidden id=algolia-search-currentLanguageOnly>
+</div></body></html>
