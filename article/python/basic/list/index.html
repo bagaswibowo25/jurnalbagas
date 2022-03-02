@@ -1,0 +1,237 @@
+<!doctype html><html class=no-js lang=id>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=siteBaseUrl content="https://www.jurnalbagas.com/">
+<meta name=author content="Bagas Wibowo">
+<meta name=description content="Coretan engineer">
+<meta name=keywords content="blog,personal,responsive,search,font awesome,pages,posts,multilingual,highlight.js,syntax highlighting,premium,shortcuts">
+<meta name=generator content="Hugo 0.93.0">
+<title>
+Belajar Python - List | Jurnal Bagas
+</title><meta name=description content="Belajar Python - List - Coretan engineer">
+<meta itemprop=name content="Belajar Python - List">
+<meta itemprop=description content="Belajar Python - List - Coretan engineer">
+<meta property="og:title" content="Belajar Python - List">
+<meta property="og:description" content="Belajar Python - List - Coretan engineer">
+<meta property="og:image" content="https://www.jurnalbagas.com/article/python/basic/list.jpg">
+<meta property="og:url" content="https://www.jurnalbagas.com/article/python/basic/list/">
+<meta property="og:site_name" content="Jurnal Bagas">
+<meta property="og:type" content="article">
+<script src=/modernizr-simple.js></script>
+<link href=/article/python/basic/list/ rel=alternate type=application/rss+xml title="Jurnal Bagas">
+<link href=/article/python/basic/list/ rel=feed type=application/rss+xml title="Jurnal Bagas">
+<link rel=canonical href=https://www.jurnalbagas.com/article/python/basic/list/>
+<link rel=stylesheet href=https://www.jurnalbagas.com/theme.css>
+</head><body class=bilberry-hugo-theme>
+<nav class="permanentTopNav sticky">
+<div class=container>
+<ul class=topnav>
+<li><a href=https://www.jurnalbagas.com/page/kontak/>Kontak</a></li><li><a href=https://www.jurnalbagas.com/page/tentang-saya/>Tentang Saya</a></li></ul><div id=search-box class=search>
+<i class="fas fa-search"></i>
+<input id=search type=text placeholder="Mencari ...">
+</div></div></nav><header class=sticky>
+<div class=container>
+<div class=logo>
+<a href=/ class=logo>
+<img src=https://i.ibb.co/zxRNjvq/1616125814131.jpg alt>
+<span class=overlay><i class="fa fa-home"></i></span>
+</a>
+</div><div class=titles>
+<h3 class=title>
+<a href=/>
+Jurnal Bagas
+</a>
+</h3><span class=subtitle>Berbagi coretan keseharian sebagai engineer</span>
+</div><div class=languages>
+<a href=https://www.jurnalbagas.com/ class=active>id</a>
+<a href=https://www.jurnalbagas.com/en/>en</a>
+</div><div class="toggler permanentTopNav">
+<i class="fa fa-bars" aria-hidden=true></i>
+</div></div></div></header><div class="main container">
+<div class="article-wrapper u-cf single">
+<a class=bubble href=https://www.jurnalbagas.com/article/python/basic/list/>
+<i class="fas fa-fw fa-pencil-alt"></i>
+</a>
+<article class="default article">
+<div class=featured-image>
+<a href=https://www.jurnalbagas.com/article/python/basic/list/>
+<img src=/article/python/basic/list.jpg alt>
+</a>
+</div><div class=content>
+<h1 class=article-title>
+<a href=https://www.jurnalbagas.com/article/python/basic/list/>
+Belajar Python - List
+</a>
+</h1><div class=meta>
+<span class="date moment">2022-02-10</span>
+<span class=readingTime>5 menit</span>
+<span class=author>
+<a href=https://www.jurnalbagas.com/author/bagas-wibowo/>Bagas Wibowo</a>
+</span>
+</div><h1 id=pengenalan>Pengenalan</h1><p>List merupakan salah satu dari 4 built-in tipe data pada Python yang digunakan untuk menyimpan sekumpulan data. List bekerja layaknya array. Jika kalian pernah mencoba array maka list pun serupa. Namun ada beberapa perbedaan antara list dan array secara umum, seperti list tidak didefinisikan alokasi jumlahnya diawal, sedangkan array kita perlu menentukan besarnya diawal. Lalu perbedaan lainnya, seperti array umumnya hanya bisa menampung satu tipe data yang sama, sedangkan list bisa menampung beragam data sekaligus. Berikut sifat list pada Python yang kita jumpai:</p><ul>
+<li>Berurutan</li><li>Dapat berubah isinya</li><li>Beragam jenis nilai</li><li>Data item diperbolehkan duplikat</li></ul><p>Sebelumnya tanpa kita mendefiniskan list, variabel yang mengandung string dapat kita akses indeksnya satu persatu. Seperti contoh berikut</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>string <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;Hello&#34;</span>
+</span></span><span style=display:flex><span>print(string[<span style=color:#ae81ff>0</span>])
+</span></span></code></pre></div><p>Output:</p><pre tabindex=0><code>H
+</code></pre><p>Tetapi kita penasaran kan, lalu tipe data yang digunakan itu apa sih? Mari kita coba</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>string <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;Hello&#34;</span>
+</span></span><span style=display:flex><span>string_1 <span style=color:#f92672>=</span> string[<span style=color:#ae81ff>0</span>]
+</span></span><span style=display:flex><span>print(string_1)
+</span></span></code></pre></div><p>Output:</p><pre tabindex=0><code>&lt;class &#39;str&#39;&gt;
+</code></pre><p>Yak, dari hasil percobaan tersebut, tipe datanya tetap string, namun kita dapat mengakses elemen dari string tersebut seperti kita mengakses array.</p><h1 id=mengakses-list>Mengakses list</h1><p>Untuk mengakses caranya cukup mudah, jika ingin mengetahui seluruh element kita hanya perlu memanggil list tersebut.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>list1 <span style=color:#f92672>=</span> [<span style=color:#ae81ff>4</span>,<span style=color:#ae81ff>5</span>,<span style=color:#ae81ff>6</span>,<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>3</span>]
+</span></span><span style=display:flex><span>print(list1)
+</span></span></code></pre></div><p>Output:</p><pre tabindex=0><code>[4,5,6,1,2,3]
+</code></pre><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>list1 <span style=color:#f92672>=</span> [<span style=color:#ae81ff>4</span>,<span style=color:#ae81ff>5</span>,<span style=color:#ae81ff>6</span>,<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>3</span>]
+</span></span><span style=display:flex><span>print(list1[<span style=color:#ae81ff>0</span>])
+</span></span></code></pre></div><p>Output:</p><pre tabindex=0><code>4
+</code></pre><p>Kita dapat mengakses nilai list dengan menentukan indeks dari list yang dituju. Jika ingin mengetahui indeks dari nilai yang dicari dapat dilakukan dengan cara berikut:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>list1 <span style=color:#f92672>=</span> [<span style=color:#ae81ff>4</span>,<span style=color:#ae81ff>5</span>,<span style=color:#ae81ff>6</span>,<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>3</span>]
+</span></span><span style=display:flex><span>print(list1<span style=color:#f92672>.</span>index(<span style=color:#ae81ff>4</span>))
+</span></span></code></pre></div><p>Output:</p><pre tabindex=0><code>0
+</code></pre><p>Selain cara diatas kita juga bisa menggunakan looping untuk menampilkan setiap elemen pada list. Contohnya sebagai berikut:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>list1 <span style=color:#f92672>=</span> [<span style=color:#ae81ff>4</span>,<span style=color:#ae81ff>5</span>,<span style=color:#ae81ff>6</span>,<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>3</span>]
+</span></span><span style=display:flex><span><span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> list1:
+</span></span><span style=display:flex><span>    print(i)
+</span></span></code></pre></div><p>Output:</p><pre tabindex=0><code>4
+5
+6
+1
+2
+3
+</code></pre><p>Jika ingin mengeluarkan nilai elemen dalam satu baris tanpa <code>[]</code>. Dapat menggunakan cara sebagai berikut:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>list1 <span style=color:#f92672>=</span> [<span style=color:#ae81ff>4</span>,<span style=color:#ae81ff>5</span>,<span style=color:#ae81ff>6</span>,<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>3</span>]
+</span></span><span style=display:flex><span>print(<span style=color:#f92672>*</span>list1)
+</span></span></code></pre></div><p>Output:</p><pre tabindex=0><code>4 5 6 1 2 3
+</code></pre><p><code>*</code> asterisk berfungsi untuk membongkar perulangan ke dalam argumen disaat kita memanggil suatu fungsi. Maka dari itu hasil yang ditampilkan mirip dengan perulangan namun dalam satu baris.</p><p>Atau kita juga dapat mengubah sekumpulan elemen tersebut menjadi satu kumpulan karakter yang dijadikan string. Hal tersebut dapat dilakukan sebagai berikut:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>list1 <span style=color:#f92672>=</span> [<span style=color:#ae81ff>4</span>,<span style=color:#ae81ff>5</span>,<span style=color:#ae81ff>6</span>,<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>3</span>]
+</span></span><span style=display:flex><span>string_ints <span style=color:#f92672>=</span> [str(i) <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> list1]
+</span></span><span style=display:flex><span>string <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;,&#39;</span><span style=color:#f92672>.</span>join(string_ints)
+</span></span><span style=display:flex><span>print(string)
+</span></span></code></pre></div><p>Dengan cara di atas kita mengubah elemen dalam <em>list1</em> menjadi string lalu kita menggabungkan kumpulan string tersebut dengan fungsi <code>join()</code>.</p><p>Selain itu kita juga dapat melakukan hal sebaliknya, yaitu mengubah string kedalam list. Kita dapat melakukannya dengan cara sebagai berikut:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>string <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;Hello&#34;</span>
+</span></span><span style=display:flex><span>string_list <span style=color:#f92672>=</span> [str(i) <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> string]
+</span></span><span style=display:flex><span>print(string_list)
+</span></span></code></pre></div><p>Selain itu kita juga dapat mengakses list dengan rentang indeks tertentu, istilah ini biasa disebut slicing. Untuk mengindikasikan sebuah interval kita bisa menggunakan <code>[&lt;start>:&lt;stop>]</code> untuk mengakses sebuah indeks. Oiya dalam melakukan pengindeksan kita dapat melakukan secara positif atau negatif. Positif artinya kita mulai dari indeks kiri sampai kanan, sedangkan negatif artinya kita mulai dari indeks kanan sampai kiri. Contohnya sebagai berikut:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>list1 <span style=color:#f92672>=</span> [<span style=color:#ae81ff>4</span>,<span style=color:#ae81ff>5</span>,<span style=color:#ae81ff>6</span>,<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>3</span>]
+</span></span><span style=display:flex><span>print(list1[<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>])
+</span></span></code></pre></div><p>Output:</p><pre tabindex=0><code>3
+</code></pre><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>list1 <span style=color:#f92672>=</span> [<span style=color:#ae81ff>4</span>,<span style=color:#ae81ff>5</span>,<span style=color:#ae81ff>6</span>,<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>3</span>]
+</span></span><span style=display:flex><span>print(list1[<span style=color:#ae81ff>0</span>:<span style=color:#ae81ff>6</span>])
+</span></span></code></pre></div><p>Output:</p><pre tabindex=0><code>[4, 5, 6, 1, 2, 3]
+</code></pre><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>list1 <span style=color:#f92672>=</span> [<span style=color:#ae81ff>4</span>,<span style=color:#ae81ff>5</span>,<span style=color:#ae81ff>6</span>,<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>3</span>]
+</span></span><span style=display:flex><span>print(list1[<span style=color:#f92672>-</span><span style=color:#ae81ff>6</span>:<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>])
+</span></span></code></pre></div><p>Output:</p><pre tabindex=0><code>[4, 5, 6, 1, 2]
+</code></pre><p>Contoh lainnya kita dapat menambahkan <code>:</code> pada saat melakukan slicing untuk menentukan lompatan indeks yang dilakukan. Contohnya sebagai berikut:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>list1 <span style=color:#f92672>=</span> [<span style=color:#ae81ff>4</span>,<span style=color:#ae81ff>5</span>,<span style=color:#ae81ff>6</span>,<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>3</span>]
+</span></span><span style=display:flex><span>print(list1[<span style=color:#ae81ff>0</span>:<span style=color:#ae81ff>6</span>:<span style=color:#ae81ff>2</span>])
+</span></span></code></pre></div><p>Output:</p><pre tabindex=0><code>[4, 6, 2]
+</code></pre><p>Jika ingin membalik urutannya kita dapat menggunakan step negatif indeks. Contohnya sebagai berikut:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>list1 <span style=color:#f92672>=</span> [<span style=color:#ae81ff>4</span>,<span style=color:#ae81ff>5</span>,<span style=color:#ae81ff>6</span>,<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>3</span>]
+</span></span><span style=display:flex><span>print(list1[<span style=color:#ae81ff>6</span>::<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>])
+</span></span></code></pre></div><p>Atau</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>list1 <span style=color:#f92672>=</span> [<span style=color:#ae81ff>4</span>,<span style=color:#ae81ff>5</span>,<span style=color:#ae81ff>6</span>,<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>3</span>]
+</span></span><span style=display:flex><span>print(list1[::<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>])
+</span></span></code></pre></div><p>Output:</p><pre tabindex=0><code>[3, 2, 1, 6, 5, 4]
+</code></pre><h1 id=mengubah-list>Mengubah List</h1><p>Sesuai dengan sifat list, yaitu mutable jadi elemen yang ada di list dapat diubah atau ditambah. Untuk memodifikasi isi dari list kita dapat menggunakan beberapa fungsi, seperti <code>append()</code>, <code>insert()</code>, <code>extend()</code>, <code>zip()</code>, <code>remove()</code>, dan <code>pop()</code>. Mari kita coba</p><ol>
+<li>
+<p>Menambah elemen list
+Untuk menambah elemen list kita dapat menggunakan fungsi <code>.append()</code> atau melakukan addition untuk menggabungkan list. Contohnya sebagai berikut:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>list1 <span style=color:#f92672>=</span> [<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>3</span>,<span style=color:#ae81ff>4</span>,<span style=color:#ae81ff>5</span>]
+</span></span><span style=display:flex><span>list1<span style=color:#f92672>.</span>append(<span style=color:#ae81ff>6</span>)
+</span></span><span style=display:flex><span>print(list1)
+</span></span></code></pre></div><p>Output:</p><pre tabindex=0><code>[1, 2, 3, 4, 5, 6]
+</code></pre><p>Secara default data akan dimasukkan dibagian akhir dari elemen. Jika kita ingin memasukkan data pada specific indeks atau diawal index, maka kita dapat menggunakan fungsi <code>insert()</code>. Contohnya sebagai berikut:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>list1 <span style=color:#f92672>=</span> [<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>3</span>,<span style=color:#ae81ff>4</span>,<span style=color:#ae81ff>5</span>]
+</span></span><span style=display:flex><span>list1<span style=color:#f92672>.</span>insert(<span style=color:#ae81ff>0</span>,<span style=color:#ae81ff>6</span>)
+</span></span><span style=display:flex><span>print(list1)
+</span></span></code></pre></div><p>Output:</p><pre tabindex=0><code>[6, 1, 2, 3, 4, 5]
+</code></pre></li><li>
+<p>Menghapus elemen list
+Selanjutnya kita juga dapat menghapus elemen dari sebuah list dengan indeks menggunakan fungsi <code>remove()</code> atau kita dapat menghapusnya dengan cara menghapus elemen paling akhir dengan fungsi <code>pop()</code>. Berikut adalah contohnya:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>list1 <span style=color:#f92672>=</span> [<span style=color:#ae81ff>4</span>,<span style=color:#ae81ff>5</span>,<span style=color:#ae81ff>6</span>,<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>3</span>]
+</span></span><span style=display:flex><span>list1<span style=color:#f92672>.</span>remove(list1[<span style=color:#ae81ff>0</span>])
+</span></span><span style=display:flex><span>print(list1)
+</span></span></code></pre></div><p>Atau</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>list1 <span style=color:#f92672>=</span> [<span style=color:#ae81ff>4</span>,<span style=color:#ae81ff>5</span>,<span style=color:#ae81ff>6</span>,<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>3</span>]
+</span></span><span style=display:flex><span>list1<span style=color:#f92672>.</span>remove(<span style=color:#ae81ff>4</span>)
+</span></span><span style=display:flex><span>print(list1)
+</span></span></code></pre></div><p>Output:</p><pre tabindex=0><code>[5, 6, 1, 2, 3]
+</code></pre><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>list1 <span style=color:#f92672>=</span> [<span style=color:#ae81ff>4</span>,<span style=color:#ae81ff>5</span>,<span style=color:#ae81ff>6</span>,<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>3</span>]
+</span></span><span style=display:flex><span>list1<span style=color:#f92672>.</span>pop()
+</span></span><span style=display:flex><span>print(list1)
+</span></span></code></pre></div><pre tabindex=0><code>[4, 5, 6, 1, 2]
+</code></pre></li><li>
+<p>Menggabungkan elemen list
+Untuk melakukan penggabungan elemen antar list ada beragam cara yang dapat dilakukan, seperti menggunakan <code>extend()</code>, <code>+</code>, dan <code>append()</code>. Mari kita coba.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>list1 <span style=color:#f92672>=</span> [<span style=color:#ae81ff>4</span>,<span style=color:#ae81ff>5</span>,<span style=color:#ae81ff>6</span>,<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>3</span>]
+</span></span><span style=display:flex><span>list2 <span style=color:#f92672>=</span> [<span style=color:#ae81ff>7</span>,<span style=color:#ae81ff>8</span>,<span style=color:#ae81ff>9</span>]
+</span></span><span style=display:flex><span>list1<span style=color:#f92672>.</span>extend(list2)
+</span></span><span style=display:flex><span>print(list1)
+</span></span></code></pre></div><p>Output:</p><pre tabindex=0><code>[4, 5, 6, 1, 2, 3, 7, 8, 9]
+</code></pre><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>list1 <span style=color:#f92672>=</span> [<span style=color:#ae81ff>4</span>,<span style=color:#ae81ff>5</span>,<span style=color:#ae81ff>6</span>,<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>3</span>]
+</span></span><span style=display:flex><span>list2 <span style=color:#f92672>=</span> [<span style=color:#ae81ff>7</span>,<span style=color:#ae81ff>8</span>,<span style=color:#ae81ff>9</span>]
+</span></span><span style=display:flex><span>merge <span style=color:#f92672>=</span> list1<span style=color:#f92672>+</span>list2
+</span></span><span style=display:flex><span>print(merge)
+</span></span></code></pre></div><p>Output:</p><pre tabindex=0><code>[4, 5, 6, 1, 2, 3, 7, 8, 9]
+</code></pre><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>list1 <span style=color:#f92672>=</span> [<span style=color:#ae81ff>4</span>,<span style=color:#ae81ff>5</span>,<span style=color:#ae81ff>6</span>,<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>3</span>]
+</span></span><span style=display:flex><span>list2 <span style=color:#f92672>=</span> [<span style=color:#ae81ff>7</span>,<span style=color:#ae81ff>8</span>,<span style=color:#ae81ff>9</span>]
+</span></span><span style=display:flex><span><span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> list2:
+</span></span><span style=display:flex><span>    list1<span style=color:#f92672>.</span>append(i)
+</span></span><span style=display:flex><span>print(list1)
+</span></span></code></pre></div><p>Output:</p><pre tabindex=0><code>[4, 5, 6, 1, 2, 3, 7, 8, 9]
+</code></pre><p>Nah ketiga cara diatas dapat kita gunakan untuk menggabungkan 2 list menjadi satu list. Menurut saya pribadi cara paling mudah adalah menggunakan operator <code>+</code> karena lebih sederhana dan tidak merubah nilai asli dari list yang lain. Contoh kasus lain, kita dapat menggunakan <code>zip()</code> untuk menggabungkan antar elemen list. Contohnya sebagai berikut:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>list1 <span style=color:#f92672>=</span> [<span style=color:#e6db74>&#34;M&#34;</span>, <span style=color:#e6db74>&#34;na&#34;</span>, <span style=color:#e6db74>&#34;i&#34;</span>, <span style=color:#e6db74>&#34;Ba&#34;</span>]
+</span></span><span style=display:flex><span>list2 <span style=color:#f92672>=</span> [<span style=color:#e6db74>&#34;y&#34;</span>, <span style=color:#e6db74>&#34;me&#34;</span>, <span style=color:#e6db74>&#34;s&#34;</span>, <span style=color:#e6db74>&#34;gas&#34;</span>]
+</span></span><span style=display:flex><span>conct <span style=color:#f92672>=</span> [i<span style=color:#f92672>+</span>j <span style=color:#66d9ef>for</span> i, j <span style=color:#f92672>in</span> zip(list1,list2)]
+</span></span><span style=display:flex><span>print(conct)
+</span></span></code></pre></div><p>Output:</p><pre tabindex=0><code>[&#39;My&#39;, &#39;name&#39;, &#39;is&#39;, &#39;Bagas&#39;]
+</code></pre></li></ol><h1 id=mengurutkan-list>Mengurutkan list</h1><p>Sebuah list acak dapat kita lakukan pengurutan baik itu secara ascending atau descending. Untuk melakukan pengurutan kita dapat menggunakan fungsi <code>sort()</code> atau <code>sorted()</code>. Mari kita coba</p><ol>
+<li>
+<p>Mengurutkan secara ascending</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>list1 <span style=color:#f92672>=</span> [<span style=color:#ae81ff>4</span>,<span style=color:#ae81ff>5</span>,<span style=color:#ae81ff>6</span>,<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>3</span>]
+</span></span><span style=display:flex><span>list1<span style=color:#f92672>.</span>sort()
+</span></span><span style=display:flex><span>print(list1)
+</span></span></code></pre></div><p>Output:</p><pre tabindex=0><code>[6, 5, 4, 3, 2, 1]
+</code></pre><p>Atau</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>list1 <span style=color:#f92672>=</span> [<span style=color:#ae81ff>4</span>,<span style=color:#ae81ff>5</span>,<span style=color:#ae81ff>6</span>,<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>3</span>]
+</span></span><span style=display:flex><span>sorted_list <span style=color:#f92672>=</span> sorted(list1)
+</span></span><span style=display:flex><span>print(sorted_list)
+</span></span></code></pre></div><p>Output:</p><pre tabindex=0><code>[6, 5, 4, 3, 2, 1]
+</code></pre><p>Keduanya menghasilkan output yang sama, hanya saja caranya yang berbeda. Cara <code>sort()</code> langsung mengubah nilai asli dari list1, sedangkan <code>sorted()</code> akan menyimpan nilai di variabel yang lain.</p></li><li>
+<p>Mengurutkan secara descending</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>list1 <span style=color:#f92672>=</span> [<span style=color:#ae81ff>4</span>,<span style=color:#ae81ff>5</span>,<span style=color:#ae81ff>6</span>,<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>3</span>]
+</span></span><span style=display:flex><span>list1<span style=color:#f92672>.</span>sort()
+</span></span><span style=display:flex><span>print(list1[::<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>])
+</span></span></code></pre></div><p>Atau</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>list1 <span style=color:#f92672>=</span> [<span style=color:#ae81ff>4</span>,<span style=color:#ae81ff>5</span>,<span style=color:#ae81ff>6</span>,<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>3</span>]
+</span></span><span style=display:flex><span>sorted_list <span style=color:#f92672>=</span> sorted(list1)
+</span></span><span style=display:flex><span>sorted_list<span style=color:#f92672>.</span>reverse()
+</span></span></code></pre></div><p>Sama seperti cara-cara sebelumnya, untuk melakukan sorting secara descending, kita perlu mengurutkannya terlebih dahulu, setelah itu baru kita lakukan <code>reverse()</code> atau negatif indeks</p></li></ol><h1 id=kesimpulan>Kesimpulan</h1><p>Tipe data list sangat berguna bagi kalian yang ingin mengelompokkan data kedalam satu variabel dan melakukan modifikasi terhadap sekumpulan data tersebut karena list merupakanan tipe data collection yang mudah untuk dipahami dan fleksibel.</p><p>Sekian bahasan kali ini tentang perulangan. Sampai ketemu lagi pada kesempatan berikutnya. Apabila ada kiritk, saran, ataupun masukan dapat menghubungi saya melalui halaman kontak diatas yaa. Terima kasih.</p></div><div class=footer>
+<div class=tags>
+<i class="fa fa-tags"></i>
+<div class=links>
+<a href=https://www.jurnalbagas.com/tags/python/>Python</a>
+<a href=https://www.jurnalbagas.com/tags/programming/>Programming</a>
+</div></div></div></article></div><div id=comments-container>
+</div></div><footer>
+<div class=container>
+<div class=recent-posts>
+<strong>Post Terbaru</strong>
+<ul>
+<li>
+<a href=https://www.jurnalbagas.com/article/python/basic/list/>Belajar Python - List</a>
+</li><li>
+<a href=https://www.jurnalbagas.com/article/python/basic/fungsi/>Belajar Python - Fungsi</a>
+</li><li>
+<a href=https://www.jurnalbagas.com/article/python/basic/perulangan/>Belajar Python - Perulangan</a>
+</li><li>
+<a href=https://www.jurnalbagas.com/article/python/basic/kondisional/>Belajar Python - Kondisional</a>
+</li><li>
+<a href=https://www.jurnalbagas.com/article/python/basic/tipe_data/>Belajar Python - Tipe Data</a>
+</li></ul></div><div class=right>
+<div class=external-profiles>
+<strong>Sosial Media</strong>
+<a href=https://www.linkedin.com/in/bagas-wibowo/ target=_blank><i class="fab fa-linkedin"></i></a>
+<a href=https://github.com/bagaswibwowo25 target=_blank><i class="fab fa-github"></i></a>
+</div><div class=languages>
+<strong>Bahasa lainnya</strong>
+<a href=https://www.jurnalbagas.com/ class=active>id</a>
+<a href=https://www.jurnalbagas.com/en/>en</a>
+</div></div></div></footer><div class=credits>
+<div class=container>
+<div class=copyright>
+<a href=https://github.com/Lednerb target=_blank>
+&copy;
+2022
+by Lednerb
+</a>
+</div><div class=author>
+<a href=https://github.com/Lednerb/bilberry-hugo-theme target=_blank>Bilberry Hugo Theme</a>
+</div></div></div><script type=text/javascript src=https://www.jurnalbagas.com/theme.js></script>
+<div id=activate-algolia-search class=hidden>
+<input type=hidden id=algolia-search-appId value=45CEN6X6AT>
+<input type=hidden id=algolia-search-apiKey value=16030625f1a4d0dd3b8aefd794fd4cf1>
+<input type=hidden id=algolia-search-indexName value=bilberry-hugo-theme>
+<input type=hidden id=algolia-search-noSearchResults value="Pencarian tidak ditemukan.">
+<input type=hidden id=algolia-search-currentLanguageOnly>
+</div></body></html>
