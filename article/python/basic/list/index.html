@@ -123,9 +123,7 @@ Belajar Python - List
 </span></span><span style=display:flex><span>print(list1[::<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>])
 </span></span></code></pre></div><p>Output:</p><pre tabindex=0><code>[3, 2, 1, 6, 5, 4]
 </code></pre><h1 id=mengubah-list>Mengubah List</h1><p>Sesuai dengan sifat list, yaitu mutable jadi elemen yang ada di list dapat diubah atau ditambah. Untuk memodifikasi isi dari list kita dapat menggunakan beberapa fungsi, seperti <code>append()</code>, <code>insert()</code>, <code>extend()</code>, <code>zip()</code>, <code>remove()</code>, dan <code>pop()</code>. Mari kita coba</p><ol>
-<li>
-<p>Menambah elemen list
-Untuk menambah elemen list kita dapat menggunakan fungsi <code>.append()</code> atau melakukan addition untuk menggabungkan list. Contohnya sebagai berikut:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>list1 <span style=color:#f92672>=</span> [<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>3</span>,<span style=color:#ae81ff>4</span>,<span style=color:#ae81ff>5</span>]
+<li>Menambah elemen list</li></ol><p>Untuk menambah elemen list kita dapat menggunakan fungsi <code>.append()</code> atau melakukan addition untuk menggabungkan list. Contohnya sebagai berikut:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>list1 <span style=color:#f92672>=</span> [<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>3</span>,<span style=color:#ae81ff>4</span>,<span style=color:#ae81ff>5</span>]
 </span></span><span style=display:flex><span>list1<span style=color:#f92672>.</span>append(<span style=color:#ae81ff>6</span>)
 </span></span><span style=display:flex><span>print(list1)
 </span></span></code></pre></div><p>Output:</p><pre tabindex=0><code>[1, 2, 3, 4, 5, 6]
@@ -133,9 +131,8 @@ Untuk menambah elemen list kita dapat menggunakan fungsi <code>.append()</code> 
 </span></span><span style=display:flex><span>list1<span style=color:#f92672>.</span>insert(<span style=color:#ae81ff>0</span>,<span style=color:#ae81ff>6</span>)
 </span></span><span style=display:flex><span>print(list1)
 </span></span></code></pre></div><p>Output:</p><pre tabindex=0><code>[6, 1, 2, 3, 4, 5]
-</code></pre></li><li>
-<p>Menghapus elemen list
-Selanjutnya kita juga dapat menghapus elemen dari sebuah list dengan indeks menggunakan fungsi <code>remove()</code> atau kita dapat menghapusnya dengan cara menghapus elemen paling akhir dengan fungsi <code>pop()</code>. Berikut adalah contohnya:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>list1 <span style=color:#f92672>=</span> [<span style=color:#ae81ff>4</span>,<span style=color:#ae81ff>5</span>,<span style=color:#ae81ff>6</span>,<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>3</span>]
+</code></pre><ol start=2>
+<li>Menghapus elemen list</li></ol><p>Selanjutnya kita juga dapat menghapus elemen dari sebuah list dengan indeks menggunakan fungsi <code>remove()</code> atau kita dapat menghapusnya dengan cara menghapus elemen paling akhir dengan fungsi <code>pop()</code>. Berikut adalah contohnya:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>list1 <span style=color:#f92672>=</span> [<span style=color:#ae81ff>4</span>,<span style=color:#ae81ff>5</span>,<span style=color:#ae81ff>6</span>,<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>3</span>]
 </span></span><span style=display:flex><span>list1<span style=color:#f92672>.</span>remove(list1[<span style=color:#ae81ff>0</span>])
 </span></span><span style=display:flex><span>print(list1)
 </span></span></code></pre></div><p>Atau</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>list1 <span style=color:#f92672>=</span> [<span style=color:#ae81ff>4</span>,<span style=color:#ae81ff>5</span>,<span style=color:#ae81ff>6</span>,<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>3</span>]
@@ -146,9 +143,8 @@ Selanjutnya kita juga dapat menghapus elemen dari sebuah list dengan indeks meng
 </span></span><span style=display:flex><span>list1<span style=color:#f92672>.</span>pop()
 </span></span><span style=display:flex><span>print(list1)
 </span></span></code></pre></div><pre tabindex=0><code>[4, 5, 6, 1, 2]
-</code></pre></li><li>
-<p>Menggabungkan elemen list
-Untuk melakukan penggabungan elemen antar list ada beragam cara yang dapat dilakukan, seperti menggunakan <code>extend()</code>, <code>+</code>, dan <code>append()</code>. Mari kita coba.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>list1 <span style=color:#f92672>=</span> [<span style=color:#ae81ff>4</span>,<span style=color:#ae81ff>5</span>,<span style=color:#ae81ff>6</span>,<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>3</span>]
+</code></pre><ol start=3>
+<li>Menggabungkan elemen list</li></ol><p>Untuk melakukan penggabungan elemen antar list ada beragam cara yang dapat dilakukan, seperti menggunakan <code>extend()</code>, <code>+</code>, dan <code>append()</code>. Mari kita coba.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>list1 <span style=color:#f92672>=</span> [<span style=color:#ae81ff>4</span>,<span style=color:#ae81ff>5</span>,<span style=color:#ae81ff>6</span>,<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>3</span>]
 </span></span><span style=display:flex><span>list2 <span style=color:#f92672>=</span> [<span style=color:#ae81ff>7</span>,<span style=color:#ae81ff>8</span>,<span style=color:#ae81ff>9</span>]
 </span></span><span style=display:flex><span>list1<span style=color:#f92672>.</span>extend(list2)
 </span></span><span style=display:flex><span>print(list1)
@@ -169,7 +165,7 @@ Untuk melakukan penggabungan elemen antar list ada beragam cara yang dapat dilak
 </span></span><span style=display:flex><span>conct <span style=color:#f92672>=</span> [i<span style=color:#f92672>+</span>j <span style=color:#66d9ef>for</span> i, j <span style=color:#f92672>in</span> zip(list1,list2)]
 </span></span><span style=display:flex><span>print(conct)
 </span></span></code></pre></div><p>Output:</p><pre tabindex=0><code>[&#39;My&#39;, &#39;name&#39;, &#39;is&#39;, &#39;Bagas&#39;]
-</code></pre></li></ol><h1 id=mengurutkan-list>Mengurutkan list</h1><p>Sebuah list acak dapat kita lakukan pengurutan baik itu secara ascending atau descending. Untuk melakukan pengurutan kita dapat menggunakan fungsi <code>sort()</code> atau <code>sorted()</code>. Mari kita coba</p><ol>
+</code></pre><h1 id=mengurutkan-list>Mengurutkan list</h1><p>Sebuah list acak dapat kita lakukan pengurutan baik itu secara ascending atau descending. Untuk melakukan pengurutan kita dapat menggunakan fungsi <code>sort()</code> atau <code>sorted()</code>. Mari kita coba</p><ol>
 <li>
 <p>Mengurutkan secara ascending</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span>list1 <span style=color:#f92672>=</span> [<span style=color:#ae81ff>4</span>,<span style=color:#ae81ff>5</span>,<span style=color:#ae81ff>6</span>,<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>3</span>]
 </span></span><span style=display:flex><span>list1<span style=color:#f92672>.</span>sort()
