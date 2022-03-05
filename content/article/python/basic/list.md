@@ -303,4 +303,4 @@ Sebuah list acak dapat kita lakukan pengurutan baik itu secara ascending atau de
 
 Tipe data list sangat berguna bagi kalian yang ingin mengelompokkan data kedalam satu variabel dan melakukan modifikasi terhadap sekumpulan data tersebut karena list merupakanan tipe data collection yang mudah untuk dipahami dan fleksibel.
 
-Sekian bahasan kali ini tentang perulangan. Sampai ketemu lagi pada kesempatan berikutnya. Apabila ada kiritk, saran, ataupun masukan dapat menghubungi saya melalui halaman kontak diatas yaa. Terima kasih.
+Sekian bahasan kali ini tentang list. Sampai ketemu lagi pada kesempatan berikutnya. Apabila ada kiritk, saran, ataupun masukan dapat menghubungi saya melalui halaman kontak diatas yaa. Terima kasih.
