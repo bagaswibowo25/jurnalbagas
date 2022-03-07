@@ -1,6 +1,6 @@
 ---
 title: "Belajar Python - Tuple"
-date: 2022-02-10T23:21:35+07:00
+date: 2022-02-10T22:21:35+07:00
 
 tags: ['Python','Programming']
 author: "Bagas Wibowo"
