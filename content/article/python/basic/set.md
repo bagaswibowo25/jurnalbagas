@@ -1,6 +1,6 @@
 ---
 title: "Belajar Python - Set"
-date: 2022-02-10T21:22:46+07:00
+date: 2022-02-10T23:24:46+07:00
 
 tags: ['Python','Programming']
 author: "Bagas Wibowo"
