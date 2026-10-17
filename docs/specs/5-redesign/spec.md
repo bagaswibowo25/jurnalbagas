@@ -90,7 +90,7 @@ link lama yang sudah tersebar menjadi mati.
   #5). Pencarian pihak luar yang lama dicopot.
 - Isi tulisan tidak diubah (constitution #2); yang berubah hanya tampilan dan alamatnya.
 - Bagian galeri yang kosong dihapus.
-- Bagian bawah halaman memuat tautan GitHub, LinkedIn, Medium ([alamat profil Medium — dari owner]), dan RSS.
+- Bagian bawah halaman memuat tautan GitHub, LinkedIn, Medium (https://bagas-awibowo.medium.com/), dan RSS.
 - Teks bisa dibaca dengan kontras cukup di kedua mode, semua tombol bisa dipakai dengan keyboard (constitution #7).
 
 ## Kriteria sukses
