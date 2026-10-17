@@ -57,7 +57,7 @@ saya.
 - Isi tulisan diambil dari draf yang sudah owner sunting (dokumen draf di Claude, 17 Oktober 2026); agent hanya
   memindahkannya ke blog tanpa mengubah kalimat (constitution #2).
 - Bahasa Indonesia dan Inggris berisi sama; versi Inggris terjemahan versi Indonesia, bukan tulisan terpisah.
-- Perbaikan kecil pada Howdy, modul SELinux, dan alat ceknya ditautkan ke repo GitHub owner `howdy-setup-suse`, yang
+- Perbaikan kecil pada Howdy, modul SELinux, dan alat ceknya ditautkan ke repo GitHub owner howdy-setup-suse, yang
   dibuat publik oleh owner sebelum tulisan terbit.
 - Seri baru **linux-tips** untuk tips Linux berikutnya; tulisan ini bagian 1 (keputusan owner baru, Content K6).
 - Tag mengikuti topik (Content K2).
@@ -75,5 +75,5 @@ saya.
 - Panduan untuk distro selain openSUSE atau kamera tanpa pengaturan inframerah ala Windows Hello. Perbedaannya hanya
   disinggung.
 - Mengirim perbaikan Howdy ke proyek aslinya.
-- Mengubah visibilitas repo `howdy-setup-suse` (dilakukan owner sendiri).
+- Mengubah visibilitas repo howdy-setup-suse (dilakukan owner sendiri).
 - Tulisan lanjutan di seri linux-tips.
