@@ -69,3 +69,8 @@ Deploy tidak berubah (sudah membangun dari nol ke `.build/`). `hugo` tidak lagi 
 ## 10. Catatan pengerjaan
 
 <!-- Diisi selama pengerjaan: "- YYYY-MM-DD — temuan teknis singkat". Bug/pekerjaan baru → issue baru. -->
+- 2026-10-17 — Akar masalah preview terkonfirmasi: `hugo server` (0.154) tanpa `--renderToMemory` menulis ke `public/`.
+  Sekarang `public/` di-ignore dan `serve` render ke memori; `build.sh ui` memastikan repo tetap bersih.
+- 2026-10-17 — Perbandingan build `master` vs branch (sha256 semua file kecuali `version.txt`): 144 file identik,
+  satu-satunya beda = `/pp.jpeg` hilang (foto dihapus, Infra K5). File itu masih tersaji di situs live (200), dulu
+  dipakai tema lama sebagai avatar, tidak ditautkan dari halaman mana pun sekarang → ditanyakan ke owner.

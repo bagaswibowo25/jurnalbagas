@@ -45,3 +45,4 @@
 
 ## Temuan terbuka
 
+Tidak ada.
