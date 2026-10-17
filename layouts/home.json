@@ -1,0 +1,12 @@
+{{- /* Indeks pencarian bahasa ini (Theme K6) — hanya tulisan bahasa ini. */ -}}
+{{- $items := slice -}}
+{{- range where site.RegularPages "Section" "tulisan" -}}
+  {{- $items = $items | append (dict
+      "title" .Title
+      "url" .RelPermalink
+      "date" (.Date.Format "2006-01-02")
+      "tags" (.Params.tags | default slice)
+      "summary" (.Summary | plainify | truncate 200)
+      "content" (.Plain | truncate 4000)) -}}
+{{- end -}}
+{{- $items | jsonify -}}

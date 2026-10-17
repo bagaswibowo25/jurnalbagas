@@ -18,6 +18,10 @@ terang. Standar tampilannya: [`docs/reference/design.md`](../reference/design.md
 | K1 | Arah tampilan A · Terminal, font IBM Plex Mono + IBM Plex Sans (F3), warna monokrom + navy (W9), beranda feed log tanpa hero (L3), artikel dengan navigasi seri di kiri (AL2) | 2026-10-17 |
 | K2 | Navigasi seri di halaman artikel bisa disembunyikan pembaca | 2026-10-17 |
 | K3 | Mode gelap dan terang sama-sama didukung | 2026-10-17 |
+| K4 | Dua bahasa (Indonesia utama, Inggris): teks tampilan selalu dua bahasa; terjemahan tulisan opsional per tulisan, yang belum diterjemahkan tampil di versi Inggris dengan penanda "ID" | 2026-10-17 |
+| K5 | Alamat baru per bahasa: `/tulisan/`, `/seri/`, `/tag/`, `/tentang/`, `/kontak/` dan `/en/posts/`, `/en/series/`, `/en/tags/`, `/en/about/`, `/en/contact/`; alamat diambil dari judul; semua alamat lama dialihkan | 2026-10-17 |
+| K6 | Pencarian berjalan di situs sendiri, tanpa layanan luar (Algolia dicopot) | 2026-10-17 |
+| K7 | Tidak ada kolom komentar | 2026-10-17 |
 
 ## 3. Istilah
 
@@ -28,3 +32,4 @@ terang. Standar tampilannya: [`docs/reference/design.md`](../reference/design.md
 
 | Spec | Issue | Bergantung pada |
 |---|---|---|
+| [Tampilan baru, dua bahasa](../specs/5-redesign/spec.md) | #5 | #7 (agar terbit ke situs live) |

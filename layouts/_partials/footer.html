@@ -1,0 +1,11 @@
+<footer class="site-footer">
+  <div class="wrap wide">
+    <span>© {{ now.Year }} {{ site.Params.author }} · {{ i18n "built_with" }}</span>
+    <nav aria-label="Tautan">
+      <a href="{{ site.Params.github }}" rel="me">github</a>
+      <a href="{{ site.Params.linkedin }}" rel="me">linkedin</a>
+      <a href="{{ site.Params.medium }}" rel="me">medium</a>
+      {{- with site.Home.OutputFormats.Get "rss" }}<a href="{{ .RelPermalink }}">rss</a>{{ end }}
+    </nav>
+  </div>
+</footer>

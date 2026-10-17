@@ -1,24 +1,30 @@
 # Sistem — keadaan saat ini
 
 > Rujukan teknis untuk plan. Perbarui halaman ini setiap kali stack, struktur konten, atau deploy berubah.
-> Keadaan per 2026-10-17 (#4).
+> Keadaan per 2026-10-17 (#4, #7, #5).
 
 ## Stack
 
-- **Hugo** extended **0.123.8** (dipatok di `scripts/build.sh` lewat image Docker `hugomods/hugo:exts-0.123.8`).
-  Tema lama gagal di Hugo ≥0.125 (template `_internal/google_analytics_async.html` sudah dihapus dari Hugo).
-  Konfigurasi: `config.toml`.
-- **Tema:** `themes/bilberry-hugo-theme` (git submodule, Lednerb/bilberry-hugo-theme). Akan diganti oleh redesign
-  (Epic Theme).
-- **Konten:** `content/article/<topik>/<sub>/<slug>.md` (saat ini seri `python/basic`, 8 tulisan), `content/page/`
-  (tentang saya, kontak; ID + EN), `content/gallery/`. Gambar tulisan di `static/` dan di samping file konten.
-- **Bahasa:** default `id`.
-- **Pencarian:** Algolia (konfigurasi di `config.toml`, folder `algolia/`).
+- **Hugo** extended **0.154.5** (dipatok di `scripts/build.sh` lewat image Docker `hugomods/hugo:exts-0.154.5`).
+  Konfigurasi: `hugo.toml`.
+- **Tema sendiri** di `layouts/` (sistem template Hugo baru: `baseof.html`, `home.html`, `page.html`, `section.html`,
+  `term.html`, `taxonomy.html`, `404.html`, `home.json`, `_partials/`, `_markup/`), `assets/css/main.css`,
+  `assets/js/` (mode, navigasi seri, pencarian). Standar tampilan: `docs/reference/design.md`. Tidak ada `themes/`.
+- **Font:** IBM Plex Mono/Sans woff2 di `static/fonts/` (OFL), tanpa Google Fonts.
+- **Dua bahasa:** `id` (bawaan, di root) dan `en` (`/en/`). Teks tampilan di `i18n/`. Terjemahan tulisan =
+  `index.en.md` di bundle yang sama (+ `slug` Inggris).
+- **Konten:** `content/tulisan/<slug>/index.md` (page bundle + gambar). Front matter: `title`, `date`, `slug`, `tags`,
+  `series`, `part`, `short` (label di navigasi seri), `summary`, `aliases`. Halaman: `content/tentang/`,
+  `content/kontak/`. Term: `content/tags/<tag>/_index.md`, `content/series/<seri>/_index.md`.
+- **Alamat:** id `/tulisan/:slug/`, `/tag/…`, `/seri/…`; en `/en/posts/:slug/`, `/en/tags/…`, `/en/series/…`.
+  Alamat lama dialihkan lewat `aliases` (tabel di `docs/specs/5-redesign/plan.md` §5).
+- **Pencarian:** `/index.json` dan `/en/index.json` (buatan Hugo) dibaca `assets/js/search.js` di browser.
 
 ## Build
 
-- `scripts/build.sh` — build `hugo --minify` ke folder sementara, lalu cek hasilnya. Memakai `hugo` lokal bila ada,
-  kalau tidak lewat Docker.
+- `scripts/build.sh` — build `hugo --minify` ke `.build/`, lalu cek hasilnya (`tests/build-checks.sh`, termasuk
+  situs uji dari `tests/fixture/content` → `.build-fixture/`). `scripts/build.sh ui` menambah test browser
+  (Playwright di Docker, `tests/ui/`). Memakai `hugo` lokal bila ada, kalau tidak lewat Docker.
 - `public/` dan `resources/` saat ini ikut ter-commit di `master` (artefak lama). Jangan diubah manual; pembersihan
   lewat issue tersendiri.
 
@@ -33,5 +39,4 @@
 
 ## Temuan terbuka
 
-- Tema lama mengunci situs di Hugo 0.123.8; Hugo lokal yang lebih baru (bila terpasang) akan gagal build.
 - Artefak build (`public/`, `resources/`) ter-commit di branch kerja.
