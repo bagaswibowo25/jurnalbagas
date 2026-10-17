@@ -38,4 +38,6 @@ Mode mengikuti setelan perangkat, dan pembaca bisa menggantinya lewat tombol di 
 - **Artikel (AL2 · navigasi seri):** sidebar kiri berisi daftar bagian dalam seri; bagian yang sedang dibuka
   menampilkan daftar isinya. Sidebar **bisa disembunyikan** dan dibuka lagi. Di ponsel sidebar menjadi kartu seri
   yang bisa dibuka-tutup di atas artikel.
+- **Navigasi atas (Theme K9):** menyingkir saat scroll ke bawah, muncul lagi saat scroll ke atas; bilah progres baca
+  tetap di tepi atas. Tanpa JS: selalu menempel. Mockup: halaman "#13 · Header sticky" di canvas.
 - Lebar isi tulisan maks ±720px. Ponsel: jarak tepi 16px, menu jadi tombol.
