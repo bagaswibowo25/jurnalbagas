@@ -74,3 +74,4 @@ Deploy tidak berubah (sudah membangun dari nol ke `.build/`). `hugo` tidak lagi 
 - 2026-10-17 — Perbandingan build `master` vs branch (sha256 semua file kecuali `version.txt`): 144 file identik,
   satu-satunya beda = `/pp.jpeg` hilang (foto dihapus, Infra K5). File itu masih tersaji di situs live (200), dulu
   dipakai tema lama sebagai avatar, tidak ditautkan dari halaman mana pun sekarang → ditanyakan ke owner.
+- 2026-10-17 — Owner mengonfirmasi: `pp.jpeg` tetap dihapus; `/pp.jpeg` di situs live akan 404 setelah terbit.
