@@ -25,7 +25,10 @@ tanggal aslinya, supaya blog menjadi rumah utama semua tulisan saya.
 **P2 · Pembaca menemukan dan membacanya.** Sebagai pembaca (berbahasa Indonesia maupun Inggris), saya ingin melihat
 tulisan ini di beranda, tag, dan pencarian, dan membacanya dengan nyaman di ponsel maupun desktop.
 
-**P3 · Sumber asli jelas.** Sebagai pembaca, saya ingin tahu tulisan ini pertama terbit di Medium dan bisa membuka
+**P3 · Seri dan tag yang terlihat.** Sebagai pembaca, saya ingin tulisan Kubernetes ini terkumpul dalam satu seri, dan
+tag maupun seri dari bahasa mana pun terlihat di beranda dan daftar seri, supaya saya bisa menjelajah per topik.
+
+**P4 · Sumber asli jelas.** Sebagai pembaca, saya ingin tahu tulisan ini pertama terbit di Medium dan bisa membuka
 versi aslinya.
 
 ## Skenario terima
@@ -44,7 +47,15 @@ versi aslinya.
    tidak ikut bergeser ke samping.
 8. Kalau pembaca menekan tag topik (mis. kubernetes), maka tampil daftar tulisan dengan topik itu.
 9. Kalau pembaca mencari "helm" atau "zuul" di versi Inggris, maka tulisan yang cocok muncul.
-10. Alamat tulisan: `/en/posts/kubernetes-logs-observability-with-clickstack/`,
+10. Kalau pembaca membuka salah satu dari ketiga tulisan, maka di samping tampil navigasi seri "kubernetes-in-practice"
+    berisi ketiganya berurutan: Helm (bagian 1), Zuul CI (bagian 2), ClickStack (bagian 3), dengan tautan ke bagian
+    sebelumnya dan berikutnya.
+11. Kalau pembaca melihat chip tag di beranda Indonesia, maka tag dari tulisan Inggris (mis. kubernetes, devops) ikut
+    tampil dengan tanda "EN" dan membuka daftar tulisan tag itu; sebaliknya di beranda Inggris, tag python dan
+    programming tampil dengan tanda "ID".
+12. Kalau pembaca membuka daftar seri (Indonesia maupun Inggris), maka kedua seri — python-dasar dan
+    kubernetes-in-practice — tampil; seri dari bahasa lain diberi tanda bahasanya dan membuka halaman serinya.
+13. Alamat tulisan: `/en/posts/kubernetes-logs-observability-with-clickstack/`,
     `/en/posts/effortless-kubernetes-delivery-with-zuul-ci/`, `/en/posts/helm-templating-network-policy/`.
 
 ## Aturan
@@ -55,6 +66,9 @@ versi aslinya.
 - Versi blog adalah versi utama; tautan ke versi Medium tetap ada (Content K1).
 - Tag mengikuti topik tulisan, bukan asal tulisan — tidak ada tag "medium" (Content K2): ClickStack → kubernetes,
   observability, devops; Zuul CI → kubernetes, cicd, devops; Helm → helm, kubernetes, devops.
+- Ketiga tulisan menjadi seri "kubernetes-in-practice", urut tanggal terbit (Content K5).
+- Tag dan seri dari bahasa lain tampil di chip tag dan daftar seri dengan tanda bahasanya, mengikuti aturan beranda
+  (Theme K8).
 - Tulisan berbahasa Inggris yang belum punya versi Indonesia tampil di beranda Indonesia dengan lencana "EN"
   (Content K3; cerminan Theme K4).
 - Gambar disimpan di blog sendiri, bukan diambil dari Medium (constitution #4, #5).
