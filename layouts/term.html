@@ -7,7 +7,7 @@
     <h1>$ ls {{ if eq .Data.Plural "series" }}{{ i18n "series" }}{{ else }}tag{{ end }}/<span>{{ .LinkTitle | lower }}/</span></h1>
     {{- if eq .Data.Plural "tags" }}{{ partial "chips.html" . }}{{ end }}
   </div>
-  <div class="entries">
+  <div class="entries" data-entries>
     {{- range $pager.Pages }}{{ partial "post-entry.html" . }}{{ end }}
   </div>
   {{ partial "pager.html" (dict "pager" $pager) }}

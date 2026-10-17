@@ -149,3 +149,7 @@ Test UI (`scripts/build.sh ui`, Playwright di Docker terhadap `hugo server`):
   4 tombol 44px) lebih lebar dari layar, dan baris chip tag tidak bisa mengecil (`min-width: auto`). Perbaikan: ≤480px
   tombol mode + bahasa pindah ke menu ☰, logo 15px, chip `min-width: 0`. Test S8 diperluas ke 320/360/390/768px × 11
   halaman (sebelumnya hanya 390px × 4 halaman) — 54/54 lolos.
+- 2026-10-17 — Permintaan owner: 5 tulisan per halaman (`pagerSize = 5`). "Tampilkan lebih lama" memuat halaman
+  berikutnya dan menempelkan entrinya di daftar (`assets/js/load-more.js`); tanpa JS tetap link ke `/page/N/`.
+  Cek S1/S2/S12 menjumlah halaman 1 + 2; test UI S3 (dengan & tanpa JS) — 56/56 lolos.
+- 2026-10-17 — Owner menyetujui preview (desktop + ponsel, gelap + terang).

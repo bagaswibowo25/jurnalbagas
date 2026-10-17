@@ -1,6 +1,6 @@
 {{- $p := .pager -}}
 <nav class="pager" aria-label="Halaman">
   {{- if $p.HasPrev }}<a class="muted-link" href="{{ $p.Prev.URL }}">{{ i18n "newer" }}</a>{{ else }}<span></span>{{ end }}
-  {{- if $p.HasNext }}<a class="btn" href="{{ $p.Next.URL }}">{{ i18n "older" }}</a>{{ end }}
+  {{- if $p.HasNext }}<a class="btn" href="{{ $p.Next.URL }}" data-load-more>{{ i18n "older" }}</a>{{ end }}
   {{- with site.Home.OutputFormats.Get "rss" }}<a class="muted-link" href="{{ .RelPermalink }}">rss.xml</a>{{ end }}
 </nav>

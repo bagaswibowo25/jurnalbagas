@@ -79,6 +79,26 @@ test('S10 tombol ganti mode, pilihan diingat', async ({ browser }) => {
   await ctx.close();
 });
 
+test('S3 tampilkan lebih lama memuat tulisan berikutnya di halaman yang sama', async ({ page }) => {
+  await page.goto('/');
+  const entries = page.locator('[data-entries] > .post-entry');
+  await expect(entries).toHaveCount(5);
+  await page.locator('[data-load-more]').click();
+  await expect(entries).toHaveCount(8);
+  await expect(page).toHaveURL(/\/$/);
+  await expect(page.locator('[data-load-more]')).toHaveCount(0);
+});
+
+test('S3 tanpa JavaScript tombol membuka halaman berikutnya', async ({ browser }) => {
+  const ctx = await browser.newContext({ javaScriptEnabled: false });
+  const page = await ctx.newPage();
+  await page.goto('/');
+  await page.locator('[data-load-more]').click();
+  await expect(page).toHaveURL(/\/page\/2\/$/);
+  await expect(page.locator('.post-entry')).toHaveCount(3);
+  await ctx.close();
+});
+
 test('S14 pencarian menemukan tulisan', async ({ page }) => {
   await page.goto('/');
   await page.locator('[data-search-open]').click();

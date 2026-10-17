@@ -9,7 +9,7 @@
     <h1>$ tail -f <span>{{ i18n "feed_file" }}</span></h1>
     {{ partial "chips.html" . }}
   </div>
-  <div class="entries">
+  <div class="entries" data-entries>
     {{- range $pager.Pages }}{{ partial "post-entry.html" . }}{{ end }}
   </div>
   {{ partial "pager.html" (dict "pager" $pager) }}

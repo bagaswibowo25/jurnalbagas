@@ -19,15 +19,15 @@ OLD=(tipe_data kondisional perulangan fungsi list tuple set dictionary)
 
 if [ "$mode" = site ]; then
   # Skenario 1 — beranda: feed tulisan, terbaru dulu, tanpa banner.
-  n=$(count index.html 'class=post-entry')
-  dates=$(grep -oE '\[20[0-9]{2}-[0-9]{2}-[0-9]{2}\]' "$D/index.html" | tr -d '[]')
+  n=$(( $(count index.html 'class=post-entry') + $(count page/2/index.html 'class=post-entry') ))
+  dates=$(cat "$D/index.html" "$D/page/2/index.html" 2>/dev/null | grep -oE '\[20[0-9]{2}-[0-9]{2}-[0-9]{2}\]' | tr -d '[]')
   if [ "$n" -ge 8 ] && [ "$dates" = "$(echo "$dates" | sort -r)" ] && has index.html 'whoami' && ! has index.html 'hero'; then
-    ok "S1 beranda: $n tulisan, urut terbaru, tanpa banner"
+    ok "S1 beranda: $n tulisan (5 per halaman), urut terbaru, tanpa banner"
   else bad "S1 beranda (entri=$n, urutan/whoami/banner)"; fi
 
   # Skenario 2 — filter tag lewat halaman tag.
-  n=$(count tag/python/index.html 'class=post-entry')
-  if [ "$n" -eq 8 ] && has index.html 'href=/tag/python/'; then ok "S2 tag python: $n tulisan, chip di beranda"
+  n=$(( $(count tag/python/index.html 'class=post-entry') + $(count tag/python/page/2/index.html 'class=post-entry') ))
+  if [ "$(count tag/python/index.html 'class=post-entry')" -eq 5 ] && [ "$n" -eq 8 ] && has index.html 'href=/tag/python/'; then ok "S2 tag python: $n tulisan, chip di beranda"
   else bad "S2 tag python (entri=$n)"; fi
 
   # Skenario 4, 7 — navigasi seri, bagian aktif + daftar isi, sebelumnya/berikutnya.
@@ -41,7 +41,7 @@ if [ "$mode" = site ]; then
     ok "S7 bagian 1 menaut ke bagian 2"; else bad "S7 tautan berikutnya di bagian 1"; fi
 
   # Skenario 12 — beranda en: tulisan belum diterjemahkan berlencana ID, menaut ke versi id.
-  n=$(count en/index.html 'class=badge-id')
+  n=$(( $(count en/index.html 'class=badge-id') + $(count en/page/2/index.html 'class=badge-id') ))
   if [ "$n" -eq 8 ] && has en/index.html 'href=/tulisan/belajar-python-dictionary/' && has en/index.html './posts'; then
     ok "S12 beranda en: $n tulisan berlencana ID, menu en"
   else bad "S12 beranda en (lencana=$n)"; fi
@@ -92,7 +92,7 @@ fi
 
 if [ "$mode" = fixture ]; then
   # Skenario 3 — paginasi saat tulisan lebih dari satu halaman.
-  if [ -f "$D/page/2/index.html" ] && has index.html 'href=/page/2/'; then ok "S3 tombol tulisan lebih lama → /page/2/"
+  if [ "$(count index.html 'class=post-entry')" -eq 5 ] && [ -f "$D/page/3/index.html" ] && has index.html 'href=/page/2/ data-load-more'; then ok "S3 5 tulisan per halaman, tombol tampilkan lebih lama → /page/2/"
   else bad "S3 paginasi"; fi
 
   # Skenario 6 — tulisan tanpa seri tidak punya navigasi seri.

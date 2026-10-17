@@ -6,7 +6,7 @@ defaultContentLanguageInSubdir = false
 enableRobotsTXT = true
 
 [pagination]
-  pagerSize = 10
+  pagerSize = 5
 
 [params]
   author = "Bagas Wibowo"

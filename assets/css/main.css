@@ -88,6 +88,7 @@ img { max-width: 100%; height: auto; }
 .entries { margin-top: 28px; display: flex; flex-direction: column; gap: 32px; }
 .post-entry { padding-left: 18px; border-left: 2px solid var(--border); }
 .post-entry:first-child { border-left-color: var(--accent); }
+.post-entry .entry-title a:focus-visible { outline-offset: 4px; }
 .meta { display: flex; flex-wrap: wrap; gap: 4px 12px; font: 400 12px var(--mono); color: var(--dim); }
 .meta .tag { color: var(--accent); }
 .badge-id { padding: 0 6px; border: 1px solid var(--border2); border-radius: 4px; color: var(--muted); }
