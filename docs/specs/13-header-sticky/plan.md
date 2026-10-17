@@ -70,3 +70,6 @@ Test UI (`tests/ui/site.spec.mjs`):
 ## 10. Catatan pengerjaan
 
 <!-- Diisi selama pengerjaan: "- YYYY-MM-DD — temuan teknis singkat". Bug/pekerjaan baru → issue baru. -->
+- 2026-10-17 — Bilah progres dipindah ke `position: fixed` di tepi atas (menimpa 3px teratas header) agar tetap
+  terlihat saat header menyingkir. `--header-h` diukur JS (bawaan CSS 73px, tinggi header desktop & ponsel sama).
+- 2026-10-17 — Test UI #13: 10 test (S1–S9, Tab, reduced motion) di 390/1280px gelap/terang — 84/84 lolos.

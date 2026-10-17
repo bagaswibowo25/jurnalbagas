@@ -38,7 +38,7 @@
 </main>
 {{ partial "footer.html" . }}
 {{ partial "search.html" . }}
-{{- $js := slice (resources.Get "js/theme.js") (resources.Get "js/series-nav.js") (resources.Get "js/search.js") (resources.Get "js/load-more.js") | resources.Concat "js/site.js" | minify | fingerprint }}
+{{- $js := slice (resources.Get "js/theme.js") (resources.Get "js/series-nav.js") (resources.Get "js/search.js") (resources.Get "js/load-more.js") (resources.Get "js/header.js") | resources.Concat "js/site.js" | minify | fingerprint }}
 <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
 </body>
 </html>
