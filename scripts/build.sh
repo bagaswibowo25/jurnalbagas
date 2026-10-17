@@ -12,6 +12,7 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 # Dipatok ke 0.123.8: tema bilberry lama gagal di Hugo ≥0.125 (template _internal/google_analytics_async dihapus).
 # Naikkan setelah tema diganti (Epic Theme) — dan catat di docs/reference/system.md.
 HUGO_IMAGE="${HUGO_IMAGE:-hugomods/hugo:exts-0.123.8}"
+ACTIONLINT_IMAGE="${ACTIONLINT_IMAGE:-rhysd/actionlint:1.7.7}"
 die() { echo "✗ $*" >&2; exit 1; }
 
 hugo_run() {
@@ -39,6 +40,8 @@ fi
 OUT="$ROOT/.build"
 rm -rf "$OUT"
 hugo_run --minify --destination .build --cleanDestinationDir
+# version.txt = commit yang dibangun; deploy menunggu situs live menyajikannya (#7).
+git -C "$ROOT" rev-parse HEAD > "$OUT/version.txt"
 
 fail=0
 need() { [ -e "$OUT/$1" ] && echo "✅ $1" || { echo "❌ $1 tidak ada di hasil build"; fail=1; }; }
@@ -46,7 +49,25 @@ need index.html
 need 404.html
 need index.xml
 need CNAME
+need version.txt
 
 # Cek tambahan (per spec) — tulis di bawah sini, satu blok per skenario terima.
+
+# #7 — workflow deploy valid, hanya terpicu push master + tombol manual, workflow lama tidak ada.
+WF="$ROOT/.github/workflows"
+if command -v docker >/dev/null; then
+  docker run --rm -v "$ROOT:/repo:z" -w /repo "$ACTIONLINT_IMAGE" -no-color \
+    && echo "✅ actionlint: workflow valid" || { echo "❌ actionlint menemukan masalah"; fail=1; }
+else
+  echo "⚠️  Docker tidak ada — actionlint dilewati"
+fi
+if [ "$(ls "$WF")" = "deploy.yml" ] \
+  && grep -qE '^    branches: \[master\]$' "$WF/deploy.yml" \
+  && grep -q '^  workflow_dispatch:' "$WF/deploy.yml" \
+  && grep -q 'cancel-in-progress: false' "$WF/deploy.yml"; then
+  echo "✅ deploy: hanya master + manual, concurrency tanpa cancel"
+else
+  echo "❌ workflow deploy tidak sesuai (#7 skenario 3, 4, 6)"; fail=1
+fi
 
 [ $fail -eq 0 ] && echo "Build OK ($(find "$OUT" -name '*.html' | wc -l) halaman HTML)" || exit 1

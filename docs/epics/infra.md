@@ -17,6 +17,7 @@ Situs ter-build dan terbit otomatis ke GitHub Pages setiap ada perubahan yang di
 |---|---|---|
 | K1 | Tetap situs statis di GitHub Pages — tidak memakai server dedicated | 2026-10-17 |
 | K2 | Alur pengembangan memakai SDD v2 yang sama dengan 1994-erp; hanya konteks project dan deploy yang berbeda | 2026-10-17 |
+| K3 | GitHub Pages tetap menyajikan situs dari cabang hasil jadi (`prod`); pengaturan Pages tidak diubah | 2026-10-17 |
 
 ## 3. Istilah
 
@@ -26,3 +27,4 @@ Situs ter-build dan terbit otomatis ke GitHub Pages setiap ada perubahan yang di
 
 | Spec | Issue | Bergantung pada |
 |---|---|---|
+| [Situs terbit otomatis lagi](../specs/7-deploy-pages/spec.md) | #7 | — |
