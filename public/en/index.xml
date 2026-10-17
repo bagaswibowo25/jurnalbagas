@@ -2,45 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jurnal Bagas</title>
-    <link>http://192.168.0.102:1313/en/</link>
+    <link>http://localhost:1313/en/</link>
     <description>Recent content on Jurnal Bagas</description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 05 Jan 2026 14:55:53 +0000</lastBuildDate>
-    <atom:link href="http://192.168.0.102:1313/en/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Kubernetes Logs Observability with ClickStack — ClickHouse &amp; HyperDX</title>
-      <link>http://192.168.0.102:1313/en/posts/kubernetes-logs-observability-with-clickstack/</link>
-      <pubDate>Mon, 05 Jan 2026 14:55:53 +0000</pubDate>
-      <guid>http://192.168.0.102:1313/en/posts/kubernetes-logs-observability-with-clickstack/</guid>
-      <description>Managing an observability stack often feels like a constant battle between performance and cost.</description>
-    </item>
-    <item>
-      <title>Effortless Kubernetes Delivery with Zuul CI</title>
-      <link>http://192.168.0.102:1313/en/posts/effortless-kubernetes-delivery-with-zuul-ci/</link>
-      <pubDate>Sun, 14 Jul 2024 10:44:54 +0000</pubDate>
-      <guid>http://192.168.0.102:1313/en/posts/effortless-kubernetes-delivery-with-zuul-ci/</guid>
-      <description>There are lots of open source CI/CD tools out there.</description>
-    </item>
-    <item>
-      <title>Helm — Templating Network Policy using Helm</title>
-      <link>http://192.168.0.102:1313/en/posts/helm-templating-network-policy/</link>
-      <pubDate>Sun, 04 Feb 2024 16:22:35 +0000</pubDate>
-      <guid>http://192.168.0.102:1313/en/posts/helm-templating-network-policy/</guid>
-      <description>Helm is very useful to package your application.</description>
-    </item>
+    <lastBuildDate>Sat, 15 Jan 2022 21:41:45 +0700</lastBuildDate>
+    <atom:link href="http://localhost:1313/en/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About Me</title>
-      <link>http://192.168.0.102:1313/en/about/</link>
+      <link>http://localhost:1313/en/about/</link>
       <pubDate>Sat, 15 Jan 2022 21:41:45 +0700</pubDate>
-      <guid>http://192.168.0.102:1313/en/about/</guid>
+      <guid>http://localhost:1313/en/about/</guid>
       <description>&lt;h2 id=&#34;hello&#34;&gt;Hello&lt;/h2&gt;&#xA;&lt;p&gt;My name is &lt;strong&gt;Bagas Ari Wibowo&lt;/strong&gt;, my friends call me Bagas, now I work as an engineer and in this platform I try to write and share notes while I work as an engineer.&lt;/p&gt;&#xA;&lt;h2 id=&#34;the-beginning&#34;&gt;The Beginning&lt;/h2&gt;&#xA;&lt;p&gt;Every story begins with an opening, first I would like to thank the readers who have visited this page and I hope that what is written can be understood and taken advantage of.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Contact</title>
-      <link>http://192.168.0.102:1313/en/contact/</link>
+      <link>http://localhost:1313/en/contact/</link>
       <pubDate>Sat, 15 Jan 2022 21:41:45 +0700</pubDate>
-      <guid>http://192.168.0.102:1313/en/contact/</guid>
+      <guid>http://localhost:1313/en/contact/</guid>
       <description>&lt;ul&gt;&#xA;&lt;li&gt;LinkedIn: &lt;a href=&#34;https://linkedin.com/in/bagas-wibowo&#34;&gt;https://linkedin.com/in/bagas-wibowo&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;E-mail: &lt;a href=&#34;mailto:bagas.awibowo@gmail.com&#34;&gt;bagas.awibowo@gmail.com&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;Telegram: &lt;a href=&#34;https://t.me/bagas_awibwo&#34;&gt;https://t.me/bagas_awibwo&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
   </channel>
