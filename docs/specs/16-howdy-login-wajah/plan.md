@@ -50,7 +50,7 @@ short: "Howdy face login"
 
 - Bundle dua bahasa → aset tanpa akhiran bahasa dipakai bersama (`login-wajah.gif`, `siklus-ir.svg`). Diagram versi
   Inggris diberi nama lain (`ir-cycle.en.svg`) supaya hanya terbit di versi en.
-- Diagram: SVG dari widget draf (kode JSX di doc) ditulis ulang sebagai SVG statis 760×300, warna tetap (latar
+- Diagram: SVG dari widget draf (kode JSX di doc) ditulis ulang sebagai SVG statis vertikal 360 px (lihat §10), warna tetap (latar
   `#FFFFFF`, garis `#666`, aksen `#1E3A8A`, teks `#0A0A0A`/`#555`, font IBM Plex Sans/system) — terbaca di mode gelap
   maupun terang karena membawa latarnya sendiri.
 - Tabel node video, blok kode (bash, PAM, audit log, CIL), daftar bernomor dan berbutir dipertahankan sebagai markdown.
@@ -100,3 +100,7 @@ Tidak ada perubahan. Terbit otomatis lewat workflow deploy saat merge ke `master
 - Rollback: revert PR (hanya konten + cek).
 
 ## 10. Catatan pengerjaan
+- 2026-10-17 — Subjudul tulisan memakai `#` (bukan `##`): render hook menurunkan satu tingkat, jadi `#` → h2 seperti tulisan Python.
+- 2026-10-17 — Diagram versi 760×300 dari draf hanya ±5 px teksnya di ponsel 360 px; diganti susunan vertikal 360×522 (teks ±12 px di ponsel, gambar ramping di desktop). Dicek lewat screenshot terang/gelap, desktop/ponsel.
+- 2026-10-17 — Cek lama yang memakai jumlah tetap disesuaikan: indeks pencarian (id 9, en 4), beranda en (4 tulisan en), UI "tampilkan lebih lama" (12 tulisan).
+- 2026-10-17 — Kesimpulan poin 4 ("Hati-hati dengan `sudo tar -C /`") tetap sesuai draf owner walau cerita tar-nya dihapus owner; ditanyakan di PR.
