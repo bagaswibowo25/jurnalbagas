@@ -41,11 +41,10 @@ saya.
 5. Kalau pembaca menekan tag topik tulisan ini (linux, opensuse, howdy, security), maka tulisan ini muncul di
    daftarnya.
 6. Kalau pembaca mencari "howdy" atau "opensuse", maka tulisan ini muncul.
-7. Kalau tulisan dibuka, maka isinya memuat, berurutan: cerita singkat dan hasil akhirnya → perangkat yang dipakai →
-   cara menemukan kamera inframerah → jalan buntu dengan alat penyala lampu inframerah dan pelajarannya → penemuan
-   cara menyalakan lampu inframerah → langkah pemasangan lengkap (dependensi, perbaikan kecil pada Howdy, pengaturan,
-   mendaftarkan wajah, sudo, layar terkunci, layar login, SELinux) → jebakan dan perawatan → cara mematikan dan
-   menghapus → catatan keamanan.
+7. Kalau tulisan dibuka, maka isinya sama dengan draf yang disetujui owner: cerita singkat → mengenali kamera
+   inframerah → jalan buntu dengan alat penyala lampu inframerah → kunci: pengaturan bawaan Windows Hello di kamera
+   (dengan diagram siklusnya) → memasang Howdy → SELinux di layar login (dengan animasi hasilnya) → hasil dan
+   trade-off → kesimpulan dan tautan ke repo.
 8. Kalau tulisan dibuka di ponsel, maka perintah dan potongan kode yang panjang bisa digeser di dalam kotaknya sendiri
    tanpa membuat halaman ikut bergeser.
 9. Kalau tulisan dibuka, maka tidak ada data pribadi: nama pengguna, nama komputer, nomor seri perangkat, atau alamat
@@ -55,13 +54,16 @@ saya.
 
 - Isi dari pengalaman nyata owner pada 17 Oktober 2026; angka dan pesan error diambil dari catatan sesi itu, bukan
   dikarang.
-- Agent menulis draf; owner membaca dan boleh mengubah apa saja sebelum terbit (constitution #2).
+- Isi tulisan diambil dari draf yang sudah owner sunting (dokumen draf di Claude, 17 Oktober 2026); agent hanya
+  memindahkannya ke blog tanpa mengubah kalimat (constitution #2).
 - Bahasa Indonesia dan Inggris berisi sama; versi Inggris terjemahan versi Indonesia, bukan tulisan terpisah.
-- Perbaikan kecil pada Howdy ditampilkan utuh di dalam tulisan, supaya pembaca tidak bergantung pada repo pribadi
-  owner.
+- Perbaikan kecil pada Howdy, modul SELinux, dan alat ceknya ditautkan ke repo GitHub owner `howdy-setup-suse`, yang
+  dibuat publik oleh owner sebelum tulisan terbit.
 - Seri baru **linux-tips** untuk tips Linux berikutnya; tulisan ini bagian 1 (keputusan owner baru, Content K6).
 - Tag mengikuti topik (Content K2).
-- Tanpa gambar; tulisan berupa teks, perintah, dan potongan kode. Gambar bisa ditambahkan owner belakangan.
+- Ada satu animasi singkat (±8 detik) dari rekaman owner: laptop terkunci lalu terbuka dengan wajah. Animasinya
+  disimpan di blog sendiri, punya teks alternatif, dan cukup ringan untuk ponsel (±2,6 MB). Selain itu tulisan berupa
+  teks, perintah, potongan kode, dan diagram siklus lampu inframerah.
 
 ## Kriteria sukses
 
@@ -73,5 +75,5 @@ saya.
 - Panduan untuk distro selain openSUSE atau kamera tanpa pengaturan inframerah ala Windows Hello. Perbedaannya hanya
   disinggung.
 - Mengirim perbaikan Howdy ke proyek aslinya.
-- Membuat repo pribadi owner jadi publik.
+- Mengubah visibilitas repo `howdy-setup-suse` (dilakukan owner sendiri).
 - Tulisan lanjutan di seri linux-tips.
