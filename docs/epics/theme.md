@@ -1,0 +1,30 @@
+---
+epic: Theme
+issue: 1
+---
+# Epic — Theme
+
+> Dokumen hidup, diisi bertahap saat ada spec baru di domain ini. Status pekerjaan ada di GitHub Project.
+
+## 1. Tujuan
+
+Tampilan blog yang segar, bersih, bernuansa tech, dan nyaman dibaca di desktop maupun ponsel, dalam mode gelap dan
+terang. Standar tampilannya: [`docs/reference/design.md`](../reference/design.md).
+
+## 2. Keputusan owner
+
+| # | Keputusan | Tanggal |
+|---|---|---|
+| K1 | Arah tampilan A · Terminal, font IBM Plex Mono + IBM Plex Sans (F3), warna monokrom + navy (W9), beranda feed log tanpa hero (L3), artikel dengan navigasi seri di kiri (AL2) | 2026-10-17 |
+| K2 | Navigasi seri di halaman artikel bisa disembunyikan pembaca | 2026-10-17 |
+| K3 | Mode gelap dan terang sama-sama didukung | 2026-10-17 |
+
+## 3. Istilah
+
+- **Seri** — kumpulan tulisan berurutan dengan satu topik (mis. Python Dasar, bagian 1–8).
+- **Feed** — daftar tulisan kronologis di beranda.
+
+## 4. Peta spec
+
+| Spec | Issue | Bergantung pada |
+|---|---|---|
