@@ -118,3 +118,4 @@ test UI S3 (5 → 10 → 11).
 - 2026-10-17 — Feedback owner: tidak suka chip tag yang di-scroll ke samping. Chip sekarang turun baris
   (`flex-wrap: wrap`) di baris sendiri di bawah judul feed; test UI baru memastikan tanpa scroll samping di
   320/390/1280px dan chip terakhir terlihat.
+- 2026-10-17 — Owner menyetujui preview (isi tulisan, seri, tag lintas bahasa, chip turun baris).

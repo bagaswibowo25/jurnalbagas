@@ -28,4 +28,4 @@ issue: 6
 ## Penutup
 - [x] T10 [DOC] Front matter `medium` + aturan lencana — `docs/reference/system.md`
 - [x] T11 [SH] `scripts/build.sh ui` hijau; baca ketiga tulisan sekali vs Medium
-- [ ] T12 [GH] `scripts/worktree.sh diff` bersih, PR dibuka (`Closes #6`)
+- [x] T12 [GH] `scripts/worktree.sh diff` bersih, PR dibuka (`Closes #6`)
