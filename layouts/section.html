@@ -1,0 +1,13 @@
+{{ define "main" }}
+{{- $pager := .Paginate (partial "feed-pages.html" .) -}}
+<div class="feed">
+  <div class="feed-head" style="margin-top: 0">
+    <h1>$ ls <span>{{ strings.TrimPrefix "./" (i18n "nav_posts") }}/</span></h1>
+    {{ partial "chips.html" . }}
+  </div>
+  <div class="entries" data-entries>
+    {{- range $pager.Pages }}{{ partial "post-entry.html" . }}{{ end }}
+  </div>
+  {{ partial "pager.html" (dict "pager" $pager) }}
+</div>
+{{ end }}

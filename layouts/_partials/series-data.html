@@ -1,0 +1,21 @@
+{{- /* Data seri untuk satu tulisan (bahasa yang sama), urut `part`. Kosong bila tulisan tidak termasuk seri. */ -}}
+{{- $res := false -}}
+{{- with .Params.series -}}
+  {{- $name := index . 0 -}}
+  {{- $parts := slice -}}
+  {{- range where site.RegularPages "Section" "tulisan" -}}
+    {{- if in .Params.series $name }}{{ $parts = $parts | append . }}{{ end -}}
+  {{- end -}}
+  {{- $parts = sort $parts "Params.part" -}}
+  {{- $i := 0 -}}{{- $prev := false -}}{{- $next := false -}}
+  {{- range $k, $p := $parts -}}
+    {{- if eq $p $ -}}
+      {{- $i = add $k 1 -}}
+      {{- if gt $k 0 }}{{ $prev = index $parts (sub $k 1) }}{{ end -}}
+      {{- if lt $i (len $parts) }}{{ $next = index $parts $i }}{{ end -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $term := site.GetPage (printf "/series/%s" ($name | urlize)) -}}
+  {{- $res = dict "name" $name "parts" $parts "index" $i "total" (len $parts) "prev" $prev "next" $next "term" $term -}}
+{{- end -}}
+{{- return $res -}}

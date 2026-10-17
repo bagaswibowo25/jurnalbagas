@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="id-ID" class="no-js">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Belajar Python - Kondisional · Jurnal Bagas</title>
+<meta name="description" content="Ketika kita ingin pergi ke suatu tempat atau ingin melakukan sesuatu, pasti kita akan membuat sebuah keputusan dan pertimbangan.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="http://localhost:1313/tulisan/belajar-python-kondisional/">
+<link rel="alternate" hreflang="id-ID" href="http://localhost:1313/tulisan/belajar-python-kondisional/">
+<script>
+  
+  (function () {
+    var d = document.documentElement;
+    d.classList.remove("no-js");
+    try {
+      var t = localStorage.getItem("theme");
+      if (t === "dark" || t === "light") d.setAttribute("data-theme", t);
+      if (localStorage.getItem("seriesNav") === "hidden") d.setAttribute("data-nav", "hidden");
+    } catch (e) {}
+  })();
+</script>
+<link rel="stylesheet" href="/css/main.min.af7385008b33ed2f96dcc0141f02811d458843baf4dffe8c276a508a18ed9bb7.css" integrity="sha256-r3OFAIsz7S&#43;W3MAUHwKBHUWIQ7r03/6MJ2pQihjtm7c=">
+<link rel="preload" href="/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/ibm-plex-mono-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+</head>
+<body>
+<a class="skip" href="#isi">Lompat ke isi</a>
+<header class="site-header">
+  <div class="wrap wide">
+    <a class="logo" href="/">~/jurnalbagas<span aria-hidden="true">_</span></a>
+    <div class="header-tools">
+      <nav class="nav" aria-label="Menu utama"><a href="/tulisan/" aria-current="page">./tulisan</a><a href="/seri/">./seri</a><a href="/tentang/">./tentang</a>
+      </nav>
+      <button type="button" class="icon-btn search-btn js-only" data-search-open aria-label="Cari tulisan">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <span class="label-text">cari</span><span class="kbd">⌘K</span>
+      </button>
+      <div class="header-extra">
+        <button type="button" class="icon-btn theme-toggle js-only" data-theme-toggle aria-label="Ganti mode gelap/terang">
+  <svg class="moon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20 14.5A8 8 0 019.5 4 8 8 0 1020 14.5z"/></svg>
+  <svg class="sun" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+
+        <a class="icon-btn lang-switch" href="/en/" hreflang="en-US" lang="en-US" aria-label="Read in English">EN</a>
+      </div>
+      <details class="menu">
+        <summary class="icon-btn" aria-label="Buka menu">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+        </summary>
+        <nav class="menu-panel" aria-label="Menu"><a href="/tulisan/">./tulisan</a><a href="/seri/">./seri</a><a href="/tentang/">./tentang</a><a href="/kontak/">./kontak</a>
+          <div class="menu-extra">
+            <button type="button" class="icon-btn theme-toggle js-only" data-theme-toggle aria-label="Ganti mode gelap/terang">
+  <svg class="moon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20 14.5A8 8 0 019.5 4 8 8 0 1020 14.5z"/></svg>
+  <svg class="sun" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+
+            <a class="icon-btn lang-switch" href="/en/" hreflang="en-US" lang="en-US" aria-label="Read in English">EN</a>
+          </div>
+        </nav>
+      </details>
+    </div>
+  </div>
+</header>
+
+<main id="isi">
+<div class="progress" aria-hidden="true"><span data-progress></span></div>
+<div class="wrap wide">
+  <div class="article-layout">
+    <aside class="series-nav" aria-label="seri">
+      <div class="series-nav-head">
+        <div>
+          <div class="label">seri</div>
+          <a class="series-name" href="/seri/python-dasar/">python-dasar</a>
+        </div>
+        <button type="button" class="icon-btn js-only" data-nav-toggle aria-label="Sembunyikan navigasi seri" title="Sembunyikan navigasi seri">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M15 10l-2 2 2 2"/></svg>
+        </button>
+      </div>
+      <div class="series-progress" aria-hidden="true"><span style="width: 25%"></span></div>
+      <ol class="series-list">
+  <li>
+    <a href="/tulisan/belajar-python-tipe-data/"><span class="n">1</span>Tipe Data</a>
+  </li>
+  <li class="active">
+    <a href="/tulisan/belajar-python-kondisional/" aria-current="page"><span class="n">2</span>Kondisional</a><div class="series-toc"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#pengenalan">Pengenalan</a></li>
+    <li><a href="#kondisi---if">Kondisi - If</a></li>
+    <li><a href="#kondisi-if---else">Kondisi If - Else</a></li>
+    <li><a href="#kondisi-if-elif-else">Kondisi If-Elif-Else</a></li>
+    <li><a href="#kondisi-nested-if">Kondisi Nested If</a></li>
+    <li><a href="#kesimpulan">Kesimpulan</a></li>
+  </ul>
+</nav></div>
+  </li>
+  <li>
+    <a href="/tulisan/belajar-python-perulangan/"><span class="n">3</span>Perulangan</a>
+  </li>
+  <li>
+    <a href="/tulisan/belajar-python-fungsi/"><span class="n">4</span>Fungsi</a>
+  </li>
+  <li>
+    <a href="/tulisan/belajar-python-list/"><span class="n">5</span>List</a>
+  </li>
+  <li>
+    <a href="/tulisan/belajar-python-tuple/"><span class="n">6</span>Tuple</a>
+  </li>
+  <li>
+    <a href="/tulisan/belajar-python-set/"><span class="n">7</span>Set</a>
+  </li>
+  <li>
+    <a href="/tulisan/belajar-python-dictionary/"><span class="n">8</span>Dictionary</a>
+  </li>
+</ol>
+
+    </aside>
+    <div class="series-rail">
+      <button type="button" class="icon-btn" data-nav-toggle aria-label="Tampilkan navigasi seri" title="Tampilkan navigasi seri">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M13 10l2 2-2 2"/></svg>
+      </button>
+      <div>2/8</div>
+    </div>
+    <article class="prose">
+      <div class="crumb" aria-hidden="true">~/tulisan/python-dasar/<span>belajar-python-kondisional.md</span></div>
+      <h1>Belajar Python - Kondisional</h1>
+      <div class="post-meta">
+        <time datetime="2022-02-09">2022-02-09</time>
+        <span>Bagas Wibowo</span><a href="/tag/python/">#python</a><a href="/tag/programming/">#programming</a>
+      </div>
+      <details class="series-card">
+        <summary><span>seri: python-dasar · <b class="cursor">2/8</b></span><span class="caret">▾ lihat</span></summary>
+        <ol class="series-list">
+  <li>
+    <a href="/tulisan/belajar-python-tipe-data/"><span class="n">1</span>Tipe Data</a>
+  </li>
+  <li class="active">
+    <a href="/tulisan/belajar-python-kondisional/" aria-current="page"><span class="n">2</span>Kondisional</a>
+  </li>
+  <li>
+    <a href="/tulisan/belajar-python-perulangan/"><span class="n">3</span>Perulangan</a>
+  </li>
+  <li>
+    <a href="/tulisan/belajar-python-fungsi/"><span class="n">4</span>Fungsi</a>
+  </li>
+  <li>
+    <a href="/tulisan/belajar-python-list/"><span class="n">5</span>List</a>
+  </li>
+  <li>
+    <a href="/tulisan/belajar-python-tuple/"><span class="n">6</span>Tuple</a>
+  </li>
+  <li>
+    <a href="/tulisan/belajar-python-set/"><span class="n">7</span>Set</a>
+  </li>
+  <li>
+    <a href="/tulisan/belajar-python-dictionary/"><span class="n">8</span>Dictionary</a>
+  </li>
+</ol>
+
+      </details>
+      <div class="content"><h2 id="pengenalan">Pengenalan</h2>
+<p>Ketika kita ingin pergi ke suatu tempat atau ingin melakukan sesuatu, pasti kita akan membuat sebuah keputusan dan pertimbangan. Keputusan yang kita ambil akan menghasilkan apa yang kita tuju. Sama seperti program, kita akan membuat logika tentang bagaimana proses pengambilan keputusan jika terjadi kondisi tertentu, nah itulah yang dimaksud dengan kondisional.</p>
+<p>Lalu apa saja yang bisa kita lakukan dengan kondisional di Python? Oke kita coba bahas satu-persatu.</p>
+<p>Pada Python program akan dieksekusi berurutan, baris-perbaris. Maka setiap sintaks yang kita masukkan akan dieksekusi dari atas kebawah berurutan.</p>
+<p>Pada operasi pengondisian ini menggunakan tipe data boolean yang hanya menghasilkan dua nilai, yaitu <code>True</code> dan <code>False</code>. Dari kedua hasil nilai tersebut kita bisa memutuskan kepada program untuk melakukan aksi apa jika bernilai <code>True</code> atau sebaliknya.</p>
+<p>Pengondisian tersebut salah satunya dengan melakukan operasi boolean seperti pada tabel berikut:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Logical Condition</th>
+          <th>Symbol</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Equals</td>
+          <td>a == b</td>
+      </tr>
+      <tr>
+          <td>Not Equals</td>
+          <td>a != b</td>
+      </tr>
+      <tr>
+          <td>Less than</td>
+          <td>a &lt; b</td>
+      </tr>
+      <tr>
+          <td>Less than or equal to</td>
+          <td>a &lt;= b</td>
+      </tr>
+      <tr>
+          <td>Greater than</td>
+          <td>a &gt; b</td>
+      </tr>
+      <tr>
+          <td>Greater than or equal to</td>
+          <td>a &gt;= b</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="kondisi---if">Kondisi - If</h2>
+<p>Pada contoh pertama kita akan mencoba kondisi <code>If</code>. <code>If</code> digunakan ketika kita ingin membuat program mengeksekusi sebuah kondisi, namun apabila tidak sesuai dengan kondisi maka program akan melanjutkan baris kode selanjutnya. Contohnya sebagai berikut:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="n">a</span> <span class="o">=</span> <span class="mi">123</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="nb">int</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Nilai dari variabel a adalah angka&#34;</span><span class="p">,</span><span class="n">a</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Bukan Angka&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p>Maka output yang dihasilkan apabila nilainya <code>True</code> adalah:</p>
+<pre tabindex="0"><code>Nilai dari variabel a adalah angka 123
+Bukan Angka
+</code></pre><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="n">a</span> <span class="o">=</span> <span class="s2">&#34;123&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="nb">int</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Nilai dari variabel a adalah angka&#34;</span><span class="p">,</span><span class="n">a</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Bukan Angka&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p>Output yang dihasilkan apabila nilainya <code>False</code> adalah:</p>
+<pre tabindex="0"><code>Bukan Angka
+</code></pre><p>Dari contoh diatas, Python akan melakukan eksekusi sintaks yang ada di dalam blok <code>if</code> dan langsung melanjutkan ke sintaks pada baris berikutnya apabila nilai dari kondisi tersebut <code>True</code>. Apabila nilai yang dihasilkan <code>False</code> maka sintaks yang ada didalam baris kode akan dilewati dan langsung ke baris berikutnya yang ada di luar blok <code>if</code>. Untuk menentukan jangkauan dari sintaks tersebut (scope) pada Python menggunakan indentasi atau menjorok kedalam, kita perlu memerhatikan indentasi pada Python, karena apabila terdapat indentasi yang tidak sesuai, program yang dijalankan akan terjadi error atau kesalahan logika.</p>
+<h2 id="kondisi-if---else">Kondisi If - Else</h2>
+<p>Kondisi selanjutnya, yaitu <code>if-else</code> dimana kondisi ini memiliki alternatif fungsi ketika gagal menjalankan kondisi <code>if</code>. Contohnya sebagai berikut:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="n">a</span> <span class="o">=</span> <span class="mi">123</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="nb">int</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Nilai dari variabel a adalah angka&#34;</span><span class="p">,</span><span class="n">a</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Bukan Angka&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p>Pada contoh diatas perintah <code>print(&quot;Bukan Angka&quot;)</code> sebelummya akan tetap dieksekusi walaupun nilai dari kondisi adalah <code>True</code>. Tetapi apabila kita menggunakan <code>else</code> dan perintah tersebut dimasukkan ke dalam blok <code>else</code> maka sintaks tersebut hanya akan dieksekusi bila kondisi bernilai <code>False</code>. Contoh lainnya misalkan kita ingin mengetahui apakah bilangan tersebut ganjil atau genap.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="n">angka</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="n">angka</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">angka</span><span class="p">,</span><span class="s2">&#34;adalah genap&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">angka</span><span class="p">,</span><span class="s2">&#34;adalah ganjil&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p>Input:</p>
+<pre tabindex="0"><code>2
+5
+</code></pre><p>Output:</p>
+<pre tabindex="0"><code>2 adalah ganjil
+5 adalah
+</code></pre><h2 id="kondisi-if-elif-else">Kondisi If-Elif-Else</h2>
+<p>Kondisi ini kita butuhkan ketika kita ingin menjalankan beberapa kondisi sekaligus dan apabila kondisi pertama masih belum sesuai maka akan mencoba untuk mencari kondisi selanjutnya sampai kondisi terakhir <code>else</code>. Contohnya semisal kita ingin membuat beberapa nilai dari rentang nilai tertentu.</p>
+<pre tabindex="0"><code>Jika nilai 90 - 100 = A
+Jika nilai 70 - 89 = B
+Jika nilai 60 - 79 = C
+Jika nilai &lt; 60 = D
+</code></pre><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="n">nilai</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="n">nilai</span> <span class="o">&gt;=</span> <span class="mi">90</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Nilai kamu adalah A&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">elif</span> <span class="n">nilai</span> <span class="o">&gt;=</span> <span class="mi">70</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Nilai kamu adalah B&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">elif</span> <span class="n">nilai</span> <span class="o">&gt;=</span> <span class="mi">60</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Nilai kamu adalah C&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">elif</span> <span class="n">nilai</span> <span class="o">&lt;</span> <span class="mi">60</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Nilai kamu adalah D&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p>Input:</p>
+<pre tabindex="0"><code>75
+96
+80
+50
+</code></pre><p>Output:</p>
+<pre tabindex="0"><code>Nilai kamu adalah B
+Nilai kamu adalah A
+Nilai kamu adalah B
+Nilai kamu adalah D
+</code></pre><p>Hal lain yang perlu diperhatikan juga adalah urutan kondisi, karena apabila salah dalam mengurutkan kondisi maka output yang dihasilkan bisa tidak sesuai dengan yang kita inginkan.</p>
+<h2 id="kondisi-nested-if">Kondisi Nested If</h2>
+<p>Kondisi ini diperlukan ketika ingin melakukan pengondisian yang bertumpuk, maksudnya kita akan melakukan pengondisian kembali setelah pengondisian awal bernilai <code>True</code>.</p>
+<p>Salah satu contoh penggunaan nested <code>If</code> sebagai berikut:</p>
+<pre tabindex="0"><code>Jika nilai 95 - 100 = A+
+Jika nilai 90 - 94 = A-
+Jika nilai 85 - 89 = B+
+Jika nilai 80 - 84 = B-
+Jika nilai 60 - 79 = C
+Jika nilai &lt; 60 = D
+</code></pre><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="n">nilai</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="n">nilai</span> <span class="o">&gt;=</span> <span class="mi">90</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">nilai</span> <span class="o">&gt;=</span><span class="mi">95</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Nilai kamu adalah A+&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Nilai kamu adalah A-&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">elif</span> <span class="n">nilai</span> <span class="o">&gt;=</span> <span class="mi">70</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">nilai</span> <span class="o">&gt;=</span> <span class="mi">85</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Nilai kamu adalah B+&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Nilai kamu adalah B-&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">elif</span> <span class="n">nilai</span> <span class="o">&gt;=</span> <span class="mi">60</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Nilai kamu adalah C&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">elif</span> <span class="n">nilai</span> <span class="o">&lt;</span> <span class="mi">60</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Nilai kamu adalah D&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p>Input:</p>
+<pre tabindex="0"><code>94
+95
+70
+88
+60
+</code></pre><p>Output:</p>
+<pre tabindex="0"><code>Nilai kamu adalah A-
+Nilai kamu adalah A+
+Nilai kamu adalah B-
+Nilai kamu adalah B+
+Nilai kamu adalah C
+</code></pre><h2 id="kesimpulan">Kesimpulan</h2>
+<p>Pengondisian sangat berguna dalam program, karena jika kita membuat pengondisian secara default program akan mengeksekusi setiap statement tiap barisnya, apabila terdapat sebuah pengondisian maka <code>if</code> sangat membantu untuk memutuskan apakah program akan mengeksekusi statement tertentu atau tidak. Pengoperasian <code>if</code> sangat beragam dan dapat menyesuaikan kebutuhan yang diperlukan. Semoga dari apa yang sudah saya jelaskan dapat dipahami dan bermanfaat. Sampai jumpa pada kesempatan berikutnya. Apabila ada kritik, saran, dan masukkan dapat mengunjungi sosial media saya yang ada di kontak. Terima kasih.</p>
+</div>
+      <nav class="prevnext" aria-label="seri"><a href="/tulisan/belajar-python-tipe-data/"><small>← 1 · sebelumnya</small><strong>Belajar Python - Tipe Data</strong></a><a class="next" href="/tulisan/belajar-python-perulangan/"><small>3 · berikutnya →</small><strong>Belajar Python - Perulangan</strong></a>
+      </nav>
+    </article>
+  </div>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap wide">
+    <span>© 2026 Bagas Wibowo · dibangun dengan Hugo</span>
+    <nav aria-label="Tautan">
+      <a href="https://github.com/bagaswibowo25" rel="me">github</a>
+      <a href="https://www.linkedin.com/in/bagas-wibowo/" rel="me">linkedin</a>
+      <a href="https://bagas-awibowo.medium.com/" rel="me">medium</a><a href="/index.xml">rss</a>
+    </nav>
+  </div>
+</footer>
+
+<dialog class="search-dialog" data-search-dialog data-index="/index.json" aria-label="Cari tulisan">
+  <form method="dialog" role="search">
+    <label class="sr-only" for="q">Cari tulisan</label>
+    <input id="q" type="search" autocomplete="off" placeholder="ketik kata kunci…" data-search-input>
+    <button class="icon-btn" value="close" aria-label="Tutup">esc</button>
+  </form>
+  <ul class="search-results" data-search-results aria-live="polite"></ul>
+  <p class="search-empty" data-search-empty hidden>Tidak ada tulisan yang cocok.</p>
+</dialog>
+<script src="/js/site.min.902310fc6294eacdcf49bfb922854e0b9eae1d16bb5812be63eb48fd16965ba1.js" integrity="sha256-kCMQ/GKU6s3PSb&#43;5IoVOC56uHRa7WBK&#43;Y&#43;tI/RaWW6E=" defer></script>
+</body>
+</html>

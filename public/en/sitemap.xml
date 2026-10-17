@@ -2,81 +2,79 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://www.jurnalbagas.com/en/page/about-me/</loc>
-    <lastmod>2022-01-15T21:41:45+07:00</lastmod>
-  </url><url>
-    <loc>https://www.jurnalbagas.com/en/</loc>
+    <loc>http://localhost:1313/en/about/</loc>
     <lastmod>2022-01-15T21:41:45+07:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="id"
-                href="https://www.jurnalbagas.com/"
+                hreflang="id-ID"
+                href="http://localhost:1313/tentang/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en"
-                href="https://www.jurnalbagas.com/en/"
+                hreflang="en-US"
+                href="http://localhost:1313/en/about/"
                 />
   </url><url>
-    <loc>https://www.jurnalbagas.com/en/page/</loc>
+    <loc>http://localhost:1313/en/contact/</loc>
     <lastmod>2022-01-15T21:41:45+07:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="id"
-                href="https://www.jurnalbagas.com/page/"
+                hreflang="id-ID"
+                href="http://localhost:1313/kontak/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en"
-                href="https://www.jurnalbagas.com/en/page/"
-                />
-  </url><url>
-    <loc>https://www.jurnalbagas.com/en/author/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="id"
-                href="https://www.jurnalbagas.com/author/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://www.jurnalbagas.com/en/author/"
+                hreflang="en-US"
+                href="http://localhost:1313/en/contact/"
                 />
   </url><url>
-    <loc>https://www.jurnalbagas.com/en/categories/</loc>
+    <loc>http://localhost:1313/en/</loc>
+    <lastmod>2022-01-15T21:41:45+07:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="id"
-                href="https://www.jurnalbagas.com/categories/"
+                hreflang="id-ID"
+                href="http://localhost:1313/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en"
-                href="https://www.jurnalbagas.com/en/categories/"
-                />
-  </url><url>
-    <loc>https://www.jurnalbagas.com/en/series/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="id"
-                href="https://www.jurnalbagas.com/series/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://www.jurnalbagas.com/en/series/"
+                hreflang="en-US"
+                href="http://localhost:1313/en/"
                 />
   </url><url>
-    <loc>https://www.jurnalbagas.com/en/tags/</loc>
+    <loc>http://localhost:1313/en/posts/</loc>
     <xhtml:link
                 rel="alternate"
-                hreflang="id"
-                href="https://www.jurnalbagas.com/tags/"
+                hreflang="id-ID"
+                href="http://localhost:1313/tulisan/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en"
-                href="https://www.jurnalbagas.com/en/tags/"
+                hreflang="en-US"
+                href="http://localhost:1313/en/posts/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/en/series/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="id-ID"
+                href="http://localhost:1313/seri/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="http://localhost:1313/en/series/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/en/tags/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="id-ID"
+                href="http://localhost:1313/tag/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="http://localhost:1313/en/tags/"
                 />
   </url>
 </urlset>

@@ -1,0 +1,11 @@
+{{- with site.Home.OutputFormats.Get "json" -}}
+<dialog class="search-dialog" data-search-dialog data-index="{{ .RelPermalink }}" aria-label="{{ i18n "search_label" }}">
+  <form method="dialog" role="search">
+    <label class="sr-only" for="q">{{ i18n "search_label" }}</label>
+    <input id="q" type="search" autocomplete="off" placeholder="{{ i18n "search_placeholder" }}" data-search-input>
+    <button class="icon-btn" value="close" aria-label="{{ i18n "search_close" }}">esc</button>
+  </form>
+  <ul class="search-results" data-search-results aria-live="polite"></ul>
+  <p class="search-empty" data-search-empty hidden>{{ i18n "search_empty" }}</p>
+</dialog>
+{{- end -}}

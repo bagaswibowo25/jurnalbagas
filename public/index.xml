@@ -1,24 +1,82 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jurnal Bagas</title>
-    <link>https://www.jurnalbagas.com/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content on Jurnal Bagas</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 15 Jan 2022 21:41:45 +0700</lastBuildDate>
-    
-        <atom:link href="https://www.jurnalbagas.com/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <generator>Hugo</generator>
+    <language>id-ID</language>
+    <lastBuildDate>Mon, 07 Mar 2022 19:24:46 +0700</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Support and Discussions</title>
-      <link>https://www.jurnalbagas.com/article/docker/</link>
-      <pubDate>Mon, 01 Nov 2021 18:10:14 +0100</pubDate>
-      
-      <guid>https://www.jurnalbagas.com/article/docker/</guid>
-      <description>Support for this theme is provided through the Issues and Discussions sections of the project. Please use the Issues section if you would like to report a defect or bug. For any other requests, use the Discussions section.
-Please use the following guidelines if you want to start a discussion:
- For any questions regarding a specific feature, or if you need help using or customizing the theme, use the Questions &amp;amp; Answers (Q&amp;amp;A) category.</description>
+      <title>Belajar Python - Dictionary</title>
+      <link>http://localhost:1313/tulisan/belajar-python-dictionary/</link>
+      <pubDate>Mon, 07 Mar 2022 19:24:46 +0700</pubDate>
+      <guid>http://localhost:1313/tulisan/belajar-python-dictionary/</guid>
+      <description>Dictionary merupakan salah satu tipe data collection yang ada di Python.</description>
     </item>
-    
+    <item>
+      <title>Belajar Python - Set</title>
+      <link>http://localhost:1313/tulisan/belajar-python-set/</link>
+      <pubDate>Thu, 10 Feb 2022 23:24:46 +0700</pubDate>
+      <guid>http://localhost:1313/tulisan/belajar-python-set/</guid>
+      <description>Set merupakan salah satu tipe data lainnya untuk collection pada Python.</description>
+    </item>
+    <item>
+      <title>Belajar Python - Tuple</title>
+      <link>http://localhost:1313/tulisan/belajar-python-tuple/</link>
+      <pubDate>Thu, 10 Feb 2022 22:21:35 +0700</pubDate>
+      <guid>http://localhost:1313/tulisan/belajar-python-tuple/</guid>
+      <description>Tuple merupakan salah satu dari jenis tipe data collection yang ada di Python.</description>
+    </item>
+    <item>
+      <title>Belajar Python - List</title>
+      <link>http://localhost:1313/tulisan/belajar-python-list/</link>
+      <pubDate>Thu, 10 Feb 2022 21:18:30 +0700</pubDate>
+      <guid>http://localhost:1313/tulisan/belajar-python-list/</guid>
+      <description>List merupakan salah satu dari 4 built-in tipe data pada Python yang digunakan untuk menyimpan sekumpulan data.</description>
+    </item>
+    <item>
+      <title>Belajar Python - Fungsi</title>
+      <link>http://localhost:1313/tulisan/belajar-python-fungsi/</link>
+      <pubDate>Thu, 10 Feb 2022 19:13:20 +0700</pubDate>
+      <guid>http://localhost:1313/tulisan/belajar-python-fungsi/</guid>
+      <description>Sebelumnya kita sudah sempat mempelajari dasar-dasar dari Python terkait tipe data, kondisional, dan perulangan.</description>
+    </item>
+    <item>
+      <title>Belajar Python - Perulangan</title>
+      <link>http://localhost:1313/tulisan/belajar-python-perulangan/</link>
+      <pubDate>Wed, 09 Feb 2022 19:22:24 +0700</pubDate>
+      <guid>http://localhost:1313/tulisan/belajar-python-perulangan/</guid>
+      <description>Perulangan merupakan salah satu teknik untuk melakukan pengulangan dari urutan instruksi atau statement sampai dengan kondisi yang diinginkan tercapai.</description>
+    </item>
+    <item>
+      <title>Belajar Python - Kondisional</title>
+      <link>http://localhost:1313/tulisan/belajar-python-kondisional/</link>
+      <pubDate>Wed, 09 Feb 2022 19:20:30 +0700</pubDate>
+      <guid>http://localhost:1313/tulisan/belajar-python-kondisional/</guid>
+      <description>Ketika kita ingin pergi ke suatu tempat atau ingin melakukan sesuatu, pasti kita akan membuat sebuah keputusan dan pertimbangan.</description>
+    </item>
+    <item>
+      <title>Belajar Python - Tipe Data</title>
+      <link>http://localhost:1313/tulisan/belajar-python-tipe-data/</link>
+      <pubDate>Wed, 09 Feb 2022 18:10:14 +0700</pubDate>
+      <guid>http://localhost:1313/tulisan/belajar-python-tipe-data/</guid>
+      <description>Tipe data merupakan konsep yang cukup penting pada Python dan juga bahasa pemrograman lainnya.</description>
+    </item>
+    <item>
+      <title>Kontak</title>
+      <link>http://localhost:1313/kontak/</link>
+      <pubDate>Sat, 15 Jan 2022 21:41:45 +0700</pubDate>
+      <guid>http://localhost:1313/kontak/</guid>
+      <description>&lt;ul&gt;&#xA;&lt;li&gt;LinkedIn: &lt;a href=&#34;https://linkedin.com/in/bagas-wibowo&#34;&gt;https://linkedin.com/in/bagas-wibowo&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;E-mail: &lt;a href=&#34;mailto:bagas.awibowo@gmail.com&#34;&gt;bagas.awibowo@gmail.com&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;Telegram: &lt;a href=&#34;https://t.me/bagas_awibwo&#34;&gt;https://t.me/bagas_awibwo&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Tentang Saya</title>
+      <link>http://localhost:1313/tentang/</link>
+      <pubDate>Sat, 15 Jan 2022 21:41:45 +0700</pubDate>
+      <guid>http://localhost:1313/tentang/</guid>
+      <description>&lt;h2 id=&#34;halo&#34;&gt;Halo&lt;/h2&gt;&#xA;&lt;p&gt;Perkenalkan saya &lt;strong&gt;Bagas Ari Wibowo&lt;/strong&gt;, biasa dipanggil Bagas saat ini saya bekerja sebagai engineer &amp;ldquo;Kuli IT&amp;rdquo; dan ditempat ini saya ingin mencoba menuliskan dan berbagi coretan-coretan selama saya menjadi engineer.&lt;/p&gt;&#xA;&lt;h2 id=&#34;awal-mula&#34;&gt;Awal Mula&lt;/h2&gt;&#xA;&lt;p&gt;Setiap cerita diawali dengan pembuka, pertama saya ucapkan terima kasih kepada pembaca yang sudah berkunjung ke halaman ini dan saya harap apa yang ditulis bisa dimengerti dan diambil manfaatnya.&lt;/p&gt;&#xA;&lt;p&gt;Saya ingin coba menuliskan apa-apa saja yang pernah saya lalui selama saya berkarir sebagai seorang engineer dan awal mula menjadi seorang engineer dan proses perjalanan sampai ke titik saat ini.&lt;/p&gt;</description>
+    </item>
   </channel>
 </rss>

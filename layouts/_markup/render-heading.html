@@ -1,0 +1,3 @@
+{{- /* Subjudul di isi tulisan turun satu tingkat: h1 judul halaman tetap satu-satunya h1 (constitution #7). */ -}}
+{{- $l := add .Level 1 | math.Min 6 -}}
+<h{{ $l }} id="{{ .Anchor }}">{{ .Text }}</h{{ $l }}>

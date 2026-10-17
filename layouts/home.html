@@ -1,0 +1,17 @@
+{{ define "main" }}
+{{- $pager := .Paginate (partial "feed-pages.html" .) -}}
+<div class="feed">
+  <section aria-label="whoami">
+    <div class="prompt"><b>bagas@jurnal</b>:~$ whoami</div>
+    <p class="whoami"><strong>{{ site.Params.author }}</strong> — {{ i18n "whoami" }}</p>
+  </section>
+  <div class="feed-head">
+    <h1>$ tail -f <span>{{ i18n "feed_file" }}</span></h1>
+    {{ partial "chips.html" . }}
+  </div>
+  <div class="entries" data-entries>
+    {{- range $pager.Pages }}{{ partial "post-entry.html" . }}{{ end }}
+  </div>
+  {{ partial "pager.html" (dict "pager" $pager) }}
+</div>
+{{ end }}

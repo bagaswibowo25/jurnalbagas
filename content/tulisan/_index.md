@@ -1,0 +1,4 @@
+---
+title: "Tulisan"
+aliases: ["/article/"]
+---

@@ -1,0 +1,70 @@
+# Jurnal Bagas — konfigurasi Hugo (#5). Standar tampilan: docs/reference/design.md.
+baseURL = "https://www.jurnalbagas.com/"
+title = "Jurnal Bagas"
+defaultContentLanguage = "id"
+defaultContentLanguageInSubdir = false
+enableRobotsTXT = true
+
+[pagination]
+  pagerSize = 5
+
+[params]
+  author = "Bagas Wibowo"
+  github = "https://github.com/bagaswibowo25"
+  linkedin = "https://www.linkedin.com/in/bagas-wibowo/"
+  medium = "https://bagas-awibowo.medium.com/"
+
+[taxonomies]
+  tag = "tags"
+  series = "series"
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  section = ["HTML", "RSS"]
+  term = ["HTML", "RSS"]
+
+[languages]
+  [languages.id]
+    languageName = "ID"
+    languageCode = "id-ID"
+    weight = 1
+    [languages.id.params]
+      description = "Coretan keseharian sebagai engineer."
+      switchLabel = "Baca dalam bahasa Indonesia"
+    [languages.id.permalinks.page]
+      tulisan = "/tulisan/:slug/"
+    [languages.id.permalinks.section]
+      tulisan = "/tulisan/"
+    [languages.id.permalinks.term]
+      tags = "/tag/:slug/"
+      series = "/seri/:slug/"
+    [languages.id.permalinks.taxonomy]
+      tags = "/tag/"
+      series = "/seri/"
+  [languages.en]
+    languageName = "EN"
+    languageCode = "en-US"
+    weight = 2
+    [languages.en.params]
+      description = "Everyday notes from an engineer."
+      switchLabel = "Read in English"
+    [languages.en.permalinks.page]
+      tulisan = "/posts/:slug/"
+    [languages.en.permalinks.section]
+      tulisan = "/posts/"
+    [languages.en.permalinks.term]
+      tags = "/tags/:slug/"
+      series = "/series/:slug/"
+    [languages.en.permalinks.taxonomy]
+      tags = "/tags/"
+      series = "/series/"
+
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = false
+  [markup.highlight]
+    noClasses = false
+  [markup.tableOfContents]
+    startLevel = 1
+    endLevel = 2
+    ordered = false

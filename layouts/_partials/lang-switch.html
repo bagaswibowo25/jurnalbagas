@@ -1,0 +1,10 @@
+{{- /* Ganti bahasa: ke terjemahan halaman ini bila ada, kalau tidak ke beranda bahasa lain. */ -}}
+{{- $cur := site.Language.Lang -}}
+{{- range site.Sites -}}
+  {{- if ne .Language.Lang $cur -}}
+    {{- $target := .Home -}}
+    {{- $lang := .Language.Lang -}}
+    {{- range $.Translations }}{{ if eq .Language.Lang $lang }}{{ $target = . }}{{ end }}{{ end -}}
+    <a class="icon-btn lang-switch" href="{{ $target.RelPermalink }}" hreflang="{{ .Language.LanguageCode }}" lang="{{ .Language.LanguageCode }}" aria-label="{{ .Params.switchLabel }}">{{ .Language.LanguageName }}</a>
+  {{- end -}}
+{{- end -}}
