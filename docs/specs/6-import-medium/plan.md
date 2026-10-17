@@ -42,7 +42,9 @@ summary: "<kalimat pertama tulisan>"
 medium: "https://bagas-awibowo.medium.com/helm-templating-network-policy-using-helm-…"
 ```
 
-Tanpa `series`. Hanya `index.en.md` (belum ada versi id). Gambar `img-01.<ext>`… di bundle, alt dari `alt`/figcaption
+Seri (spec revisi, Content K5): `series: ["kubernetes-in-practice"]`, `part` urut tanggal — Helm 1, Zuul CI 2,
+ClickStack 3 — dan `short` untuk label navigasi seri ("Helm Network Policy", "Zuul CI", "ClickStack"). Term
+`content/series/kubernetes-in-practice/_index.en.md`. Hanya `index.en.md` (belum ada versi id). Gambar `img-01.<ext>`… di bundle, alt dari `alt`/figcaption
 sumber.
 
 ## 5. URL, SEO, dan feed
@@ -57,6 +59,10 @@ sumber.
 
 - Catatan di bawah meta: "First published on Medium · 4 Feb 2024" (tautan ke `medium`), gaya `post-meta`.
 - Beranda id: entri tulisan en tanpa terjemahan id, lencana "EN" (dari nama bahasa halaman), tag menaut ke tag en.
+- Seri: layout tulisan + `series-data.html` sudah menangani seri per bahasa — tidak perlu perubahan.
+- Tag/seri lintas bahasa (Theme K8): `chips.html` dan `taxonomy.html` menambahkan term dari situs bahasa lain yang
+  tidak ada di bahasa ini, dengan tanda `.Language.LanguageName` dan tautan ke halaman term bahasa aslinya. Term yang
+  ada di kedua bahasa memakai milik bahasa ini.
 - Blok kode: `pre` sudah `overflow-x: auto` (tidak menggeser halaman, dicek S7).
 
 ## 7. Build dan deploy
@@ -76,7 +82,10 @@ Tidak ada perubahan. Terbit lewat deploy #7 setelah merge.
 | 7 | test UI S8: ketiga alamat ditambah ke daftar halaman 320–768px |
 | 8 | `en/tags/kubernetes/` memuat ketiganya |
 | 9 | `en/index.json` memuat ketiganya; test UI cari "helm"/"zuul" di `/en/` |
-| 10 | ketiga alamat ada |
+| 10 | tiap tulisan: `series-nav` dengan 3 bagian urut Helm/Zuul/ClickStack, bagian aktif benar, prev/next benar |
+| 11 | `index.html` memuat chip ke `/en/tags/kubernetes/` bertanda EN; `en/index.html` memuat chip ke `/tag/python/` bertanda ID |
+| 12 | `seri/index.html` memuat `/en/series/kubernetes-in-practice/` (EN) + python-dasar; `en/series/index.html` memuat `/seri/python-dasar/` (ID) + kubernetes-in-practice |
+| 13 | ketiga alamat ada |
 
 Cek lama yang terdampak (jumlah tulisan berubah): S1/S12 menghitung semua halaman feed; S14 indeks en = 3 tulisan;
 test UI S3 (5 → 10 → 11).
