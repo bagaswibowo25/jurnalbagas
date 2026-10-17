@@ -1,0 +1,23 @@
+{{- /*
+  Term (tags/series) bahasa ini + term bahasa lain yang tidak ada di bahasa ini (Theme K8).
+  Hasil: slice dict {page, count, lang} — lang kosong untuk term bahasa ini, nama bahasa untuk term bahasa lain.
+  Konteks: nama taksonomi ("tags" / "series").
+*/ -}}
+{{- $tax := . -}}
+{{- $out := slice -}}
+{{- $own := dict -}}
+{{- range (index site.Taxonomies $tax).ByCount -}}
+  {{- $out = $out | append (dict "page" .Page "count" .Count "lang" "") -}}
+  {{- $own = merge $own (dict .Name true) -}}
+{{- end -}}
+{{- range site.Sites -}}
+  {{- if ne .Language.Lang site.Language.Lang -}}
+    {{- $name := .Language.LanguageName -}}
+    {{- range (index .Taxonomies $tax).ByCount -}}
+      {{- if not (index $own .Name) -}}
+        {{- $out = $out | append (dict "page" .Page "count" .Count "lang" $name) -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return $out -}}

@@ -2,8 +2,8 @@
 <div class="page">
   <h1>{{ if eq .Data.Plural "series" }}{{ i18n "series_title" }}{{ else }}{{ i18n "tags_title" }}{{ end }}</h1>
   <ul class="term-list">
-    {{- range .Data.Terms.Alphabetical }}
-    <li><a class="chip" href="{{ .Page.RelPermalink }}">{{ .Page.LinkTitle | lower }} <span aria-hidden="true">&nbsp;({{ .Count }})</span></a></li>
+    {{- range sort (partial "terms-all.html" .Data.Plural) "page.LinkTitle" }}
+    <li><a class="chip" href="{{ .page.RelPermalink }}"{{ with .lang }} title="{{ i18n "untranslated_title" }}"{{ end }}>{{ .page.LinkTitle | lower }} <span aria-hidden="true">&nbsp;({{ .count }})</span>{{ with .lang }}<span class="chip-lang">{{ . }}</span>{{ end }}</a></li>
     {{- end }}
   </ul>
 </div>

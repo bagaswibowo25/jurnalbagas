@@ -22,6 +22,7 @@ terang. Standar tampilannya: [`docs/reference/design.md`](../reference/design.md
 | K5 | Alamat baru per bahasa: `/tulisan/`, `/seri/`, `/tag/`, `/tentang/`, `/kontak/` dan `/en/posts/`, `/en/series/`, `/en/tags/`, `/en/about/`, `/en/contact/`; alamat diambil dari judul; semua alamat lama dialihkan | 2026-10-17 |
 | K6 | Pencarian berjalan di situs sendiri, tanpa layanan luar (Algolia dicopot) | 2026-10-17 |
 | K7 | Tidak ada kolom komentar | 2026-10-17 |
+| K8 | Chip tag dan daftar seri menampilkan tag/seri dari kedua bahasa; yang dari bahasa lain diberi tanda bahasa dan membuka halamannya di bahasa itu (#6) | 2026-10-17 |
 
 ## 3. Istilah
 

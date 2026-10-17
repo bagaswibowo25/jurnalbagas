@@ -4,7 +4,7 @@
     <span>[{{ .Date.Format "2006-01-02" }}]</span>
     {{- range first 1 (.GetTerms "tags") }}<a class="tag" href="{{ .RelPermalink }}">{{ .LinkTitle | lower }}</a>{{ end }}
     {{- with .Params.series }}<span>{{ index . 0 }}{{ with $.Params.part }} #{{ . }}{{ end }}</span>{{ end }}
-    {{- if $foreign }}<span class="badge-id" title="{{ i18n "untranslated_title" }}">{{ i18n "untranslated" }}</span>{{ end }}
+    {{- if $foreign }}<span class="badge-id" title="{{ i18n "untranslated_title" }}">{{ .Language.LanguageName }}</span>{{ end }}
   </div>
   <h2 class="entry-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
   <p class="excerpt">{{ .Summary | plainify | truncate 220 }}</p>
