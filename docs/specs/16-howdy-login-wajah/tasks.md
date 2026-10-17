@@ -26,4 +26,4 @@ issue: 16
 ## Penutup
 - [x] T11 `scripts/build.sh ui` hijau
 - [x] T12 Preview untuk owner (`scripts/build.sh serve`)
-- [ ] T13 `scripts/worktree.sh diff` bersih, PR dibuka (`Closes #16`)
+- [x] T13 `scripts/worktree.sh diff` bersih, PR dibuka (`Closes #16`)
