@@ -113,3 +113,5 @@ test UI S3 (5 → 10 → 11).
 - 2026-10-17 — Gambar di bundle yang hanya punya `index.en.md` tidak diterbitkan Hugo (render hook mengembalikan src
   apa adanya → gambar rusak). Diperbaiki dengan akhiran `.en` pada nama file. Cek baru di `build-checks.sh`: semua
   `<img>` lokal di seluruh situs harus ada filenya (terbukti menangkap file yang dihapus).
+- 2026-10-17 — Daftar isi seri kosong untuk tulisan Medium (subjudul `###`/`####`, sedangkan TOC `endLevel = 2`).
+  `endLevel` dinaikkan ke 3; cek S10 sekarang juga memastikan daftar isi tidak kosong (Zuul CI, ClickStack).

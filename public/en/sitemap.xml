@@ -24,6 +24,9 @@
     <loc>http://192.168.0.102:1313/en/posts/kubernetes-logs-observability-with-clickstack/</loc>
     <lastmod>2026-01-05T14:55:53+00:00</lastmod>
   </url><url>
+    <loc>http://192.168.0.102:1313/en/series/kubernetes-in-practice/</loc>
+    <lastmod>2026-01-05T14:55:53+00:00</lastmod>
+  </url><url>
     <loc>http://192.168.0.102:1313/en/tags/observability/</loc>
     <lastmod>2026-01-05T14:55:53+00:00</lastmod>
   </url><url>
@@ -38,6 +41,19 @@
                 rel="alternate"
                 hreflang="en-US"
                 href="http://192.168.0.102:1313/en/posts/"
+                />
+  </url><url>
+    <loc>http://192.168.0.102:1313/en/series/</loc>
+    <lastmod>2026-01-05T14:55:53+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="id-ID"
+                href="http://192.168.0.102:1313/seri/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="http://192.168.0.102:1313/en/series/"
                 />
   </url><url>
     <loc>http://192.168.0.102:1313/en/tags/</loc>
@@ -89,18 +105,6 @@
                 rel="alternate"
                 hreflang="en-US"
                 href="http://192.168.0.102:1313/en/contact/"
-                />
-  </url><url>
-    <loc>http://192.168.0.102:1313/en/series/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="id-ID"
-                href="http://192.168.0.102:1313/seri/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="http://192.168.0.102:1313/en/series/"
                 />
   </url>
 </urlset>

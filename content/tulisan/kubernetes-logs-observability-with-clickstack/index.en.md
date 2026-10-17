@@ -3,6 +3,9 @@ title: "Kubernetes Logs Observability with ClickStack — ClickHouse & Hyper
 date: 2026-01-05T14:55:53+00:00
 slug: kubernetes-logs-observability-with-clickstack
 tags: ["kubernetes", "observability", "devops"]
+series: ["kubernetes-in-practice"]
+part: 3
+short: "ClickStack"
 summary: "Managing an observability stack often feels like a constant battle between performance and cost."
 medium: "https://bagas-awibowo.medium.com/kubernetes-logs-observability-with-clickstack-clickhouse-hyperdx-37ddcbcc58f2"
 ---

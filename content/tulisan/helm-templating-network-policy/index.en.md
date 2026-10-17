@@ -3,6 +3,9 @@ title: "Helm — Templating Network Policy using Helm"
 date: 2024-02-04T16:22:35+00:00
 slug: helm-templating-network-policy
 tags: ["helm", "kubernetes", "devops"]
+series: ["kubernetes-in-practice"]
+part: 1
+short: "Helm Network Policy"
 summary: "Helm is very useful to package your application."
 medium: "https://bagas-awibowo.medium.com/helm-templating-network-policy-using-helm-783b2f7e401a"
 ---

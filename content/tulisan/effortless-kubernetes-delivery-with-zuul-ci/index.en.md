@@ -3,6 +3,9 @@ title: "Effortless Kubernetes Delivery with Zuul CI"
 date: 2024-07-14T10:44:54+00:00
 slug: effortless-kubernetes-delivery-with-zuul-ci
 tags: ["kubernetes", "cicd", "devops"]
+series: ["kubernetes-in-practice"]
+part: 2
+short: "Zuul CI"
 summary: "There are lots of open source CI/CD tools out there."
 medium: "https://bagas-awibowo.medium.com/effortless-kubernetes-delivery-with-zuul-ci-38b9b1d592fe"
 ---

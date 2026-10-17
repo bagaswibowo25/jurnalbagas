@@ -89,6 +89,7 @@ sys.exit(0 if len(a)==8 and all(p['url'].startswith('/tulisan/') for p in a) and
 
   # #6 — tiga tulisan Medium (spec #6).
   MED=(kubernetes-logs-observability-with-clickstack effortless-kubernetes-delivery-with-zuul-ci helm-templating-network-policy)
+  KIP=(helm-templating-network-policy effortless-kubernetes-delivery-with-zuul-ci kubernetes-logs-observability-with-clickstack)
   MEDURL=(kubernetes-logs-observability-with-clickstack-clickhouse-hyperdx-37ddcbcc58f2 effortless-kubernetes-delivery-with-zuul-ci-38b9b1d592fe helm-templating-network-policy-using-helm-783b2f7e401a)
   # Jumlah elemen sumber (feed Medium; <pre> berurutan digabung, judul di awal isi dibuang): pre img heading li blockquote
   EXPECT=("11 9 10 8 1" "9 12 8 0 1" "16 1 0 4 0")
@@ -100,7 +101,23 @@ sys.exit(0 if len(a)==8 and all(p['url'].startswith('/tulisan/') for p in a) and
       ok "#6 S3/S4/S10 $s: alamat, catatan Medium, canonical ke blog"
     else bad "#6 S3/S4/S10 $s"; fi
     # S5 isi utuh (jumlah elemen = sumber)
-    got="$(count $P '<pre') $(count $P '<img') $(grep -oE '<h[2-6] id=' "$D/$P" | wc -l | tr -d ' ') $(count $P '<li>') $(count $P '<blockquote')"
+    got=$(python3 - "$D/$P" <<'PY'
+import sys
+from html.parser import HTMLParser
+class P(HTMLParser):
+    # Hitung elemen hanya di dalam <div class=content> (isi tulisan), bukan navigasi seri dll.
+    def __init__(s): super().__init__(); s.depth=0; s.c={k:0 for k in ('pre','img','h','li','blockquote')}
+    def handle_starttag(s, t, a):
+        if s.depth: s.depth += t == 'div'
+        elif t == 'div' and ('class', 'content') in a: s.depth = 1; return
+        if not s.depth: return
+        k = 'h' if t in ('h2','h3','h4','h5','h6') else t
+        if k in s.c: s.c[k] += 1
+    def handle_endtag(s, t):
+        if s.depth and t == 'div': s.depth -= 1
+p = P(); p.feed(open(sys.argv[1]).read()); print(*p.c.values())
+PY
+)
     [ "$got" = "${EXPECT[$i]}" ] && ok "#6 S5 $s: isi utuh ($got)" || bad "#6 S5 $s: elemen $got ≠ sumber ${EXPECT[$i]}"
     # S6 gambar lokal, tanpa Medium
     if ! grep -qE 'cdn-images-1\.medium\.com|miro\.medium\.com|medium\.com/_/stat' "$D/$P" \
@@ -113,6 +130,27 @@ sys.exit(0 if len(a)==8 and all(p['url'].startswith('/tulisan/') for p in a) and
   # S2 beranda id: lencana EN ke versi en
   if [ "$(count_feed . 'class=badge-id title="[^"]*">EN<')" -eq 3 ] && [ "$(count_feed . 'href=/en/posts/[a-z-]*/>[^<]*</a></h2>')" -eq 3 ]; then
     ok "#6 S2 beranda id: 3 tulisan berlencana EN menaut ke /en/posts/"; else bad "#6 S2 beranda id: lencana EN"; fi
+  # S10 seri kubernetes-in-practice: 3 bagian urut, aktif benar, prev/next
+  for i in 0 1 2; do
+    P=en/posts/${KIP[$i]}/index.html
+    [ "$(grep -o '<ol class=series-list>' "$D/$P" | wc -l)" -eq 2 ] || { bad "#6 S10 ${KIP[$i]}: navigasi seri tidak ada"; continue; }
+    order=$(python3 -c "import re,sys; h=open(sys.argv[1]).read(); ol=h.split('<ol class=series-list>')[1].split('</ol>')[0]; print(' '.join(re.findall(r'href=/en/posts/([a-z-]+)/', ol)))" "$D/$P")
+    nav_ok=1
+    [ "$order" = "${KIP[*]}" ] || nav_ok=0
+    has $P "<li class=active><a href=/en/posts/${KIP[$i]}/ aria-current=page>" || nav_ok=0
+    [ $i -gt 0 ] && { has $P "href=/en/posts/${KIP[$((i-1))]}/><small>" || nav_ok=0; }
+    [ $i -gt 0 ] && { grep -qE 'class=series-toc><nav id=TableOfContents>(<ul><li>)+<a href=#' "$D/$P" || nav_ok=0; }
+    [ $i -lt 2 ] && { has $P "class=next href=/en/posts/${KIP[$((i+1))]}/>" || nav_ok=0; }
+    [ $nav_ok -eq 1 ] && ok "#6 S10 ${KIP[$i]}: seri bagian $((i+1))/3, urutan + sebelumnya/berikutnya benar" || bad "#6 S10 ${KIP[$i]} (urutan: $order)"
+  done
+  # S11 chip tag lintas bahasa
+  if has index.html 'href=/en/tags/kubernetes/ hreflang' && grep -qE 'href=/en/tags/kubernetes/[^>]*>kubernetes<span class=chip-lang>EN<' "$D/index.html" \
+     && grep -qE 'href=/tag/python/[^>]*>python<span class=chip-lang>ID<' "$D/en/index.html"; then
+    ok "#6 S11 chip tag lintas bahasa (kubernetes EN di id, python ID di en)"; else bad "#6 S11 chip tag lintas bahasa"; fi
+  # S12 daftar seri lintas bahasa
+  if has seri/index.html 'href=/seri/python-dasar/' && grep -qE 'href=/en/series/kubernetes-in-practice/[^>]*>.*<span class=chip-lang>EN<' "$D/seri/index.html" \
+     && has en/series/index.html 'href=/en/series/kubernetes-in-practice/' && grep -qE 'href=/seri/python-dasar/[^>]*>.*<span class=chip-lang>ID<' "$D/en/series/index.html"; then
+    ok "#6 S12 daftar seri lintas bahasa (id & en memuat kedua seri)"; else bad "#6 S12 daftar seri lintas bahasa"; fi
   # S8 tag topik
   n=$(count_feed en/tags/kubernetes 'class=post-entry')
   [ "$n" -eq 3 ] && [ -f "$D/en/tags/devops/index.html" ] && [ -f "$D/en/tags/helm/index.html" ] && [ ! -e "$D/en/tags/medium" ] \

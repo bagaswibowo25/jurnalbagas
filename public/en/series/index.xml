@@ -6,6 +6,14 @@
     <description>Recent content in Series on Jurnal Bagas</description>
     <generator>Hugo</generator>
     <language>en-US</language>
+    <lastBuildDate>Mon, 05 Jan 2026 14:55:53 +0000</lastBuildDate>
     <atom:link href="http://192.168.0.102:1313/en/series/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>kubernetes-in-practice</title>
+      <link>http://192.168.0.102:1313/en/series/kubernetes-in-practice/</link>
+      <pubDate>Mon, 05 Jan 2026 14:55:53 +0000</pubDate>
+      <guid>http://192.168.0.102:1313/en/series/kubernetes-in-practice/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

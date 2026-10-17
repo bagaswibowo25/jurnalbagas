@@ -17,9 +17,9 @@ issue: 6
 - [x] T7 [SH] Test UI: S7 ketiga alamat di 320–768px, S9 cari helm/zuul, S3 disesuaikan — `tests/ui/site.spec.mjs`
 
 ## P3 · Seri dan tag yang terlihat
-- [ ] T13 [CONTENT] Seri kubernetes-in-practice (series/part/short) + term seri — `content/tulisan/*/index.en.md`, `content/series/`
-- [ ] T14 [THEME] Chip tag + daftar seri/tag lintas bahasa dengan tanda bahasa — `layouts/_partials/chips.html`, `layouts/taxonomy.html`
-- [ ] T15 [SH] Cek skenario 10–12 — `tests/build-checks.sh`
+- [x] T13 [CONTENT] Seri kubernetes-in-practice (series/part/short) + term seri — `content/tulisan/*/index.en.md`, `content/series/`
+- [x] T14 [THEME] Chip tag + daftar seri/tag lintas bahasa dengan tanda bahasa — `layouts/_partials/chips.html`, `layouts/taxonomy.html`
+- [x] T15 [SH] Cek skenario 10–12 — `tests/build-checks.sh`
 
 ## P4 · Sumber asli jelas
 - [x] T8 [THEME] Catatan "First published on Medium" + tautan — `layouts/page.html`, `i18n/`
@@ -27,5 +27,5 @@ issue: 6
 
 ## Penutup
 - [x] T10 [DOC] Front matter `medium` + aturan lencana — `docs/reference/system.md`
-- [ ] T11 [SH] `scripts/build.sh ui` hijau; baca ketiga tulisan sekali vs Medium
+- [x] T11 [SH] `scripts/build.sh ui` hijau; baca ketiga tulisan sekali vs Medium
 - [ ] T12 [GH] `scripts/worktree.sh diff` bersih, PR dibuka (`Closes #6`)
