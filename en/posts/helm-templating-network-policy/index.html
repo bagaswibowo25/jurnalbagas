@@ -1,0 +1,302 @@
+<!doctype html><html lang=en-US class=no-js><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Helm — Templating Network Policy using Helm · Jurnal Bagas</title><meta name=description content="Helm is very useful to package your application."><meta name=color-scheme content="light dark"><link rel=canonical href=https://www.jurnalbagas.com/en/posts/helm-templating-network-policy/><link rel=alternate hreflang=en-US href=https://www.jurnalbagas.com/en/posts/helm-templating-network-policy/><script>(function(){var e,t=document.documentElement;t.classList.remove("no-js");try{e=localStorage.getItem("theme"),(e==="dark"||e==="light")&&t.setAttribute("data-theme",e),localStorage.getItem("seriesNav")==="hidden"&&t.setAttribute("data-nav","hidden")}catch{}})()</script><link rel=stylesheet href=/css/main.min.6d0530a00759c0ea8060d0ff1037ca04b32b2269a42f8d861801563fbdc80ea7.css integrity="sha256-bQUwoAdZwOqAYND/EDfKBLMrImmkL42GGAFWP73IDqc="><link rel=preload href=/fonts/ibm-plex-sans-latin-400-normal.woff2 as=font type=font/woff2 crossorigin><link rel=preload href=/fonts/ibm-plex-mono-latin-600-normal.woff2 as=font type=font/woff2 crossorigin></head><body><a class=skip href=#isi>Skip to content</a><header class=site-header><div class="wrap wide"><a class=logo href=/en/>~/jurnalbagas<span aria-hidden=true>_</span></a><div class=header-tools><nav class=nav aria-label="Menu utama"><a href=/en/posts/ aria-current=page>./posts</a><a href=/en/series/>./series</a><a href=/en/about/>./about</a></nav><button type=button class="icon-btn search-btn js-only" data-search-open aria-label="Search posts">
+<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+<span class=label-text>search</span><span class=kbd>⌘K</span></button><div class=header-extra><button type=button class="icon-btn theme-toggle js-only" data-theme-toggle aria-label="Toggle dark/light mode">
+<svg class="moon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20 14.5A8 8 0 019.5 4 8 8 0 1020 14.5z"/></svg>
+<svg class="sun" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+</button>
+<a class="icon-btn lang-switch" href=/ hreflang=id-ID lang=id-ID aria-label="Baca dalam bahasa Indonesia">ID</a></div><details class=menu><summary class=icon-btn aria-label="Open menu"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg></summary><nav class=menu-panel aria-label=Menu><a href=/en/posts/>./posts</a><a href=/en/series/>./series</a><a href=/en/about/>./about</a><a href=/en/contact/>./contact</a><div class=menu-extra><button type=button class="icon-btn theme-toggle js-only" data-theme-toggle aria-label="Toggle dark/light mode">
+<svg class="moon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20 14.5A8 8 0 019.5 4 8 8 0 1020 14.5z"/></svg>
+<svg class="sun" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+</button>
+<a class="icon-btn lang-switch" href=/ hreflang=id-ID lang=id-ID aria-label="Baca dalam bahasa Indonesia">ID</a></div></nav></details></div></div></header><main id=isi><div class=progress aria-hidden=true><span data-progress></span></div><div class="wrap wide"><div class=article-layout><aside class=series-nav aria-label=series><div class=series-nav-head><div><div class=label>series</div><a class=series-name href=/en/series/kubernetes-in-practice/>kubernetes-in-practice</a></div><button type=button class="icon-btn js-only" data-nav-toggle aria-label="Hide series navigation" title="Hide series navigation">
+<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16m6-10-2 2 2 2"/></svg></button></div><div class=series-progress aria-hidden=true><span style=width:33%></span></div><ol class=series-list><li class=active><a href=/en/posts/helm-templating-network-policy/ aria-current=page><span class=n>1</span>Helm Network Policy</a><div class=series-toc><nav id=TableOfContents></nav></div></li><li><a href=/en/posts/effortless-kubernetes-delivery-with-zuul-ci/><span class=n>2</span>Zuul CI</a></li><li><a href=/en/posts/kubernetes-logs-observability-with-clickstack/><span class=n>3</span>ClickStack</a></li></ol></aside><div class=series-rail><button type=button class=icon-btn data-nav-toggle aria-label="Show series navigation" title="Show series navigation">
+<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16m4-10 2 2-2 2"/></svg></button><div>1/3</div></div><article class=prose><div class=crumb aria-hidden=true>~/posts/kubernetes-in-practice/<span>helm-templating-network-policy.md</span></div><h1>Helm — Templating Network Policy using Helm</h1><div class=post-meta><time datetime=2024-02-04>2024-02-04</time>
+<span>Bagas Wibowo</span><a href=/en/tags/helm/>#helm</a><a href=/en/tags/kubernetes/>#kubernetes</a><a href=/en/tags/devops/>#devops</a></div><p class="alt-lang source">First published on <a href=https://bagas-awibowo.medium.com/helm-templating-network-policy-using-helm-783b2f7e401a rel=noopener>Medium</a> · <time datetime=2024-02-04>Feb 4, 2024</time></p><details class=series-card><summary><span>series: kubernetes-in-practice · <b class=cursor>1/3</b></span><span class=caret>▾ view</span></summary><ol class=series-list><li class=active><a href=/en/posts/helm-templating-network-policy/ aria-current=page><span class=n>1</span>Helm Network Policy</a></li><li><a href=/en/posts/effortless-kubernetes-delivery-with-zuul-ci/><span class=n>2</span>Zuul CI</a></li><li><a href=/en/posts/kubernetes-logs-observability-with-clickstack/><span class=n>3</span>ClickStack</a></li></ol></details><div class=content><p>Helm is very useful to package your application. It have capability to templating your Kubernetes resources. So you can reuse the same resource for different purpose. Besides it will help you or developer to maintain the resource with simpler structure kind of resource based on Helm best practices or with your own way.</p><p>In this part I will try to templating the Network Policy resources by Helm. The first problem is Network Policy can be a complex resource to manage and hard to understand.</p><p>To ensure security for your application the Network Policy was very important, you will control the incoming and outgoing traffic from nor to your application. First you need to understand the flow of Network Policy to identify what need to do to ensure your application is secure.</p><p><img src=/en/posts/helm-templating-network-policy/img-01.en.png alt="Network Policy Editor by Cilium">
+<em>Network Policy Editor by Cilium</em></p><p>The tool that very helpful for me is <a href=https://editor.networkpolicy.io/>https://editor.networkpolicy.io/</a>. It will help you to generate the Network Policy with your own needs. So why we still need the Helm to templating the Network Policy?</p><p>After we applying the Network Policy we still need to maintain the rule that we apply to the cluster. If we apply the complex rule and manage multiple application will hard to maintain. So we can simplify it by using Helm.</p><p>Below the manifest of Network Policy that templated using Helm.</p><p>networkpolicy.yaml</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl>{{- <span class=l>range .Values.networkPolicies }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=nt>apiVersion</span><span class=p>:</span><span class=w> </span><span class=l>networking.k8s.io/v1</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=nt>kind</span><span class=p>:</span><span class=w> </span><span class=l>NetworkPolicy</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=nt>metadata</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>name</span><span class=p>:</span><span class=w> </span>{{<span class=w> </span><span class=l>.name }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=nt>spec</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>include &#34;netpol.podSelector&#34; . | indent 2 }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>if .ingress }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>include &#34;netpol.ingress&#34; . | indent 2 }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>end }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>if .egress }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>include &#34;netpol.egress&#34; . | indent 2 }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>end }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=nn>---</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>end }}</span><span class=w>
+</span></span></span></code></pre></div><p>Looks simpler than original resource right? By that template Helm can generate multiple Network Policy file by just passing the value that we required to apply the policy. The main key of the Network Policy is Ingress and Egress and the components to control the traffic is:</p><ol><li>Outside cluster, later we can define it by name <em><strong>cidrs.</strong></em> This part will control the traffic coming from nor to outside cluster by IP block subnets.</li><li>In Namespace, later we can define it by name <em><strong>podSelectors</strong></em>. This part will control the traffic inside the namespace where the application is deployed. It will control the access between the application within the namespace.</li><li>In Cluster, later we can define it by name <em><strong>namespaceSelectors</strong></em>. This part will control the traffic within the cluster, thats why I defined as namespaceSelectors. Because the traffic will be scoped within cluster and can be filtered per-namespace. With namespaceSelectors also we still need to define the specific Pod labels to apply the rule.</li></ol><p>All the components of Network Policy will be created through the named template, is simply a template defined inside the file. By default defined inside <em><strong>_helpers.tpl</strong></em> on the <em><strong>templates</strong></em> directory. You can read more detail to understand the Helm flow control here <a href=https://helm.sh/docs/chart_template_guide/control_structures/>https://helm.sh/docs/chart_template_guide/control_structures/</a></p><p>Let’s look into the inside <em><strong>_helpers.tpl</strong></em>:</p><ol><li>Create a function to handle the podSelector</li></ol><div class=highlight><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl>{{- <span class=l>define &#34;netpol.podSelector&#34; }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>if .podSelector }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=nt>podSelector</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span>{{- <span class=l>range $key, $value := .podSelector }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>matchLabels</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>{{<span class=w> </span><span class=nt>$key }}</span><span class=p>:</span><span class=w> </span>{{<span class=w> </span><span class=l>$value }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span>{{- <span class=l>end }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>else }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=nt>podSelector</span><span class=p>:</span><span class=w> </span>{}<span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>end }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>end }}</span><span class=w>
+</span></span></span></code></pre></div><p>On those part, the template will handle to define which resource that will be applied by the policy. If not defined will set the <strong>podSelector: {}</strong>, it mean the policy applied to all Pod inside the namespace.</p><p>2. Create a function to generate the Ingress and Egress section</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl>{{<span class=l>/*</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=l>Ingress block</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=cp>*/}}</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>define &#34;netpol.ingress&#34; }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=nt>ingress</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl>- <span class=nt>from</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span>{{- <span class=l>if .ingress.cidrs }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>{{- <span class=l>with .ingress }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>{{- <span class=l>include &#34;netpol.scoped.cidr&#34; (dict &#34;scope&#34; .) | indent 2 }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>{{- <span class=l>end }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span>{{- <span class=l>end }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span>{{- <span class=l>if .ingress.podSelectors }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>{{- <span class=l>with .ingress }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>{{- <span class=l>include &#34;netpol.scoped.podSelector&#34; (dict &#34;scope&#34; .) | indent 2 }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>{{- <span class=l>end }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span>{{- <span class=l>end }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span>{{- <span class=l>if .ingress.namespaceSelectors }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>{{- <span class=l>with .ingress }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>{{- <span class=l>include &#34;netpol.scoped.namespaceSelector&#34; (dict &#34;scope&#34; .) | indent 2 }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>{{- <span class=l>end }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span>{{- <span class=l>end }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span>{{- <span class=l>if .ingress.ports }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>{{- <span class=l>with .ingress }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>{{- <span class=l>include &#34;netpol.scoped.port&#34; (dict &#34;scope&#34; .) | indent 2 }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>{{- <span class=l>end }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span>{{- <span class=l>end }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>end }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl>{{<span class=l>/*</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=l>Egress block</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=cp>*/}}</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>define &#34;netpol.egress&#34; }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=nt>egress</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl>- <span class=nt>to</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span>{{- <span class=l>if .egress.cidrs }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>{{- <span class=l>with .egress }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>{{- <span class=l>include &#34;netpol.scoped.cidr&#34; (dict &#34;scope&#34; .) | indent 2 }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>{{- <span class=l>end }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span>{{- <span class=l>end }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span>{{- <span class=l>if .egress.podSelectors }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>{{- <span class=l>with .egress }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>{{- <span class=l>include &#34;netpol.scoped.podSelector&#34; (dict &#34;scope&#34; .) | indent 2 }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>{{- <span class=l>end }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span>{{- <span class=l>end }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span>{{- <span class=l>if .egress.namespaceSelectors }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>{{- <span class=l>with .egress }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>{{- <span class=l>include &#34;netpol.scoped.namespaceSelector&#34; (dict &#34;scope&#34; .) | indent 2 }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>{{- <span class=l>end }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span>{{- <span class=l>end }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span>{{- <span class=l>if .egress.ports }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>{{- <span class=l>with .egress }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>{{- <span class=l>include &#34;netpol.scoped.port&#34; (dict &#34;scope&#34; .) | indent 2 }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>{{- <span class=l>end }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span>{{- <span class=l>end }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>end }}</span><span class=w>
+</span></span></span></code></pre></div><p>As I mentioned before, the Network Policy will manage the traffic from (Ingress) nor to (Egress). With the Helm template we can reuse the same function if have same behaviour. For example, we just define single template to handle the filter by CIDR, and we can call inside the Ingress or Egress template.</p><p>3. Create a function to handle filter based on IP Block CIDR</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl>{{<span class=l>/*</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=l>Generate netpol by IP Block CIDR</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=cp>*/}}</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>define &#34;netpol.scoped.cidr&#34; }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>range .scope.cidrs }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>- <span class=nt>ipBlock</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>cidr</span><span class=p>:</span><span class=w> </span>{{<span class=w> </span><span class=l>.ip }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>{{- <span class=l>if .excepts }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>except</span><span class=p>:</span><span class=w> </span>{{<span class=w> </span><span class=l>toYaml .excepts | nindent 6 }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>{{- <span class=l>end }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>end }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>end }}</span><span class=w>
+</span></span></span></code></pre></div><p>The example structure to add filter by IP is below:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl><span class=w>    </span><span class=nt>cidrs</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=nt>ip</span><span class=p>:</span><span class=w> </span><span class=m>172.17.0.0</span><span class=l>/16</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>excepts</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span>- <span class=m>172.17.1.0</span><span class=l>/24</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=nt>ip</span><span class=p>:</span><span class=w> </span><span class=m>10.0.0.1</span><span class=l>/24</span><span class=w>
+</span></span></span></code></pre></div><p>And the expected output is:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl><span class=w>      </span>- <span class=nt>ipBlock</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>cidr</span><span class=p>:</span><span class=w> </span><span class=m>172.17.0.0</span><span class=l>/16</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>except</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span>- <span class=m>172.17.1.0</span><span class=l>/24</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=nt>ipBlock</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>cidr</span><span class=p>:</span><span class=w> </span><span class=m>10.0.0.1</span><span class=l>/24</span><span class=w>
+</span></span></span></code></pre></div><p>4. Create a function to handle filter based on podSelector</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl>{{<span class=l>/*</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=l>Generate netpol by Pod selector</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=cp>*/}}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>define &#34;netpol.scoped.podSelector&#34; }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>range .scope.podSelectors }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>$labelYaml := toYaml .label }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>if contains &#34;:&#34; $labelYaml }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>- <span class=nt>podSelector</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>matchLabels</span><span class=p>:</span><span class=w> </span>{{<span class=w> </span><span class=l>toYaml .label | nindent 6 }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>{{- <span class=l>if .matches }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>{{- <span class=l>include &#34;netpol.matcher&#34; . | indent 4 }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>{{- <span class=l>end }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>else }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>- <span class=nt>podSelector</span><span class=p>:</span><span class=w> </span>{}<span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>end }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>end }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>end }}</span><span class=w>
+</span></span></span></code></pre></div><p><em><strong>podSelector</strong></em> also capable to filter using expressions (<strong>In, NotIn, Exists, NotExist</strong>). Then we also create the function to handle the expressions and call it inside the template.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl>{{<span class=l>/*</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=l>Generate matcher expression label</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=cp>*/}}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>define &#34;netpol.matcher&#34; }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=nt>matchExpressions</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>range .matches }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>if hasKey . &#34;matchIn&#34; }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>- <span class=nt>operator</span><span class=p>:</span><span class=w> </span><span class=l>In</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span>{{- <span class=l>range $key, $val := .matchIn }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>key</span><span class=p>:</span><span class=w> </span>{{<span class=w> </span><span class=l>$key }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>values</span><span class=p>:</span><span class=w> </span>{{<span class=w> </span><span class=l>toYaml $val | nindent 2 }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span>{{- <span class=l>end }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>end }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>if hasKey . &#34;matchNotIn&#34; }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>- <span class=nt>operator</span><span class=p>:</span><span class=w> </span><span class=l>NotIn</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span>{{- <span class=l>range $key, $val := .matchNotIn }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>key</span><span class=p>:</span><span class=w> </span>{{<span class=w> </span><span class=l>$key }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>values</span><span class=p>:</span><span class=w> </span>{{<span class=w> </span><span class=l>toYaml $val | nindent 2 }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span>{{- <span class=l>end }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>end }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>if hasKey . &#34;matchExists&#34; }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>- <span class=nt>operator</span><span class=p>:</span><span class=w> </span><span class=l>Exists</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>key</span><span class=p>:</span><span class=w> </span>{{<span class=w> </span><span class=l>.matchExists }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>end }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>if hasKey . &#34;matchNotExist&#34; }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>- <span class=nt>operator</span><span class=p>:</span><span class=w> </span><span class=l>DoesNotExist</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>key</span><span class=p>:</span><span class=w> </span>{{<span class=w> </span><span class=l>.matchNotExist }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>end }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>end }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>end }}</span><span class=w>
+</span></span></span></code></pre></div><p>The example structure to add filter by Pod label is below:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl><span class=w>  </span><span class=nt>ingress</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>podSelectors</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=nt>label</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>foo</span><span class=p>:</span><span class=w> </span><span class=l>bar</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>matches</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span>- <span class=nt>matchIn</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>              </span><span class=nt>env</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>              </span>- <span class=l>foo</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>              </span>- <span class=l>baz</span><span class=w>
+</span></span></span></code></pre></div><p>And the expected output is:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl><span class=w>  </span><span class=nt>ingress</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span>- <span class=nt>from</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=nt>podSelector</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>matchLabels</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>foo</span><span class=p>:</span><span class=w> </span><span class=l>bar</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>matchExpressions</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span>- <span class=nt>operator</span><span class=p>:</span><span class=w> </span><span class=l>In</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>key</span><span class=p>:</span><span class=w> </span><span class=l>env</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>values</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span>- <span class=l>foo</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span>- <span class=l>baz</span><span class=w>
+</span></span></span></code></pre></div><p>5. The next filter is <strong>namespaceSelector</strong>, this will handle filter rule within the cluster. Have a larger scope than the <strong>podSelector</strong>.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl>{{<span class=l>/*</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=l>Generate netpol by Namespace selector</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=cp>*/}}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>define &#34;netpol.scoped.namespaceSelector&#34; }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>range .scope.namespaceSelectors }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>$labelYaml := toYaml .label }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>if contains &#34;:&#34; $labelYaml }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>- <span class=nt>namespaceSelector</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>matchLabels</span><span class=p>:</span><span class=w> </span>{{<span class=w> </span><span class=l>toYaml .label | nindent 6 }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>{{- <span class=l>if .matches }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>{{- <span class=l>include &#34;netpol.matcher&#34; . | indent 4 }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>{{- <span class=l>end }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span>{{- <span class=l>range .podSelectors }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>podSelector</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>matchLabels</span><span class=p>:</span><span class=w> </span>{{<span class=w> </span><span class=l>toYaml .label | nindent 6 }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>{{- <span class=l>if .matches }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>{{- <span class=l>include &#34;netpol.matcher&#34; . | indent 4 }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>{{- <span class=l>end }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span>{{- <span class=l>end }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>else }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>- <span class=nt>namespaceSelector</span><span class=p>:</span><span class=w> </span>{}<span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span>{{- <span class=l>range .podSelectors }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>podSelector</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>matchLabels</span><span class=p>:</span><span class=w> </span>{{<span class=w> </span><span class=l>toYaml .label | nindent 6 }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>{{- <span class=l>if .matches }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>{{- <span class=l>include &#34;netpol.matcher&#34; . | indent 4 }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>{{- <span class=l>end }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span>{{- <span class=l>end }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>end }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>end }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>end }}</span><span class=w>
+</span></span></span></code></pre></div><p>The example structure to add filter by Namespace label is below:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl><span class=w>    </span><span class=nt>namespaceSelectors</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=nt>label</span><span class=p>:</span><span class=w> </span><span class=l>any</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>podSelectors</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span>- <span class=nt>label</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>              </span><span class=nt>foo</span><span class=p>:</span><span class=w> </span><span class=l>bar</span><span class=w>
+</span></span></span></code></pre></div><p>And the expected output is:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl><span class=w>    </span>- <span class=nt>namespaceSelector</span><span class=p>:</span><span class=w> </span>{}<span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>podSelector</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>matchLabels</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>foo</span><span class=p>:</span><span class=w> </span><span class=l>bar</span><span class=w>
+</span></span></span></code></pre></div><p>For the policy filtered by <strong>podSelector</strong> and <strong>namespaceSelector</strong> is available option to set “any”. It mean any Pods or Namespaces are allowed to access.</p><p>Last, we define a function to assign port into the rule.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl>{{<span class=l>/*</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=l>Generate ports list</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=cp>*/}}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>define &#34;netpol.scoped.port&#34; }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=nt>ports</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>with .scope.ports }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>if .tcp  }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>range .tcp }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>- <span class=nt>protocol</span><span class=p>:</span><span class=w> </span><span class=l>TCP</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>port</span><span class=p>:</span><span class=w> </span>{{<span class=w> </span><span class=l>. }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>end }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>end }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>if .udp }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>range .udp }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>- <span class=nt>protocol</span><span class=p>:</span><span class=w> </span><span class=l>UDP</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>port</span><span class=p>:</span><span class=w> </span>{{<span class=w> </span><span class=l>. }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>end }}</span><span class=w>
+</span></span></span><span class=line><span class=cl>{{- <span class=l>end }}</span><span class=w>
+</span></span></span></code></pre></div><p>All set, let’s we try. Helm provide command to test our templating is working well or not. We can run command helm template -s &lt;template file> . &ndash;debug . In this case our Network Policy template is located in templates/networkpolicy.yaml .</p><p>To try this, we need to define the values on values.yaml file. This will be a default values to fill our chart.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl><span class=nt>networkPolicies</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=s2>&#34;mysite-policy&#34;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>podSelector</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>foo</span><span class=p>:</span><span class=w> </span><span class=l>bar</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>ingress</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>cidrs</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=nt>ip</span><span class=p>:</span><span class=w> </span><span class=m>10.0.0.1</span><span class=l>/16</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>excepts</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span>- <span class=m>10.0.0.254</span><span class=l>/32</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>podSelectors</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=nt>label</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>foo</span><span class=p>:</span><span class=w> </span><span class=l>bar</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>ports</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>tcp</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=m>8080</span><span class=w>
+</span></span></span></code></pre></div><p>On those example, let assume we want to allow access to our application that run on TCP port 8080 . We will give an access to Pod that have a label foo: bar and have a range of IP 10.0.0.1/16 , except 10.0.0.254 .</p><p>Then to render the template we can run command:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl><span class=l>helm template -s templates/networkpolicy.yaml . --debug</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=nn>---</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=c># Source: netpol/templates/networkpolicy.yaml</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=nt>apiVersion</span><span class=p>:</span><span class=w> </span><span class=l>networking.k8s.io/v1</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=nt>kind</span><span class=p>:</span><span class=w> </span><span class=l>NetworkPolicy</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=nt>metadata</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>mysite-policy</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=nt>spec</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>podSelector</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>matchLabels</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>foo</span><span class=p>:</span><span class=w> </span><span class=l>bar</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>ingress</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span>- <span class=nt>from</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=nt>ipBlock</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>cidr</span><span class=p>:</span><span class=w> </span><span class=m>10.0.0.1</span><span class=l>/16</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>except</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span>- <span class=m>10.0.0.254</span><span class=l>/32</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=nt>podSelector</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>matchLabels</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>foo</span><span class=p>:</span><span class=w> </span><span class=l>bar</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>ports</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=nt>protocol</span><span class=p>:</span><span class=w> </span><span class=l>TCP</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>port</span><span class=p>:</span><span class=w> </span><span class=m>8080</span><span class=w>
+</span></span></span></code></pre></div><p>Source: <a href=https://github.com/bagaswibowo25/netpol>https://github.com/bagaswibowo25/netpol</a></p><p>This my first article written on Medium. Hope I can consistently to share anything that I learned. Thanks for reading, hope it will help you to take advantage of Helm templates. If there any question or feedbacks drop in comment below.</p><p>Cheers!</p></div><nav class=prevnext aria-label=series><span></span><a class=next href=/en/posts/effortless-kubernetes-delivery-with-zuul-ci/><small>2 · next →</small><strong>Effortless Kubernetes Delivery with Zuul CI</strong></a></nav></article></div></div></main><footer class=site-footer><div class="wrap wide"><span>© 2026 Bagas Wibowo · built with Hugo</span><nav aria-label=Tautan><a href=https://github.com/bagaswibowo25 rel=me>github</a>
+<a href=https://www.linkedin.com/in/bagas-wibowo/ rel=me>linkedin</a>
+<a href=https://bagas-awibowo.medium.com/ rel=me>medium</a><a href=/en/index.xml>rss</a></nav></div></footer><dialog class=search-dialog data-search-dialog data-index=/en/index.json aria-label="Search posts"><form method=dialog role=search><label class=sr-only for=q>Search posts</label>
+<input id=q type=search autocomplete=off placeholder="type a keyword…" data-search-input>
+<button class=icon-btn value=close aria-label=Close>esc</button></form><ul class=search-results data-search-results aria-live=polite></ul><p class=search-empty data-search-empty hidden>No matching posts.</p></dialog><script src=/js/site.min.902310fc6294eacdcf49bfb922854e0b9eae1d16bb5812be63eb48fd16965ba1.js integrity="sha256-kCMQ/GKU6s3PSb+5IoVOC56uHRa7WBK+Y+tI/RaWW6E=" defer></script></body></html>
