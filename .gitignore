@@ -1,2 +1,5 @@
 .build/
 .build-fixture/
+public/
+resources/
+.hugo_build.lock

@@ -20,7 +20,8 @@ scripts/build.sh ui       # build + cek + test browser (Playwright di Docker) â€
 
 `build.sh` memakai `hugo` di mesin bila ada, kalau tidak lewat Docker (`hugomods/hugo`, versi terpatok) â€” jangan memasang versi
 Hugo lain secara manual tanpa mencatatnya di `docs/reference/system.md`. Hasil build tidak pernah di-commit ke
-branch kerja (`public/` dan `resources/` adalah artefak).
+branch kerja: `public/`, `resources/`, `.build/` di-`.gitignore`, dan `build.sh` gagal bila build/preview mengubah
+repo. Preview selalu lewat `scripts/build.sh serve` (render ke memori), jangan `hugo server` langsung.
 
 ---
 

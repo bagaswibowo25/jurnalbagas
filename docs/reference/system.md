@@ -30,8 +30,9 @@
 - `scripts/build.sh` — build `hugo --minify` ke `.build/`, lalu cek hasilnya (`tests/build-checks.sh`, termasuk
   situs uji dari `tests/fixture/content` → `.build-fixture/`). `scripts/build.sh ui` menambah test browser
   (Playwright di Docker, `tests/ui/`). Memakai `hugo` lokal bila ada, kalau tidak lewat Docker.
-- `public/` dan `resources/` saat ini ikut ter-commit di `master` (artefak lama). Jangan diubah manual; pembersihan
-  lewat issue tersendiri.
+- Hasil build hanya di folder yang di-`.gitignore` (`.build/`, `.build-fixture/`, `public/`, `resources/`,
+  `.hugo_build.lock`). `scripts/build.sh` gagal bila build atau preview mengubah file di repo (#8).
+- `scripts/build.sh serve` me-render ke memori (`--renderToMemory`): Hugo 0.154 bawaannya menulis ke `public/`.
 
 ## Deploy
 
@@ -44,4 +45,4 @@
 
 ## Temuan terbuka
 
-- Artefak build (`public/`, `resources/`) ter-commit di branch kerja.
+Tidak ada.

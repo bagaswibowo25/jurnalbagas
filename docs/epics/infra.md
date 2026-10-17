@@ -18,6 +18,8 @@ Situs ter-build dan terbit otomatis ke GitHub Pages setiap ada perubahan yang di
 | K1 | Tetap situs statis di GitHub Pages — tidak memakai server dedicated | 2026-10-17 |
 | K2 | Alur pengembangan memakai SDD v2 yang sama dengan 1994-erp; hanya konteks project dan deploy yang berbeda | 2026-10-17 |
 | K3 | GitHub Pages tetap menyajikan situs dari cabang hasil jadi (`prod`); pengaturan Pages tidak diubah | 2026-10-17 |
+| K4 | Cabang lama `gh-pages`, `old`, `new` dihapus langsung tanpa arsip; repo hanya punya `master` + `prod` | 2026-10-17 |
+| K5 | Foto `pp.jpeg` yang tidak dipakai dihapus; foto profil nanti lewat issue baru dengan mockup | 2026-10-17 |
 
 ## 3. Istilah
 
@@ -28,3 +30,4 @@ Situs ter-build dan terbit otomatis ke GitHub Pages setiap ada perubahan yang di
 | Spec | Issue | Bergantung pada |
 |---|---|---|
 | [Situs terbit otomatis lagi](../specs/7-deploy-pages/spec.md) | #7 | — |
+| [Merapikan isi repo](../specs/8-bersih-repo/spec.md) | #8 | #7 |
