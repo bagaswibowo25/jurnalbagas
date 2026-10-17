@@ -9,9 +9,8 @@
 # Cek per-spec ditambahkan di bawah "Cek tambahan" oleh pekerjaan yang membutuhkannya.
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-# Dipatok ke 0.123.8: tema bilberry lama gagal di Hugo ≥0.125 (template _internal/google_analytics_async dihapus).
-# Naikkan setelah tema diganti (Epic Theme) — dan catat di docs/reference/system.md.
-HUGO_IMAGE="${HUGO_IMAGE:-hugomods/hugo:exts-0.123.8}"
+# Dipatok ke 0.154.5 (#5, tema sendiri). Mengubah versi = catat di docs/reference/system.md.
+HUGO_IMAGE="${HUGO_IMAGE:-hugomods/hugo:exts-0.154.5}"
 ACTIONLINT_IMAGE="${ACTIONLINT_IMAGE:-rhysd/actionlint:1.7.7}"
 die() { echo "✗ $*" >&2; exit 1; }
 
@@ -27,9 +26,6 @@ hugo_run() {
   fi
 }
 
-if [ -f "$ROOT/.gitmodules" ] && [ -z "$(ls -A "$ROOT/themes/bilberry-hugo-theme" 2>/dev/null)" ]; then
-  die "tema belum terpasang — jalankan: git -C \"$ROOT\" submodule update --init --recursive"
-fi
 
 if [ "${1:-}" = "serve" ]; then
   hugo_run server --bind 0.0.0.0 --port 1313 --disableFastRender

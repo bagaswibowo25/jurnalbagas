@@ -4,7 +4,7 @@
 #   scripts/doctor.sh           # semua cek, ✅/❌ + perintah perbaikan; exit 1 bila ada ❌
 #   scripts/doctor.sh --quiet   # hanya cetak yang ❌ (dipakai hook SessionStart di .claude/settings.json); selalu exit 0
 #
-# Yang dicek: git identity · checkout utama tidak tertinggal origin/master · tema terpasang · gh login + scope
+# Yang dicek: git identity · checkout utama tidak tertinggal origin/master · gh login + scope
 # project · label spec-approved · hugo atau Docker tersedia · skill SDD ada · memory Claude sinkron dengan claude-memory/.
 set -uo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
@@ -33,11 +33,6 @@ else
   [ $QUIET -eq 1 ] || echo "⚠️  tidak bisa fetch origin (offline?) — cek versi dilewati"
 fi
 
-# tema (submodule) — dibutuhkan selama situs masih memakai tema lama
-if [ -f "$ROOT/.gitmodules" ]; then
-  if [ -n "$(ls -A "$ROOT/themes/bilberry-hugo-theme" 2>/dev/null)" ]; then ok "tema terpasang"
-  else bad "tema belum terpasang — scripts/build.sh akan gagal" "git -C \"$ROOT\" submodule update --init --recursive"; fi
-fi
 
 # gh + scope project + label
 if ! command -v gh >/dev/null; then

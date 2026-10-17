@@ -1,0 +1,10 @@
+{{- $page := .page -}}{{- $toc := .toc -}}
+<ol class="series-list">
+  {{- range .s.parts }}
+  {{- $active := eq . $page }}
+  <li{{ if $active }} class="active"{{ end }}>
+    <a href="{{ .RelPermalink }}"{{ if $active }} aria-current="page"{{ end }}><span class="n">{{ .Params.part }}</span>{{ .Params.short | default .Title }}</a>
+    {{- if and $active $toc }}<div class="series-toc">{{ .TableOfContents }}</div>{{ end }}
+  </li>
+  {{- end }}
+</ol>

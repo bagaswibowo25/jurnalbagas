@@ -1,0 +1,10 @@
+{{ define "main" }}
+<div class="page">
+  <h1>{{ if eq .Data.Plural "series" }}{{ i18n "series_title" }}{{ else }}{{ i18n "tags_title" }}{{ end }}</h1>
+  <ul class="term-list">
+    {{- range .Data.Terms.Alphabetical }}
+    <li><a class="chip" href="{{ .Page.RelPermalink }}">{{ .Page.LinkTitle | lower }} <span aria-hidden="true">&nbsp;({{ .Count }})</span></a></li>
+    {{- end }}
+  </ul>
+</div>
+{{ end }}

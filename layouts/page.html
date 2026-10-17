@@ -1,0 +1,61 @@
+{{ define "main" }}
+{{- if eq .Section "tulisan" -}}
+{{- $s := partial "series-data.html" . -}}
+<div class="progress" aria-hidden="true"><span data-progress></span></div>
+<div class="wrap wide">
+  <div class="article-layout">
+    {{- with $s }}
+    <aside class="series-nav" aria-label="{{ i18n "series" }}">
+      <div class="series-nav-head">
+        <div>
+          <div class="label">{{ i18n "series" }}</div>
+          <a class="series-name" href="{{ .term.RelPermalink }}">{{ .name }}</a>
+        </div>
+        <button type="button" class="icon-btn js-only" data-nav-toggle aria-label="{{ i18n "hide_nav" }}" title="{{ i18n "hide_nav" }}">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M15 10l-2 2 2 2"/></svg>
+        </button>
+      </div>
+      <div class="series-progress" aria-hidden="true"><span style="width: {{ div (mul .index 100) .total }}%"></span></div>
+      {{ partial "series-list.html" (dict "s" . "page" $ "toc" true) }}
+    </aside>
+    <div class="series-rail">
+      <button type="button" class="icon-btn" data-nav-toggle aria-label="{{ i18n "show_nav" }}" title="{{ i18n "show_nav" }}">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M13 10l2 2-2 2"/></svg>
+      </button>
+      <div>{{ .index }}/{{ .total }}</div>
+    </div>
+    {{- end }}
+    <article class="prose">
+      <div class="crumb" aria-hidden="true">~/{{ strings.TrimPrefix "./" (i18n "nav_posts") }}/{{ with $s }}{{ .name }}/{{ end }}<span>{{ path.Base .File.Dir }}.md</span></div>
+      <h1>{{ .Title }}</h1>
+      <div class="post-meta">
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+        <span>{{ site.Params.author }}</span>
+        {{- range .GetTerms "tags" }}<a href="{{ .RelPermalink }}">#{{ .LinkTitle | lower }}</a>{{ end }}
+      </div>
+      {{- with .Translations }}
+      <p class="alt-lang">{{ i18n "also_in" }}{{ range . }} <a href="{{ .RelPermalink }}" hreflang="{{ .Language.LanguageCode }}" lang="{{ .Language.LanguageCode }}">{{ .Language.LanguageName }}</a>{{ end }}</p>
+      {{- end }}
+      {{- with $s }}
+      <details class="series-card">
+        <summary><span>{{ i18n "series" }}: {{ .name }} · <b class="cursor">{{ .index }}/{{ .total }}</b></span><span class="caret">▾ {{ i18n "open_series" }}</span></summary>
+        {{ partial "series-list.html" (dict "s" . "page" $ "toc" false) }}
+      </details>
+      {{- end }}
+      <div class="content">{{ .Content }}</div>
+      {{- with $s }}
+      <nav class="prevnext" aria-label="{{ i18n "series" }}">
+        {{- with .prev }}<a href="{{ .RelPermalink }}"><small>← {{ .Params.part }} · {{ i18n "prev" }}</small><strong>{{ .Title }}</strong></a>{{ else }}<span></span>{{ end }}
+        {{- with .next }}<a class="next" href="{{ .RelPermalink }}"><small>{{ .Params.part }} · {{ i18n "next" }} →</small><strong>{{ .Title }}</strong></a>{{ end }}
+      </nav>
+      {{- end }}
+    </article>
+  </div>
+</div>
+{{- else -}}
+<article class="page">
+  <h1>{{ .Title }}</h1>
+  <div class="content">{{ .Content }}</div>
+</article>
+{{- end -}}
+{{ end }}
