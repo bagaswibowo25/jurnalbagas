@@ -23,4 +23,4 @@ issue: 7
 ## Penutup
 - [x] T10 [DOC] Perbarui bagian Deploy + Temuan terbuka — `docs/reference/system.md`
 - [x] T11 [SH] `scripts/build.sh` hijau; bandingkan daftar halaman dengan T1 (skenario 5, 7)
-- [ ] T12 [GH] `scripts/worktree.sh diff` bersih, PR dibuka (`Closes #7`); label `needs-prod-verify` setelah merge
+- [x] T12 [GH] `scripts/worktree.sh diff` bersih, PR dibuka (`Closes #7`); label `needs-prod-verify` setelah merge
