@@ -99,7 +99,7 @@ test('S3 tampilkan lebih lama memuat tulisan berikutnya di halaman yang sama', a
   await page.locator('[data-load-more]').click();
   await expect(entries).toHaveCount(10);
   await page.locator('[data-load-more]').click();
-  await expect(entries).toHaveCount(11);
+  await expect(entries).toHaveCount(12);  // 9 id + 3 en Medium (#16 menambah 1)
   await expect(page).toHaveURL(/\/$/);
   await expect(page.locator('[data-load-more]')).toHaveCount(0);
 });
