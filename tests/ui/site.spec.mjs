@@ -35,6 +35,17 @@ for (const width of [320, 360, 390, 768]) for (const url of PAGES) {
   });
 }
 
+for (const width of [320, 390, 1280]) {
+  test(`chip tag turun baris, tanpa scroll samping (${width}px)`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 800 });
+    await page.goto('/');
+    const chips = page.locator('.chips');
+    const [sw, cw] = await chips.evaluate((e) => [e.scrollWidth, e.clientWidth]);
+    expect(sw).toBeLessThanOrEqual(cw);
+    await expect(chips.locator('.chip').last()).toBeInViewport();
+  });
+}
+
 test('S8 ponsel 320px: tema & bahasa pindah ke menu', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 700 });
   await page.goto('/');

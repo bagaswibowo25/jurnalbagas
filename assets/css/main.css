@@ -82,7 +82,7 @@ img { max-width: 100%; height: auto; }
 .feed-head { margin-top: 36px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
 .feed-head h1, .feed-head h2 { flex: none; margin: 0; font: 400 15px var(--mono); color: var(--dim); }
 .feed-head h1 span, .feed-head h2 span { color: var(--text); }
-.chips { display: flex; flex-wrap: nowrap; overflow-x: auto; max-width: 100%; min-width: 0; gap: 6px; font: 400 12px var(--mono); }
+.chips { flex: 1 1 100%; display: flex; flex-wrap: wrap; max-width: 100%; min-width: 0; gap: 6px; font: 400 12px var(--mono); }
 .chip { flex: none; display: inline-flex; align-items: center; min-height: 32px; padding: 0 12px; border: 1px solid var(--border2); border-radius: 99px; color: var(--muted); text-decoration: none; }
 .chip-lang { margin-left: 6px; padding: 0 4px; border: 1px solid var(--border2); border-radius: 3px; font-size: 10px; color: var(--muted); }
 .chip[aria-current="page"] { background: var(--chip); border-color: var(--accent); color: var(--accent); }

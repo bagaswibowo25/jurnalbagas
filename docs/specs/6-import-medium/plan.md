@@ -115,3 +115,6 @@ test UI S3 (5 → 10 → 11).
   `<img>` lokal di seluruh situs harus ada filenya (terbukti menangkap file yang dihapus).
 - 2026-10-17 — Daftar isi seri kosong untuk tulisan Medium (subjudul `###`/`####`, sedangkan TOC `endLevel = 2`).
   `endLevel` dinaikkan ke 3; cek S10 sekarang juga memastikan daftar isi tidak kosong (Zuul CI, ClickStack).
+- 2026-10-17 — Feedback owner: tidak suka chip tag yang di-scroll ke samping. Chip sekarang turun baris
+  (`flex-wrap: wrap`) di baris sendiri di bawah judul feed; test UI baru memastikan tanpa scroll samping di
+  320/390/1280px dan chip terakhir terlihat.
