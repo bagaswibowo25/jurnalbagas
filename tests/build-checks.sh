@@ -53,8 +53,8 @@ if [ "$mode" = site ]; then
 
   # Skenario 14 — indeks pencarian per bahasa.
   if python3 -c "import json,sys; a=json.load(open('$D/index.json')); b=json.load(open('$D/en/index.json')); \
-sys.exit(0 if len(a)==8 and all(p['url'].startswith('/tulisan/') for p in a) and len(b)==3 and all(p['url'].startswith('/en/posts/') for p in b) else 1)"; then
-    ok "S14 indeks pencarian: id 8 tulisan id, en 3 tulisan en"
+sys.exit(0 if len(a)==9 and all(p['url'].startswith('/tulisan/') for p in a) and len(b)==4 and all(p['url'].startswith('/en/posts/') for p in b) else 1)"; then
+    ok "S14 indeks pencarian: id 9 tulisan id, en 4 tulisan en (+#16)"
   else bad "S14 indeks pencarian"; fi
 
   # Skenario 16 — alamat baru.
@@ -124,9 +124,9 @@ PY
        && ! grep -oE '<img src=[^ >]+' "$D/$P" | grep -qE 'src="?https?:'; then ok "#6 S6 $s: semua gambar dari blog"
     else bad "#6 S6 $s: gambar/pelacak dari Medium"; fi
   done
-  # S1 beranda en: ketiganya tampil tanpa lencana, urut tanggal
-  if [ "$(count_feed en 'href=/en/posts/[a-z-]*/>[^<]*</a></h2>')" -eq 3 ] && [ "$(feed_dates en)" = "$(feed_dates en | sort -r)" ]; then
-    ok "#6 S1 beranda en: 3 tulisan en, urut tanggal"; else bad "#6 S1 beranda en"; fi
+  # S1 beranda en: ketiganya tampil tanpa lencana, urut tanggal (+ tulisan #16 = 4 tulisan en)
+  if [ "$(count_feed en 'href=/en/posts/[a-z-]*/>[^<]*</a></h2>')" -eq 4 ] && [ "$(feed_dates en)" = "$(feed_dates en | sort -r)" ]; then
+    ok "#6 S1 beranda en: 4 tulisan en (3 Medium + #16), urut tanggal"; else bad "#6 S1 beranda en"; fi
   # S2 beranda id: lencana EN ke versi en
   if [ "$(count_feed . 'class=badge-id title="[^"]*">EN<')" -eq 3 ] && [ "$(count_feed . 'href=/en/posts/[a-z-]*/>[^<]*</a></h2>')" -eq 3 ]; then
     ok "#6 S2 beranda id: 3 tulisan berlencana EN menaut ke /en/posts/"; else bad "#6 S2 beranda id: lencana EN"; fi
@@ -155,6 +155,63 @@ PY
   n=$(count_feed en/tags/kubernetes 'class=post-entry')
   [ "$n" -eq 3 ] && [ -f "$D/en/tags/devops/index.html" ] && [ -f "$D/en/tags/helm/index.html" ] && [ ! -e "$D/en/tags/medium" ] \
     && ok "#6 S8 tag topik: kubernetes ($n), devops, helm; tanpa tag medium" || bad "#6 S8 tag topik (kubernetes=$n)"
+
+  # #16 tulisan login wajah (Howdy), seri linux-tips, id + en.
+  HID=tulisan/windows-hello-di-opensuse; HEN=en/posts/windows-hello-on-opensuse
+  # S1 tulisan terbaru di kedua beranda
+  if grep -oE 'href=/[a-z/-]+/>[^<]*</a></h2>' "$D/index.html" | head -1 | grep -q "/$HID/" \
+     && grep -oE 'href=/[a-z/-]+/>[^<]*</a></h2>' "$D/en/index.html" | head -1 | grep -q "/$HEN/"; then
+    ok "#16 S1 tulisan teratas di beranda id dan en"; else bad "#16 S1 tulisan teratas di beranda"; fi
+  # S2 pindah bahasa
+  if has $HID/index.html "hreflang=en-US href=https://www.jurnalbagas.com/$HEN/" && has $HEN/index.html "hreflang=id-ID href=https://www.jurnalbagas.com/$HID/" \
+     && has $HID/index.html "class=\"icon-btn lang-switch\" href=/$HEN/" && has $HEN/index.html "class=\"icon-btn lang-switch\" href=/$HID/"; then
+    ok "#16 S2 id ↔ en saling menaut"; else bad "#16 S2 pindah bahasa"; fi
+  # S3 navigasi seri linux-tips bagian 1
+  for P in $HID $HEN; do
+    ol=$(python3 -c "import sys; h=open(sys.argv[1]).read(); print(h.split('<ol class=series-list>')[1].split('</ol>')[0] if h.count('<ol class=series-list>')==2 else '')" "$D/$P/index.html")
+    [ "$(echo "$ol" | grep -oE 'href=/[a-z/-]+/' | sort -u)" = "href=/$P/" ] && echo "$ol" | grep -q 'class=active' && has $P/index.html 'series-nav' \
+      && ok "#16 S3 $P: navigasi seri linux-tips, bagian 1 aktif" || bad "#16 S3 $P: navigasi seri"
+  done
+  # S4 daftar seri
+  has seri/index.html 'href=/seri/linux-tips/' && has en/series/index.html 'href=/en/series/linux-tips/' \
+    && ok "#16 S4 linux-tips di daftar seri id dan en" || bad "#16 S4 daftar seri"
+  # S5 tag topik
+  miss=""; for t in linux opensuse howdy security; do
+    has tag/$t/index.html "href=/$HID/" || miss="$miss tag/$t"; has en/tags/$t/index.html "href=/$HEN/" || miss="$miss en/tags/$t"; done
+  [ -z "$miss" ] && ok "#16 S5 tag linux, opensuse, howdy, security (id + en)" || bad "#16 S5 tag:$miss"
+  # S6 indeks pencarian
+  python3 -c "import json,sys; a=[p['url'] for p in json.load(open('$D/index.json'))]; b=[p['url'] for p in json.load(open('$D/en/index.json'))]; sys.exit(0 if '/$HID/' in a and '/$HEN/' in b else 1)" \
+    && ok "#16 S6 tulisan ada di indeks pencarian id dan en" || bad "#16 S6 indeks pencarian"
+  # S7 isi lengkap (h2, blok kode, gambar + alt, tautan repo) · S9 tanpa data pribadi
+  for P in $HID $HEN; do
+    got=$(python3 - "$D/$P/index.html" <<'PY'
+import sys, re
+from html.parser import HTMLParser
+class P(HTMLParser):
+    def __init__(s): super().__init__(); s.depth=0; s.c={'h2':0,'pre':0,'img':0,'noalt':0,'table':0}; s.txt=[]; s.src=[]; s.href=[]
+    def handle_starttag(s, t, a):
+        if s.depth: s.depth += t == 'div'
+        elif t == 'div' and ('class', 'content') in a: s.depth = 1; return
+        if not s.depth: return
+        a = dict(a)
+        if t in s.c: s.c[t] += 1
+        if t == 'img': s.src.append(a.get('src', '')); s.c['noalt'] += not a.get('alt')
+        if t == 'a': s.href.append(a.get('href', ''))
+    def handle_endtag(s, t):
+        if s.depth and t == 'div': s.depth -= 1
+    def handle_data(s, d):
+        if s.depth: s.txt.append(d)
+p = P(); p.feed(open(sys.argv[1]).read()); txt = ''.join(p.txt)
+imgs = ' '.join(sorted(x.rsplit('/', 1)[-1] for x in p.src))
+repo = 'repo' if 'https://github.com/bagaswibowo25/howdy-setup-suse' in p.href else 'norepo'
+priv = 'pribadi' if re.search(r'/home/|by-id|@gmail|wibowo-|\bwibowo@', txt) else 'bersih'
+print(*p.c.values(), imgs, repo, priv)
+PY
+)
+    case $P in $HID) want="8 4 2 0 1 login-wajah.gif siklus-ir.svg repo bersih" ;; *) want="8 4 2 0 1 ir-cycle.en.svg login-wajah.gif repo bersih" ;; esac
+    [ "$got" = "$want" ] && ok "#16 S7/S9 $P: isi lengkap (8 bagian, 4 blok kode, tabel, GIF + diagram ber-alt, tautan repo), tanpa data pribadi" \
+      || bad "#16 S7/S9 $P: $got ≠ $want"
+  done
 
   # Semua gambar lokal di semua halaman benar-benar ada di hasil build (gambar rusak = ❌).
   broken=""
