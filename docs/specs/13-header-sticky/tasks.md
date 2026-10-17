@@ -16,5 +16,5 @@ issue: 13
 - [x] T6 [SH] Test UI skenario 2, 4, 8 + reduced motion — `tests/ui/site.spec.mjs`
 
 ## Penutup
-- [ ] T7 [SH] `scripts/build.sh ui` hijau; preview untuk owner
-- [ ] T8 [GH] `scripts/worktree.sh diff` bersih, PR dibuka (`Closes #13`)
+- [x] T7 [SH] `scripts/build.sh ui` hijau; preview untuk owner
+- [x] T8 [GH] `scripts/worktree.sh diff` bersih, PR dibuka (`Closes #13`)
