@@ -15,9 +15,10 @@ Tidak ada test unit; gerbang kualitas = **situs berhasil di-build dan lolos cek 
 ```bash
 scripts/build.sh          # hugo --minify ke folder sementara + cek hasil build
 scripts/build.sh serve    # preview lokal (hugo server) untuk dilihat owner
+scripts/build.sh ui       # build + cek + test browser (Playwright di Docker) — wajib bila tampilan berubah
 ```
 
-`build.sh` memakai `hugo` di mesin bila ada, kalau tidak lewat Docker (`hugomods/hugo`) — jangan memasang versi
+`build.sh` memakai `hugo` di mesin bila ada, kalau tidak lewat Docker (`hugomods/hugo`, versi terpatok) — jangan memasang versi
 Hugo lain secara manual tanpa mencatatnya di `docs/reference/system.md`. Hasil build tidak pernah di-commit ke
 branch kerja (`public/` dan `resources/` adalah artefak).
 
