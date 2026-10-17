@@ -12,6 +12,11 @@ ok()  { echo "✅ $1"; }
 bad() { echo "❌ $1"; fail=1; }
 has() { grep -q -- "$2" "$D/$1" 2>/dev/null; }
 count() { grep -o -- "$2" "$D/$1" 2>/dev/null | wc -l | tr -d ' '; }
+# Jumlah pola di semua halaman feed: <base>/index.html + <base>/page/N/index.html.
+count_feed() { local b="${1%/}" t=0 f; for f in "$D/$b/index.html" "$D/$b"/page/*/index.html; do
+  [ -f "$f" ] && t=$((t + $(grep -o -- "$2" "$f" | wc -l))); done; echo "$t"; }
+feed_dates() { local b="${1%/}" f; for f in "$D/$b/index.html" $(ls "$D/$b"/page/*/index.html 2>/dev/null | sort -V); do
+  grep -oE '\[20[0-9]{2}-[0-9]{2}-[0-9]{2}\]' "$f"; done | tr -d '[]'; }
 redirects_to() { grep -qE "url=https://www\.jurnalbagas\.com$2\"?>" "$D/$1/index.html" 2>/dev/null; }
 
 POSTS=(tipe-data kondisional perulangan fungsi list tuple set dictionary)
@@ -19,9 +24,9 @@ OLD=(tipe_data kondisional perulangan fungsi list tuple set dictionary)
 
 if [ "$mode" = site ]; then
   # Skenario 1 — beranda: feed tulisan, terbaru dulu, tanpa banner.
-  n=$(( $(count index.html 'class=post-entry') + $(count page/2/index.html 'class=post-entry') ))
-  dates=$(cat "$D/index.html" "$D/page/2/index.html" 2>/dev/null | grep -oE '\[20[0-9]{2}-[0-9]{2}-[0-9]{2}\]' | tr -d '[]')
-  if [ "$n" -ge 8 ] && [ "$dates" = "$(echo "$dates" | sort -r)" ] && has index.html 'whoami' && ! has index.html 'hero'; then
+  n=$(count_feed . 'class=post-entry')
+  dates=$(feed_dates .)
+  if [ "$(count index.html 'class=post-entry')" -eq 5 ] && [ "$n" -ge 11 ] && [ "$dates" = "$(echo "$dates" | sort -r)" ] && has index.html 'whoami' && ! has index.html 'hero'; then
     ok "S1 beranda: $n tulisan (5 per halaman), urut terbaru, tanpa banner"
   else bad "S1 beranda (entri=$n, urutan/whoami/banner)"; fi
 
@@ -41,15 +46,15 @@ if [ "$mode" = site ]; then
     ok "S7 bagian 1 menaut ke bagian 2"; else bad "S7 tautan berikutnya di bagian 1"; fi
 
   # Skenario 12 — beranda en: tulisan belum diterjemahkan berlencana ID, menaut ke versi id.
-  n=$(( $(count en/index.html 'class=badge-id') + $(count en/page/2/index.html 'class=badge-id') ))
+  n=$(count_feed en 'class=badge-id title="[^"]*">ID<')
   if [ "$n" -eq 8 ] && has en/index.html 'href=/tulisan/belajar-python-dictionary/' && has en/index.html './posts'; then
     ok "S12 beranda en: $n tulisan berlencana ID, menu en"
   else bad "S12 beranda en (lencana=$n)"; fi
 
   # Skenario 14 — indeks pencarian per bahasa.
   if python3 -c "import json,sys; a=json.load(open('$D/index.json')); b=json.load(open('$D/en/index.json')); \
-sys.exit(0 if len(a)==8 and all(p['url'].startswith('/tulisan/') for p in a) and b==[] else 1)"; then
-    ok "S14 indeks pencarian: id 8 tulisan, en hanya tulisan en (0)"
+sys.exit(0 if len(a)==8 and all(p['url'].startswith('/tulisan/') for p in a) and len(b)==3 and all(p['url'].startswith('/en/posts/') for p in b) else 1)"; then
+    ok "S14 indeks pencarian: id 8 tulisan id, en 3 tulisan en"
   else bad "S14 indeks pencarian"; fi
 
   # Skenario 16 — alamat baru.
@@ -81,6 +86,48 @@ sys.exit(0 if len(a)==8 and all(p['url'].startswith('/tulisan/') for p in a) and
     [ -e "$D/$p" ] && left="$left $p"
   done
   [ -z "$left" ] && ok "S18 halaman demo tema lama tidak ada" || bad "S18 masih ada:$left"
+
+  # #6 — tiga tulisan Medium (spec #6).
+  MED=(kubernetes-logs-observability-with-clickstack effortless-kubernetes-delivery-with-zuul-ci helm-templating-network-policy)
+  MEDURL=(kubernetes-logs-observability-with-clickstack-clickhouse-hyperdx-37ddcbcc58f2 effortless-kubernetes-delivery-with-zuul-ci-38b9b1d592fe helm-templating-network-policy-using-helm-783b2f7e401a)
+  # Jumlah elemen sumber (feed Medium; <pre> berurutan digabung, judul di awal isi dibuang): pre img heading li blockquote
+  EXPECT=("11 9 10 8 1" "9 12 8 0 1" "16 1 0 4 0")
+  for i in 0 1 2; do
+    s=${MED[$i]}; P=en/posts/$s/index.html
+    # S10 alamat, S3 catatan sumber, S4 canonical
+    if [ -f "$D/$P" ] && has $P "First published on <a href=https://bagas-awibowo.medium.com/${MEDURL[$i]} rel=noopener>Medium</a>" \
+       && has $P "rel=canonical href=https://www.jurnalbagas.com/en/posts/$s/>"; then
+      ok "#6 S3/S4/S10 $s: alamat, catatan Medium, canonical ke blog"
+    else bad "#6 S3/S4/S10 $s"; fi
+    # S5 isi utuh (jumlah elemen = sumber)
+    got="$(count $P '<pre') $(count $P '<img') $(grep -oE '<h[2-6] id=' "$D/$P" | wc -l | tr -d ' ') $(count $P '<li>') $(count $P '<blockquote')"
+    [ "$got" = "${EXPECT[$i]}" ] && ok "#6 S5 $s: isi utuh ($got)" || bad "#6 S5 $s: elemen $got ≠ sumber ${EXPECT[$i]}"
+    # S6 gambar lokal, tanpa Medium
+    if ! grep -qE 'cdn-images-1\.medium\.com|miro\.medium\.com|medium\.com/_/stat' "$D/$P" \
+       && ! grep -oE '<img src=[^ >]+' "$D/$P" | grep -qE 'src="?https?:'; then ok "#6 S6 $s: semua gambar dari blog"
+    else bad "#6 S6 $s: gambar/pelacak dari Medium"; fi
+  done
+  # S1 beranda en: ketiganya tampil tanpa lencana, urut tanggal
+  if [ "$(count_feed en 'href=/en/posts/[a-z-]*/>[^<]*</a></h2>')" -eq 3 ] && [ "$(feed_dates en)" = "$(feed_dates en | sort -r)" ]; then
+    ok "#6 S1 beranda en: 3 tulisan en, urut tanggal"; else bad "#6 S1 beranda en"; fi
+  # S2 beranda id: lencana EN ke versi en
+  if [ "$(count_feed . 'class=badge-id title="[^"]*">EN<')" -eq 3 ] && [ "$(count_feed . 'href=/en/posts/[a-z-]*/>[^<]*</a></h2>')" -eq 3 ]; then
+    ok "#6 S2 beranda id: 3 tulisan berlencana EN menaut ke /en/posts/"; else bad "#6 S2 beranda id: lencana EN"; fi
+  # S8 tag topik
+  n=$(count_feed en/tags/kubernetes 'class=post-entry')
+  [ "$n" -eq 3 ] && [ -f "$D/en/tags/devops/index.html" ] && [ -f "$D/en/tags/helm/index.html" ] && [ ! -e "$D/en/tags/medium" ] \
+    && ok "#6 S8 tag topik: kubernetes ($n), devops, helm; tanpa tag medium" || bad "#6 S8 tag topik (kubernetes=$n)"
+
+  # Semua gambar lokal di semua halaman benar-benar ada di hasil build (gambar rusak = ❌).
+  broken=""
+  while IFS= read -r f; do
+    dir=$(dirname "${f#$D}")
+    for src in $(grep -oE '<img src="?[^ ">]+' "$f" | sed -E 's/<img src="?//'); do
+      case "$src" in http*|//*|data:*) continue ;; /*) p="$D$src" ;; *) p="$D$dir/$src" ;; esac
+      [ -f "$p" ] || broken="$broken ${f#$D/}→$src"
+    done
+  done < <(find "$D" -name index.html)
+  [ -z "$broken" ] && ok "gambar: semua <img> lokal ada filenya" || bad "gambar rusak:$(echo $broken | head -c 300)"
 
   # Aturan — tanpa layanan pihak luar (Algolia, Google Fonts, skrip/stylesheet dari domain lain).
   ext=$(grep -rlE 'algolia|fonts\.googleapis|fonts\.gstatic|<script[^>]+src=https?://|<link[^>]+stylesheet[^>]+href=https?://' "$D" --include='*.html' --include='*.js' --include='*.css' | head -3)

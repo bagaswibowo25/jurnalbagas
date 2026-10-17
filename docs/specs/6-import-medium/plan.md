@@ -92,3 +92,15 @@ test UI S3 (5 → 10 → 11).
 <!-- Diisi selama pengerjaan: "- YYYY-MM-DD — temuan teknis singkat". Bug/pekerjaan baru → issue baru. -->
 - 2026-10-17 — Feed berisi 3 tulisan, tanpa embed/iframe. Tiap tulisan memuat piksel statistik `medium.com/_/stat…`
   (pelacak) → dibuang saat konversi. Kata "gist" di Zuul CI bukan embed.
+- 2026-10-17 — Konversi (sekali jalan, skrip tidak di-commit): `content:encoded` dari feed → buang `<img>` piksel
+  `medium.com/_/stat`, `<br>` di `<pre>` → baris baru, unduh `cdn-images-1.medium.com` ke bundle → `pandoc/core:3.5
+  -f html -t gfm --wrap=none` → `<figure>` jadi gambar Markdown + keterangan miring, blok kode berindentasi jadi
+  fenced + bahasa (yaml/bash/text), judul yang terulang di awal isi dibuang.
+- 2026-10-17 — Medium memecah satu blok kode menjadi beberapa `<pre>` berurutan; pandoc menggabungnya. Jumlah blok
+  kode yang diharapkan = `<pre>` sumber − pasangan berurutan (ClickStack 13→11, Helm 17→16, Zuul 9).
+- 2026-10-17 — Keterangan gambar Zuul berupa tautan (zuul-ci.org) sempat jadi teks biasa → dipulihkan sebagai tautan.
+- 2026-10-17 — Gambar Medium tidak punya teks alt → alt = "Screenshot: <subjudul terdekat>" / "Illustration: <judul>"
+  untuk gambar sampul (constitution #7).
+- 2026-10-17 — Gambar di bundle yang hanya punya `index.en.md` tidak diterbitkan Hugo (render hook mengembalikan src
+  apa adanya → gambar rusak). Diperbaiki dengan akhiran `.en` pada nama file. Cek baru di `build-checks.sh`: semua
+  `<img>` lokal di seluruh situs harus ada filenya (terbukti menangkap file yang dihapus).

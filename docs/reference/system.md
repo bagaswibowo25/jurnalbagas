@@ -14,10 +14,15 @@
 - **Dua bahasa:** `id` (bawaan, di root) dan `en` (`/en/`). Teks tampilan di `i18n/`. Terjemahan tulisan =
   `index.en.md` di bundle yang sama (+ `slug` Inggris).
 - **Konten:** `content/tulisan/<slug>/index.md` (page bundle + gambar). Front matter: `title`, `date`, `slug`, `tags`,
-  `series`, `part`, `short` (label di navigasi seri), `summary`, `aliases`. Halaman: `content/tentang/`,
+  `series`, `part`, `short` (label di navigasi seri), `summary`, `aliases`, `medium` (URL asli tulisan impor →
+  catatan "First published on Medium"). Bundle yang hanya berisi satu bahasa non-bawaan (mis. hanya `index.en.md`)
+  wajib memberi akhiran bahasa pada nama gambar (`img-01.en.png`) — tanpa itu Hugo tidak menerbitkan gambarnya. Saat
+  versi id ditambahkan, hapus akhiran itu agar gambar dipakai bersama. Halaman: `content/tentang/`,
   `content/kontak/`. Term: `content/tags/<tag>/_index.md`, `content/series/<seri>/_index.md`.
 - **Alamat:** id `/tulisan/:slug/`, `/tag/…`, `/seri/…`; en `/en/posts/:slug/`, `/en/tags/…`, `/en/series/…`.
   Alamat lama dialihkan lewat `aliases` (tabel di `docs/specs/5-redesign/plan.md` §5).
+- **Feed lintas bahasa:** tiap beranda/daftar tulisan menampilkan tulisan bahasa lain yang belum diterjemahkan, dengan
+  lencana nama bahasanya ("ID"/"EN") — `layouts/_partials/feed-pages.html`.
 - **Pencarian:** `/index.json` dan `/en/index.json` (buatan Hugo) dibaca `assets/js/search.js` di browser.
 
 ## Build
