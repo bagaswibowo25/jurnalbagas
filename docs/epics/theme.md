@@ -23,6 +23,7 @@ terang. Standar tampilannya: [`docs/reference/design.md`](../reference/design.md
 | K6 | Pencarian berjalan di situs sendiri, tanpa layanan luar (Algolia dicopot) | 2026-10-17 |
 | K7 | Tidak ada kolom komentar | 2026-10-17 |
 | K8 | Chip tag dan daftar seri menampilkan tag/seri dari kedua bahasa; yang dari bahasa lain diberi tanda bahasa dan membuka halamannya di bahasa itu (#6) | 2026-10-17 |
+| K9 | Navigasi atas menyingkir saat scroll ke bawah dan muncul lagi saat scroll ke atas; bilah progres baca tetap terlihat; tanpa JS navigasi selalu menempel (#13, dipilih dari mockup) | 2026-10-17 |
 
 ## 3. Istilah
 
@@ -34,3 +35,4 @@ terang. Standar tampilannya: [`docs/reference/design.md`](../reference/design.md
 | Spec | Issue | Bergantung pada |
 |---|---|---|
 | [Tampilan baru, dua bahasa](../specs/5-redesign/spec.md) | #5 | #7 (agar terbit ke situs live) |
+| [Navigasi atas muncul saat scroll ke atas](../specs/13-header-sticky/spec.md) | #13 | #5 |

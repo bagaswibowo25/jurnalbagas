@@ -174,3 +174,95 @@ for (const scheme of ['dark', 'light']) {
     await ctx.close();
   });
 }
+
+// ── #13 navigasi atas muncul saat scroll ke atas (Theme K9) ──
+const headerTop = (page) => page.locator('.site-header').evaluate((e) => e.getBoundingClientRect().top);
+const headerBottom = (page) => page.locator('.site-header').evaluate((e) => e.getBoundingClientRect().bottom);
+const scrollTo = async (page, y) => { await page.evaluate((v) => window.scrollTo(0, v), y); await page.waitForTimeout(350); };
+
+for (const [width, scheme] of [[1280, 'dark'], [1280, 'light'], [390, 'dark'], [390, 'light']]) {
+  test(`#13 S1-S3/S8 header menyingkir & muncul (${width}px, ${scheme})`, async ({ browser }) => {
+    const ctx = await browser.newContext({ viewport: { width, height: 800 }, colorScheme: scheme });
+    const page = await ctx.newPage();
+    await page.goto(ARTICLE);
+    expect(await headerTop(page)).toBe(0);                       // S1
+    await scrollTo(page, 400); await scrollTo(page, 900);
+    expect(await headerBottom(page)).toBeLessThanOrEqual(0);     // S2
+    await scrollTo(page, 860);
+    expect(await headerTop(page)).toBe(0);                       // S3
+    await page.locator('.logo').click({ trial: true });
+    await ctx.close();
+  });
+}
+
+test('#13 S4 bilah progres tetap terlihat di tepi atas', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto(ARTICLE);
+  await scrollTo(page, 400); await scrollTo(page, 900);
+  const bar = page.locator('.progress');
+  await expect(bar).toBeVisible();
+  expect(await bar.evaluate((e) => e.getBoundingClientRect().top)).toBe(0);
+  expect(await page.locator('[data-progress]').evaluate((e) => parseFloat(e.style.width))).toBeGreaterThan(0);
+  await scrollTo(page, 860);
+  await expect(bar).toBeVisible();
+});
+
+test('#13 S5 sidebar seri tidak tertutup header', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto(ARTICLE);
+  const navTop = () => page.locator('.series-nav').evaluate((e) => e.getBoundingClientRect().top);
+  await scrollTo(page, 400); await scrollTo(page, 900);
+  expect(await navTop(page)).toBeLessThanOrEqual(4);              // header menyingkir → sidebar naik
+  await scrollTo(page, 860);
+  expect(await navTop(page)).toBeGreaterThanOrEqual(await headerBottom(page) - 1);
+});
+
+test('#13 S6 menu terbuka / kotak cari terbuka → header tidak menyingkir', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 800 });
+  await page.goto(ARTICLE);
+  await page.locator('.menu summary').click();
+  await scrollTo(page, 400); await scrollTo(page, 900);
+  expect(await headerTop(page)).toBe(0);                          // menu terbuka
+  await page.locator('.menu summary').click();
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await scrollTo(page, 0);
+  await page.locator('[data-search-open]').click();
+  await expect(page.locator('[data-search-dialog]')).toBeVisible();
+  await scrollTo(page, 400); await scrollTo(page, 900);
+  expect(await page.evaluate(() => document.documentElement.classList.contains('header-hidden'))).toBe(false); // cari terbuka
+});
+
+test('#13 S7 lompat lewat daftar isi tidak tertutup header', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto(ARTICLE);
+  await scrollTo(page, 2000);
+  await scrollTo(page, 1960);                                     // header muncul (scroll ke atas)
+  const link = page.locator('.series-toc a').nth(1);
+  const id = (await link.getAttribute('href')).slice(1);
+  await link.click(); await page.waitForTimeout(400);
+  const top = await page.locator(`[id="${id}"]`).evaluate((e) => e.getBoundingClientRect().top);
+  expect(top).toBeGreaterThanOrEqual((await headerBottom(page)) - 1);
+});
+
+test('#13 S9 tanpa JavaScript header tetap menempel', async ({ browser }) => {
+  const ctx = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 800 } });
+  const page = await ctx.newPage();
+  await page.goto(ARTICLE);
+  await page.evaluate(() => window.scrollTo(0, 1500));
+  expect(await headerTop(page)).toBe(0);
+  await expect(page.locator('.content')).toContainText('Dictionary merupakan');
+  await ctx.close();
+});
+
+test('#13 Tab ke header memunculkannya; reduced motion tanpa animasi', async ({ browser }) => {
+  const ctx = await browser.newContext({ viewport: { width: 1280, height: 800 }, reducedMotion: 'reduce' });
+  const page = await ctx.newPage();
+  await page.goto(ARTICLE);
+  expect(await page.locator('.site-header').evaluate((e) => getComputedStyle(e).transitionDuration)).toBe('0s');
+  await scrollTo(page, 400); await scrollTo(page, 900);
+  expect(await headerBottom(page)).toBeLessThanOrEqual(0);
+  await page.locator('.logo').focus();
+  await page.waitForTimeout(100);
+  expect(await headerTop(page)).toBe(0);
+  await ctx.close();
+});
