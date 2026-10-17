@@ -2,12 +2,14 @@
 # Build + cek situs (AGENTS.md §1) — gerbang test untuk setiap PR.
 #
 #   scripts/build.sh          # hugo --minify ke .build/, lalu cek hasilnya; exit 1 bila gagal
-#   scripts/build.sh serve    # preview lokal: hugo server di http://localhost:1313
+#   scripts/build.sh serve    # preview lokal: hugo server di http://localhost:1313 (render ke memori, repo tidak berubah)
 #   scripts/build.sh ui       # build + test UI (Playwright di Docker, tests/ui/) terhadap .build/
 #
 # Memakai `hugo` di mesin bila ada; kalau tidak, lewat Docker (image $HUGO_IMAGE).
 # Cek bawaan: build sukses, halaman beranda + 404 + RSS ada, CNAME ikut ter-publish.
 # Cek per-spec ditambahkan di bawah "Cek tambahan" oleh pekerjaan yang membutuhkannya.
+# Repo harus bersih setelah build (hasil build hanya di folder ter-ignore, #8); ALLOW_DIRTY=1 melewati cek ini saat
+# masih ada perubahan yang belum di-commit.
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 # Dipatok ke 0.154.5 (#5, tema sendiri). Mengubah versi = catat di docs/reference/system.md.
@@ -31,7 +33,8 @@ hugo_run() {
 
 
 if [ "${1:-}" = "serve" ]; then
-  hugo_run server --bind 0.0.0.0 --port 1313 --disableFastRender
+  # Hugo ≥0.123 me-render server ke disk (public/) secara bawaan — render ke memori agar repo tidak berubah (#8).
+  hugo_run server --bind 0.0.0.0 --port 1313 --disableFastRender --renderToMemory
   exit 0
 fi
 
@@ -42,6 +45,8 @@ hugo_run --minify --destination .build --cleanDestinationDir
 # version.txt = commit yang dibangun; deploy menunggu situs live menyajikannya (#7).
 git -C "$ROOT" rev-parse HEAD > "$OUT/version.txt"
 
+# Status repo sebelum build — cek "repo bersih" di bawah membandingkan dengan ini.
+dirty_before="$(git -C "$ROOT" status --porcelain)"
 fail=0
 need() { [ -e "$OUT/$1" ] && echo "✅ $1" || { echo "❌ $1 tidak ada di hasil build"; fail=1; }; }
 need index.html
@@ -73,6 +78,30 @@ if [ "$(ls "$WF")" = "deploy.yml" ] \
   echo "✅ deploy: hanya master + manual, concurrency tanpa cancel"
 else
   echo "❌ workflow deploy tidak sesuai (#7 skenario 3, 4, 6)"; fail=1
+fi
+
+# #8 skenario 2 — sisa lama tidak di-track lagi.
+left=$(git -C "$ROOT" ls-files public resources themes CNAME .hugo_build.lock static/pp.jpeg | head -3)
+[ -z "$left" ] && echo "✅ repo: tanpa hasil build lama, tema lama, sisa konfigurasi, foto tak terpakai" \
+  || { echo "❌ repo masih men-track: $left"; fail=1; }
+
+# #8 skenario 4 — build tidak mengubah/menambah file di repo.
+repo_clean() {
+  local now; now="$(git -C "$ROOT" status --porcelain)"
+  if [ "$now" = "$dirty_before" ]; then echo "✅ repo bersih setelah $1"
+  else echo "❌ $1 mengubah repo:"; diff <(echo "$dirty_before") <(echo "$now") | grep '^>' | head -5; fail=1; fi
+}
+repo_clean "build"
+if [ -n "$dirty_before" ] && [ "${ALLOW_DIRTY:-0}" != 1 ]; then
+  echo "⚠️  ada perubahan belum di-commit — sebelum PR, commit dulu lalu jalankan ulang (atau ALLOW_DIRTY=1)"
+fi
+
+# #8 skenario 3 — preview lokal tidak mengubah repo.
+if [ $fail -eq 0 ] && [ "${1:-}" = "ui" ] && command -v docker >/dev/null; then
+  cid=$(docker run -d --rm -u "$(id -u):$(id -g)" -v "$ROOT:/src:z" -w /src "$HUGO_IMAGE" \
+    hugo server --bind 0.0.0.0 --port 1313 --disableFastRender --renderToMemory)
+  sleep 8; docker stop "$cid" >/dev/null
+  repo_clean "preview lokal"
 fi
 
 if [ $fail -eq 0 ] && [ "${1:-}" = "ui" ]; then
