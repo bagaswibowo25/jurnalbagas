@@ -3,6 +3,7 @@
 #
 #   scripts/build.sh          # hugo --minify ke .build/, lalu cek hasilnya; exit 1 bila gagal
 #   scripts/build.sh serve    # preview lokal: hugo server di http://localhost:1313
+#   scripts/build.sh ui       # build + test UI (Playwright di Docker, tests/ui/) terhadap .build/
 #
 # Memakai `hugo` di mesin bila ada; kalau tidak, lewat Docker (image $HUGO_IMAGE).
 # Cek bawaan: build sukses, halaman beranda + 404 + RSS ada, CNAME ikut ter-publish.
@@ -12,6 +13,8 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 # Dipatok ke 0.154.5 (#5, tema sendiri). Mengubah versi = catat di docs/reference/system.md.
 HUGO_IMAGE="${HUGO_IMAGE:-hugomods/hugo:exts-0.154.5}"
 ACTIONLINT_IMAGE="${ACTIONLINT_IMAGE:-rhysd/actionlint:1.7.7}"
+PLAYWRIGHT_VERSION=1.48.2
+PLAYWRIGHT_IMAGE="${PLAYWRIGHT_IMAGE:-mcr.microsoft.com/playwright:v$PLAYWRIGHT_VERSION-noble}"
 die() { echo "✗ $*" >&2; exit 1; }
 
 hugo_run() {
@@ -70,6 +73,16 @@ if [ "$(ls "$WF")" = "deploy.yml" ] \
   echo "✅ deploy: hanya master + manual, concurrency tanpa cancel"
 else
   echo "❌ workflow deploy tidak sesuai (#7 skenario 3, 4, 6)"; fail=1
+fi
+
+if [ $fail -eq 0 ] && [ "${1:-}" = "ui" ]; then
+  command -v docker >/dev/null || die "test UI butuh Docker"
+  docker run --rm --ipc=host -v "$ROOT:/repo:z" "$PLAYWRIGHT_IMAGE" bash -c "
+    set -e
+    (cd /repo/.build && python3 -m http.server 8080 >/dev/null 2>&1 &)
+    mkdir -p /tmp/pw && cd /tmp/pw && npm init -y >/dev/null && npm i -s @playwright/test@$PLAYWRIGHT_VERSION >/dev/null
+    cp /repo/tests/ui/*.mjs /tmp/pw/ && npx playwright test -c playwright.config.mjs
+  " || fail=1
 fi
 
 [ $fail -eq 0 ] && echo "Build OK ($(find "$OUT" -name '*.html' | wc -l) halaman HTML)" || exit 1

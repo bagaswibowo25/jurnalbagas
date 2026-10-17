@@ -131,3 +131,17 @@ Test UI (`scripts/build.sh ui`, Playwright di Docker terhadap `hugo server`):
 ## 10. Catatan pengerjaan
 
 <!-- Diisi selama pengerjaan: "- YYYY-MM-DD — temuan teknis singkat". Bug/pekerjaan baru → issue baru. -->
+- 2026-10-17 — `hugo.Sites` belum ada di 0.154.5 → memakai `site.Sites` (bahasa bawaan = `index site.Sites 0`).
+- 2026-10-17 — Tautan relatif antar tulisan (`../list` dll. di Tuple, Set, Dictionary) akan putus dengan alamat baru →
+  diganti ke `/tulisan/belajar-python-…/` (perbaikan teknis link, AGENTS.md §4d). Isi kalimat tidak diubah.
+- 2026-10-17 — Gambar halaman tentang dipindah ke bundle `content/tentang/`; render hook gambar bawaan Hugo
+  mengarahkan versi en ke `/tentang/<gambar>` (tidak diduplikasi).
+- 2026-10-17 — `summary` = kalimat pertama tulisan (teks penulis). Gambar sampul lama (`featuredImage`) tetap di bundle
+  tapi tidak ditampilkan (desain L3 tanpa gambar).
+- 2026-10-17 — Beberapa tulisan lama tidak memberi baris kosong setelah daftar, sehingga kalimat berikutnya menyatu ke
+  butir terakhir (mis. Dictionary "Duplicates Not Allowed Yang membedakan…"). Sama seperti di situs lama; dibiarkan
+  (constitution #2).
+- 2026-10-17 — Situs uji di-build dengan `--minify` agar pola cek sama dengan situs asli. Cek terbukti menangkap
+  kerusakan (alias dihapus / lencana dihapus → ❌).
+- 2026-10-17 — Test UI (Playwright 1.48.2) 13/13 lolos. Tidak dijalankan di workflow deploy (hanya `scripts/build.sh`),
+  wajib dijalankan sebelum PR yang menyentuh tampilan.
