@@ -45,4 +45,4 @@ issue: 5
 ## Penutup
 - [x] T26 [DOC] Perbarui stack, struktur konten, temuan — `docs/reference/system.md`
 - [x] T27 [SH] `scripts/build.sh` + `scripts/build.sh ui` hijau; preview untuk owner (gelap/terang, desktop/ponsel)
-- [ ] T28 [GH] `scripts/worktree.sh diff` bersih, PR dibuka (`Closes #5`)
+- [x] T28 [GH] `scripts/worktree.sh diff` bersih, PR dibuka (`Closes #5`)
