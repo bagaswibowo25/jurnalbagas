@@ -23,7 +23,8 @@ test('S5 navigasi seri bisa disembunyikan dan dibuka lagi (diingat)', async ({ p
 });
 
 const PAGES = ['/', '/tulisan/', '/tag/python/', '/seri/python-dasar/', '/tag/', ARTICLE, '/tentang/', '/kontak/', '/en/', '/en/about/', '/404.html',
-  '/en/posts/kubernetes-logs-observability-with-clickstack/', '/en/posts/effortless-kubernetes-delivery-with-zuul-ci/', '/en/posts/helm-templating-network-policy/'];
+  '/en/posts/kubernetes-logs-observability-with-clickstack/', '/en/posts/effortless-kubernetes-delivery-with-zuul-ci/', '/en/posts/helm-templating-network-policy/',
+  '/tulisan/windows-hello-di-opensuse/', '/en/posts/windows-hello-on-opensuse/', '/seri/linux-tips/'];
 for (const width of [320, 360, 390, 768]) for (const url of PAGES) {
   test(`S8 ponsel ${width}px tanpa geser ke samping: ${url}`, async ({ page }) => {
     await page.setViewportSize({ width, height: 800 });
@@ -128,6 +129,28 @@ for (const [q, title] of [['helm', 'Helm — Templating Network Policy'], ['zuul
     await page.locator('[data-search-open]').click();
     await page.locator('[data-search-input]').fill(q);
     await expect(page.locator('[data-search-results] a').first()).toContainText(title);
+  });
+}
+
+for (const [home, q, title] of [['/', 'howdy', 'Windows Hello di openSUSE'], ['/en/', 'opensuse', 'Windows Hello on openSUSE']]) {
+  test(`#16 S6 pencarian ${home} menemukan "${q}"`, async ({ page }) => {
+    await page.goto(home);
+    await page.locator('[data-search-open]').click();
+    await page.locator('[data-search-input]').fill(q);
+    await expect(page.locator('[data-search-results] a').first()).toContainText(title);
+  });
+}
+
+for (const url of ['/tulisan/windows-hello-di-opensuse/', '/en/posts/windows-hello-on-opensuse/']) {
+  test(`#16 S8 blok kode panjang bergeser di kotaknya, gambar muat layar (ponsel): ${url}`, async ({ page }) => {
+    await page.setViewportSize({ width: 320, height: 800 });
+    await page.goto(url);
+    const scrollable = await page.locator('.content pre').evaluateAll((els) => els.some((e) => e.scrollWidth > e.clientWidth && getComputedStyle(e).overflowX === 'auto'));
+    expect(scrollable).toBe(true);
+    const imgs = await page.locator('.content img').evaluateAll((els) => els.map((e) => e.getBoundingClientRect().width <= document.documentElement.clientWidth));
+    expect(imgs).toEqual([true, true]);
+    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+    expect(overflow).toBeLessThanOrEqual(0);
   });
 }
 
