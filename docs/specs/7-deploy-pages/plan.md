@@ -85,3 +85,11 @@ pertama.
 ## 10. Catatan pengerjaan
 
 <!-- Diisi selama pengerjaan: "- YYYY-MM-DD — temuan teknis singkat". Bug/pekerjaan baru → issue baru. -->
+- 2026-10-17 — Hasil build `master` = 46 halaman HTML vs 176 di `prod` (build Maret 2026). Yang hilang hanya konten
+  demo tema bilberry (`de/`, `categories/`, `author/`, tag Skotlandia dll., `article/docker`,
+  `article/support-and-discussions`, `page/about-bilberry`, `page/github`, `archive/`). Delapan tulisan, tentang,
+  kontak, halaman en, dan tag `python`/`programming` tetap ada.
+- 2026-10-17 — Simulasi gagal: build dengan Hugo 0.154.5 (tema lama tidak kompatibel) → `build.sh` exit 1, sehingga
+  langkah publish tidak jalan (skenario 2).
+- 2026-10-17 — actionlint (rhysd/actionlint:1.7.7, termasuk shellcheck untuk langkah `run`) dijalankan di
+  `build.sh`, jadi juga ikut di CI deploy.

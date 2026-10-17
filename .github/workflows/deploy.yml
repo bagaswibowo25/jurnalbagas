@@ -1,0 +1,87 @@
+# Deploy — terbitkan situs ke GitHub Pages setiap push ke master (#7).
+#
+# GitHub Pages (mode legacy) menyajikan branch `prod` apa adanya (Infra K3). Workflow ini membangun situs dengan
+# scripts/build.sh — Hugo terpatok, sama dengan gerbang PR — lalu mem-publish .build/ ke `prod`.
+#
+# Beberapa merge, SATU deploy (pola dari 1994-erp):
+#   1. `concurrency` — run tidak pernah tumpang tindih; yang datang belakangan antre, tidak membatalkan.
+#   2. job `gate` — deploy hanya jalan kalau commit pemicunya MASIH HEAD master. Run manual selalu jalan.
+# Terbit ulang manual: Actions → deploy → Run workflow.
+name: deploy
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-prod
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    outputs:
+      fresh: ${{ steps.cek.outputs.fresh }}
+    steps:
+      - id: cek
+        env:
+          PEMICU: ${{ github.sha }}
+          EVENT: ${{ github.event_name }}
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          if [ "$EVENT" = "workflow_dispatch" ]; then
+            echo "run manual — selalu deploy"
+            echo "fresh=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          HEAD_MASTER=$(gh api "repos/$REPO/git/ref/heads/master" --jq .object.sha)
+          echo "pemicu     : $PEMICU"
+          echo "HEAD master: $HEAD_MASTER"
+          if [ "$PEMICU" = "$HEAD_MASTER" ]; then
+            echo "fresh=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Sudah ada merge yang lebih baru — run untuk commit itu yang akan deploy."
+            echo "fresh=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  deploy:
+    needs: gate
+    if: needs.gate.outputs.fresh == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Build + cek
+        run: scripts/build.sh
+
+      - name: Publish ke branch prod
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./.build
+          publish_branch: prod
+          cname: www.jurnalbagas.com
+          full_commit_message: "deploy ${{ github.sha }}"
+
+      - name: Tunggu situs live menyajikan versi ini
+        env:
+          SHA: ${{ github.sha }}
+        run: |
+          for i in $(seq 1 30); do
+            live=$(curl -fsSL "https://www.jurnalbagas.com/version.txt?t=$(date +%s)" 2>/dev/null | tr -d '[:space:]' || true)
+            if [ "$live" = "$SHA" ]; then
+              echo "✅ situs live = $SHA (percobaan $i)"
+              exit 0
+            fi
+            echo "menunggu… live='${live:-?}' (percobaan $i/30)"
+            sleep 20
+          done
+          echo "❌ situs live belum menyajikan $SHA setelah 10 menit"
+          exit 1

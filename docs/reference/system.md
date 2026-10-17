@@ -25,13 +25,13 @@
 ## Deploy
 
 - Domain `www.jurnalbagas.com` (file `CNAME`, juga di `static/`).
-- GitHub Pages saat ini mode **legacy**: menyajikan branch **`prod`** apa adanya.
-- Workflow lama `.github/workflows/` (push → build Hugo → publish ke `prod`) memakai runner `ubuntu-18.04` yang sudah
-  dipensiunkan GitHub, sehingga tidak pernah jalan; branch `prod` terakhir diperbarui 2026-03-28. Perbaikan deploy =
-  issue Epic Infra.
+- GitHub Pages mode **legacy**: menyajikan branch **`prod`** apa adanya (Infra K3 — pengaturan Pages tidak diubah).
+- `.github/workflows/deploy.yml` (#7): push ke `master` atau *Run workflow* → `scripts/build.sh` → publish `.build/`
+  ke `prod` (`peaceiris/actions-gh-pages`, CNAME `www.jurnalbagas.com`) → tunggu `/version.txt` di situs live = SHA
+  commit (maks 10 menit). `concurrency: deploy-prod` tanpa cancel + job `gate` (hanya HEAD `master` yang deploy).
+- `/version.txt` = commit yang sedang terbit.
 
 ## Temuan terbuka
 
-- Deploy otomatis mati (runner `ubuntu-18.04`).
 - Tema lama mengunci situs di Hugo 0.123.8; Hugo lokal yang lebih baru (bila terpasang) akan gagal build.
 - Artefak build (`public/`, `resources/`) ter-commit di branch kerja.
