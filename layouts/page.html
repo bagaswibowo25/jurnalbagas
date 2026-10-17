@@ -33,6 +33,9 @@
         <span>{{ site.Params.author }}</span>
         {{- range .GetTerms "tags" }}<a href="{{ .RelPermalink }}">#{{ .LinkTitle | lower }}</a>{{ end }}
       </div>
+      {{- with .Params.medium }}
+      <p class="alt-lang source">{{ i18n "first_published" }} <a href="{{ . }}" rel="noopener">Medium</a> · <time datetime="{{ $.Date.Format "2006-01-02" }}">{{ $.Date | time.Format ":date_medium" }}</time></p>
+      {{- end }}
       {{- with .Translations }}
       <p class="alt-lang">{{ i18n "also_in" }}{{ range . }} <a href="{{ .RelPermalink }}" hreflang="{{ .Language.LanguageCode }}" lang="{{ .Language.LanguageCode }}">{{ .Language.LanguageName }}</a>{{ end }}</p>
       {{- end }}

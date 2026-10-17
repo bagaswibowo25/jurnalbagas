@@ -22,7 +22,8 @@ test('S5 navigasi seri bisa disembunyikan dan dibuka lagi (diingat)', async ({ p
   await expect(nav).toBeVisible();
 });
 
-const PAGES = ['/', '/tulisan/', '/tag/python/', '/seri/python-dasar/', '/tag/', ARTICLE, '/tentang/', '/kontak/', '/en/', '/en/about/', '/404.html'];
+const PAGES = ['/', '/tulisan/', '/tag/python/', '/seri/python-dasar/', '/tag/', ARTICLE, '/tentang/', '/kontak/', '/en/', '/en/about/', '/404.html',
+  '/en/posts/kubernetes-logs-observability-with-clickstack/', '/en/posts/effortless-kubernetes-delivery-with-zuul-ci/', '/en/posts/helm-templating-network-policy/'];
 for (const width of [320, 360, 390, 768]) for (const url of PAGES) {
   test(`S8 ponsel ${width}px tanpa geser ke samping: ${url}`, async ({ page }) => {
     await page.setViewportSize({ width, height: 800 });
@@ -31,6 +32,17 @@ for (const width of [320, 360, 390, 768]) for (const url of PAGES) {
     await expect(page.locator('.site-header .nav')).toBeHidden();
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
     expect(overflow).toBeLessThanOrEqual(0);
+  });
+}
+
+for (const width of [320, 390, 1280]) {
+  test(`chip tag turun baris, tanpa scroll samping (${width}px)`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 800 });
+    await page.goto('/');
+    const chips = page.locator('.chips');
+    const [sw, cw] = await chips.evaluate((e) => [e.scrollWidth, e.clientWidth]);
+    expect(sw).toBeLessThanOrEqual(cw);
+    await expect(chips.locator('.chip').last()).toBeInViewport();
   });
 }
 
@@ -84,7 +96,9 @@ test('S3 tampilkan lebih lama memuat tulisan berikutnya di halaman yang sama', a
   const entries = page.locator('[data-entries] > .post-entry');
   await expect(entries).toHaveCount(5);
   await page.locator('[data-load-more]').click();
-  await expect(entries).toHaveCount(8);
+  await expect(entries).toHaveCount(10);
+  await page.locator('[data-load-more]').click();
+  await expect(entries).toHaveCount(11);
   await expect(page).toHaveURL(/\/$/);
   await expect(page.locator('[data-load-more]')).toHaveCount(0);
 });
@@ -95,7 +109,7 @@ test('S3 tanpa JavaScript tombol membuka halaman berikutnya', async ({ browser }
   await page.goto('/');
   await page.locator('[data-load-more]').click();
   await expect(page).toHaveURL(/\/page\/2\/$/);
-  await expect(page.locator('.post-entry')).toHaveCount(3);
+  await expect(page.locator('.post-entry')).toHaveCount(5);
   await ctx.close();
 });
 
@@ -106,6 +120,24 @@ test('S14 pencarian menemukan tulisan', async ({ page }) => {
   await expect(page.locator('[data-search-results] a').first()).toContainText('Belajar Python - Dictionary');
   await page.locator('[data-search-input]').fill('zzzzkatayangtidakada');
   await expect(page.locator('[data-search-empty]')).toBeVisible();
+});
+
+for (const [q, title] of [['helm', 'Helm — Templating Network Policy'], ['zuul', 'Effortless Kubernetes Delivery with Zuul CI']]) {
+  test(`#6 S9 pencarian en menemukan "${q}"`, async ({ page }) => {
+    await page.goto('/en/');
+    await page.locator('[data-search-open]').click();
+    await page.locator('[data-search-input]').fill(q);
+    await expect(page.locator('[data-search-results] a').first()).toContainText(title);
+  });
+}
+
+test('#6 S7 blok kode panjang bergeser di dalam kotaknya sendiri (ponsel)', async ({ page }) => {
+  await page.setViewportSize({ width: 360, height: 800 });
+  await page.goto('/en/posts/helm-templating-network-policy/');
+  const scrollable = await page.locator('.content pre').evaluateAll((els) => els.some((e) => e.scrollWidth > e.clientWidth && getComputedStyle(e).overflowX === 'auto'));
+  expect(scrollable).toBe(true);
+  const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+  expect(overflow).toBeLessThanOrEqual(0);
 });
 
 test('S15 tanpa JavaScript: tombol cari tidak tampil, tulisan tetap terbaca', async ({ browser }) => {

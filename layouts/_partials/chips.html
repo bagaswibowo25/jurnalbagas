@@ -1,7 +1,7 @@
-{{- /* Filter tag: link biasa ke halaman tag (jalan tanpa JS). Konteks: halaman saat ini. */ -}}
+{{- /* Filter tag: link biasa ke halaman tag (jalan tanpa JS). Tag bahasa lain diberi tanda bahasanya (Theme K8). */ -}}
 <nav class="chips" aria-label="{{ i18n "tags_title" }}">
   {{- with site.GetPage "/tulisan" }}<a class="chip" href="{{ .RelPermalink }}"{{ if or $.IsHome (eq $.Kind "section") }} aria-current="page"{{ end }}>{{ i18n "all" }}</a>{{ end }}
-  {{- range site.Taxonomies.tags.ByCount }}
-    <a class="chip" href="{{ .Page.RelPermalink }}"{{ if eq $.RelPermalink .Page.RelPermalink }} aria-current="page"{{ end }}>{{ .Page.LinkTitle | lower }}</a>
+  {{- range partial "terms-all.html" "tags" }}
+    <a class="chip" href="{{ .page.RelPermalink }}"{{ if eq $.RelPermalink .page.RelPermalink }} aria-current="page"{{ end }}{{ with .lang }} hreflang="{{ $.Language.LanguageCode }}" title="{{ i18n "untranslated_title" }}"{{ end }}>{{ .page.LinkTitle | lower }}{{ with .lang }}<span class="chip-lang">{{ . }}</span>{{ end }}</a>
   {{- end }}
 </nav>

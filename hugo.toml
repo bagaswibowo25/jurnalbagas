@@ -66,5 +66,5 @@ enableRobotsTXT = true
     noClasses = false
   [markup.tableOfContents]
     startLevel = 1
-    endLevel = 2
+    endLevel = 3
     ordered = false

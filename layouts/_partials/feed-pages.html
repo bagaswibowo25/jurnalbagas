@@ -1,14 +1,15 @@
 {{- /*
-  Daftar tulisan untuk feed bahasa ini. Di bahasa selain bawaan, tulisan bahasa bawaan yang belum punya terjemahan
-  ikut ditampilkan (Theme K4) — partial post-entry memberi lencana "ID".
+  Daftar tulisan untuk feed bahasa ini + tulisan bahasa lain yang belum punya terjemahan di bahasa ini
+  (Theme K4, Content K3) — partial post-entry memberi lencana nama bahasanya ("ID" / "EN").
 */ -}}
 {{- $lang := site.Language.Lang -}}
 {{- $pages := where site.RegularPages "Section" "tulisan" -}}
-{{- $default := index site.Sites 0 -}}
-{{- if ne $default.Language.Lang $lang -}}
-  {{- range where $default.RegularPages "Section" "tulisan" -}}
-    {{- if not (where .Translations "Language.Lang" $lang) -}}
-      {{- $pages = $pages | append . -}}
+{{- range site.Sites -}}
+  {{- if ne .Language.Lang $lang -}}
+    {{- range where .RegularPages "Section" "tulisan" -}}
+      {{- if not (where .Translations "Language.Lang" $lang) -}}
+        {{- $pages = $pages | append . -}}
+      {{- end -}}
     {{- end -}}
   {{- end -}}
 {{- end -}}
