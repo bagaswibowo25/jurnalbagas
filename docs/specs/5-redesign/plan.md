@@ -145,3 +145,7 @@ Test UI (`scripts/build.sh ui`, Playwright di Docker terhadap `hugo server`):
   kerusakan (alias dihapus / lencana dihapus → ❌).
 - 2026-10-17 — Test UI (Playwright 1.48.2) 13/13 lolos. Tidak dijalankan di workflow deploy (hanya `scripts/build.sh`),
   wajib dijalankan sebelum PR yang menyentuh tampilan.
+- 2026-10-17 — Feedback owner (preview): di ponsel ±330px halaman `/tulisan/` geser ke samping. Penyebab: header (logo +
+  4 tombol 44px) lebih lebar dari layar, dan baris chip tag tidak bisa mengecil (`min-width: auto`). Perbaikan: ≤480px
+  tombol mode + bahasa pindah ke menu ☰, logo 15px, chip `min-width: 0`. Test S8 diperluas ke 320/360/390/768px × 11
+  halaman (sebelumnya hanya 390px × 4 halaman) — 54/54 lolos.

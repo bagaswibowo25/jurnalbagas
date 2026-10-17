@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="id-ID" class="no-js">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Belajar Python - Perulangan · Jurnal Bagas</title>
+<meta name="description" content="Perulangan merupakan salah satu teknik untuk melakukan pengulangan dari urutan instruksi atau statement sampai dengan kondisi yang diinginkan tercapai.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="http://localhost:1313/tulisan/belajar-python-perulangan/">
+<link rel="alternate" hreflang="id-ID" href="http://localhost:1313/tulisan/belajar-python-perulangan/">
+<script>
+  
+  (function () {
+    var d = document.documentElement;
+    d.classList.remove("no-js");
+    try {
+      var t = localStorage.getItem("theme");
+      if (t === "dark" || t === "light") d.setAttribute("data-theme", t);
+      if (localStorage.getItem("seriesNav") === "hidden") d.setAttribute("data-nav", "hidden");
+    } catch (e) {}
+  })();
+</script>
+<link rel="stylesheet" href="/css/main.min.e8d6b1f7a69b04ceabf7ff7e2b25ba411ea1c2247440598dac3911654a972897.css" integrity="sha256-6Nax96abBM6r9/9&#43;KyW6QR6hwiR0QFmNrDkRZUqXKJc=">
+<link rel="preload" href="/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/ibm-plex-mono-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+</head>
+<body>
+<a class="skip" href="#isi">Lompat ke isi</a>
+<header class="site-header">
+  <div class="wrap wide">
+    <a class="logo" href="/">~/jurnalbagas<span aria-hidden="true">_</span></a>
+    <div class="header-tools">
+      <nav class="nav" aria-label="Menu utama"><a href="/tulisan/" aria-current="page">./tulisan</a><a href="/seri/">./seri</a><a href="/tentang/">./tentang</a>
+      </nav>
+      <button type="button" class="icon-btn search-btn js-only" data-search-open aria-label="Cari tulisan">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <span class="label-text">cari</span><span class="kbd">⌘K</span>
+      </button>
+      <div class="header-extra">
+        <button type="button" class="icon-btn theme-toggle js-only" data-theme-toggle aria-label="Ganti mode gelap/terang">
+  <svg class="moon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20 14.5A8 8 0 019.5 4 8 8 0 1020 14.5z"/></svg>
+  <svg class="sun" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+
+        <a class="icon-btn lang-switch" href="/en/" hreflang="en-US" lang="en-US" aria-label="Read in English">EN</a>
+      </div>
+      <details class="menu">
+        <summary class="icon-btn" aria-label="Buka menu">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+        </summary>
+        <nav class="menu-panel" aria-label="Menu"><a href="/tulisan/">./tulisan</a><a href="/seri/">./seri</a><a href="/tentang/">./tentang</a><a href="/kontak/">./kontak</a>
+          <div class="menu-extra">
+            <button type="button" class="icon-btn theme-toggle js-only" data-theme-toggle aria-label="Ganti mode gelap/terang">
+  <svg class="moon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20 14.5A8 8 0 019.5 4 8 8 0 1020 14.5z"/></svg>
+  <svg class="sun" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+
+            <a class="icon-btn lang-switch" href="/en/" hreflang="en-US" lang="en-US" aria-label="Read in English">EN</a>
+          </div>
+        </nav>
+      </details>
+    </div>
+  </div>
+</header>
+
+<main id="isi">
+<div class="progress" aria-hidden="true"><span data-progress></span></div>
+<div class="wrap wide">
+  <div class="article-layout">
+    <aside class="series-nav" aria-label="seri">
+      <div class="series-nav-head">
+        <div>
+          <div class="label">seri</div>
+          <a class="series-name" href="/seri/python-dasar/">python-dasar</a>
+        </div>
+        <button type="button" class="icon-btn js-only" data-nav-toggle aria-label="Sembunyikan navigasi seri" title="Sembunyikan navigasi seri">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M15 10l-2 2 2 2"/></svg>
+        </button>
+      </div>
+      <div class="series-progress" aria-hidden="true"><span style="width: 37%"></span></div>
+      <ol class="series-list">
+  <li>
+    <a href="/tulisan/belajar-python-tipe-data/"><span class="n">1</span>Tipe Data</a>
+  </li>
+  <li>
+    <a href="/tulisan/belajar-python-kondisional/"><span class="n">2</span>Kondisional</a>
+  </li>
+  <li class="active">
+    <a href="/tulisan/belajar-python-perulangan/" aria-current="page"><span class="n">3</span>Perulangan</a><div class="series-toc"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#pengenalan">Pengenalan</a></li>
+    <li><a href="#perulangan-while">Perulangan While</a></li>
+    <li><a href="#perulangan-for">Perulangan For</a></li>
+  </ul>
+</nav></div>
+  </li>
+  <li>
+    <a href="/tulisan/belajar-python-fungsi/"><span class="n">4</span>Fungsi</a>
+  </li>
+  <li>
+    <a href="/tulisan/belajar-python-list/"><span class="n">5</span>List</a>
+  </li>
+  <li>
+    <a href="/tulisan/belajar-python-tuple/"><span class="n">6</span>Tuple</a>
+  </li>
+  <li>
+    <a href="/tulisan/belajar-python-set/"><span class="n">7</span>Set</a>
+  </li>
+  <li>
+    <a href="/tulisan/belajar-python-dictionary/"><span class="n">8</span>Dictionary</a>
+  </li>
+</ol>
+
+    </aside>
+    <div class="series-rail">
+      <button type="button" class="icon-btn" data-nav-toggle aria-label="Tampilkan navigasi seri" title="Tampilkan navigasi seri">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M13 10l2 2-2 2"/></svg>
+      </button>
+      <div>3/8</div>
+    </div>
+    <article class="prose">
+      <div class="crumb" aria-hidden="true">~/tulisan/python-dasar/<span>belajar-python-perulangan.md</span></div>
+      <h1>Belajar Python - Perulangan</h1>
+      <div class="post-meta">
+        <time datetime="2022-02-09">2022-02-09</time>
+        <span>Bagas Wibowo</span><a href="/tag/python/">#python</a><a href="/tag/programming/">#programming</a>
+      </div>
+      <details class="series-card">
+        <summary><span>seri: python-dasar · <b class="cursor">3/8</b></span><span class="caret">▾ lihat</span></summary>
+        <ol class="series-list">
+  <li>
+    <a href="/tulisan/belajar-python-tipe-data/"><span class="n">1</span>Tipe Data</a>
+  </li>
+  <li>
+    <a href="/tulisan/belajar-python-kondisional/"><span class="n">2</span>Kondisional</a>
+  </li>
+  <li class="active">
+    <a href="/tulisan/belajar-python-perulangan/" aria-current="page"><span class="n">3</span>Perulangan</a>
+  </li>
+  <li>
+    <a href="/tulisan/belajar-python-fungsi/"><span class="n">4</span>Fungsi</a>
+  </li>
+  <li>
+    <a href="/tulisan/belajar-python-list/"><span class="n">5</span>List</a>
+  </li>
+  <li>
+    <a href="/tulisan/belajar-python-tuple/"><span class="n">6</span>Tuple</a>
+  </li>
+  <li>
+    <a href="/tulisan/belajar-python-set/"><span class="n">7</span>Set</a>
+  </li>
+  <li>
+    <a href="/tulisan/belajar-python-dictionary/"><span class="n">8</span>Dictionary</a>
+  </li>
+</ol>
+
+      </details>
+      <div class="content"><h2 id="pengenalan">Pengenalan</h2>
+<p>Perulangan merupakan salah satu teknik untuk melakukan pengulangan dari urutan instruksi atau statement sampai dengan kondisi yang diinginkan tercapai. Perulangan memiliki beberapa kegunaan yang biasa digunakan, seperti mencari nilai dari himpunan, menampilkan hasil sebanyak perulangan, melakukan penjumlahan, dan lainnya. Nah selain itu, pada Python sendiri ada 2 teknik perulangan yang dapat digunakan, yaitu <code>while</code> dan <code>for</code>. Mungkin umumnya ada jenis perulangan lain, seperti <code>do...while...</code> dan bisa juga menggunakan teknik rekursif atau memanggil fungsinya sendiri. Pada kesempatan kali ini, saya mencoba untuk share 2 teknik yang umum digunakan, yaitu <code>while</code> dan <code>for</code>.</p>
+<h2 id="perulangan-while">Perulangan While</h2>
+<p>Perulangan while erat kaitannya juga dengan pengondisian karena ketika kita ingin menjalankan statement di dalam while maka kondisi harus terpenuhi, apabila kondisi tidak terpenuhi maka perulangan tidak akan dijalankan. Contohnya sebagai berikut:</p>
+<p>Case:</p>
+<ol>
+<li>User diminta untuk melakukan input string</li>
+<li>Program akan mengecek apakah string yang dimasukkan akan cocok dengan nilai pada variabel <code>kata</code>.</li>
+<li>Apabila cocok maka program akan lanjut</li>
+<li>Apabila tidak cocok maka user harus memasukkan ulang string</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="n">kata</span> <span class="o">=</span> <span class="s2">&#34;Hello&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">inp_str</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="k">while</span> <span class="n">inp_str</span> <span class="o">!=</span> <span class="n">kata</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Kata tidak cocok, silahkan coba lagi!&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">inp_str</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Kata cocok!Silahkan lanjut&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p>Input:</p>
+<pre tabindex="0"><code>a
+Hello
+</code></pre><p>Output:</p>
+<pre tabindex="0"><code>Kata tidak cocok, silahkan coba lagi!
+Kata cocok!Silahkan lanjut
+</code></pre><p>Dari contoh diatas program akan terus melakukan perulangan hingga nilai yang dimasukkan oleh user sesuai dengan variabel <code>kata</code>. Jika sesuai perulangan akan berhenti. Pada perulangan <code>while</code> jumlah perulangan yang dilakukan bergantung pada kondisi, dia akan berhenti jika kondisi bernilai <code>False</code> dan akan terus berulang apabila kondisinya <code>True</code>. Apabila terus bernilai <code>True</code> maka program perlu dihentikan secara paksa atau akan terjadi ketakterbatasan perulangan. Kita dapat membatasinya dengan memberikan kondisi tertentu, misal jika telah melebihi 3 perulangan maka akan berhenti <code>while i &lt; 4</code>. Atau kita bisa menggunakan statement <code>break</code> apabila ingin mencari satu nilai dari sekumpulan nilai. Contohnya sebagai berikut:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="n">kata</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">huruf</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl"><span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">kata</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">kata</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">huruf</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Terdapat huruf </span><span class="si">{</span><span class="n">huruf</span><span class="si">}</span><span class="s2"> di indeks ke&#34;</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">        <span class="k">break</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Huruf tidak ditemukkan&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p>Input:</p>
+<pre tabindex="0"><code>Kata: Book
+Huruf: o
+</code></pre><p>Output:</p>
+<pre tabindex="0"><code>Terdapat huruf o di indeks ke 1
+</code></pre><p>Perulangan akan berhenti setelah statement bernilai <code>True</code> dieksekusi. Apabila tidak ada statement <code>break</code> maka perulangan akan berlanjut hingga jumlah kondisi perulangan terpenuhi, yaitu nilai <code>i &lt; len(kata)</code>. Mari kita coba hilangkan <code>break</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="n">kata</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">huruf</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl"><span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">kata</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">kata</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">huruf</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Terdapat huruf </span><span class="si">{</span><span class="n">huruf</span><span class="si">}</span><span class="s2"> di indeks ke&#34;</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Huruf tidak ditemukkan&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p>Input:</p>
+<pre tabindex="0"><code>Kata: Book
+Huruf: o
+</code></pre><p>Output:</p>
+<pre tabindex="0"><code>Terdapat huruf o di indeks ke 1
+Terdapat huruf o di indeks ke 2
+Huruf tidak ditemukkan
+</code></pre><p>Program akan terus melakukan perulangan hingga nilai <code>False</code> tercapai. Apabila nilai terus bernilai <code>True</code> maka akan terus diulang sampai kondisinya tercapai atau selesai.</p>
+<h2 id="perulangan-for">Perulangan For</h2>
+<p>Perulangan for umum digunakan apabila kita telah mengetahui rentang perulangan yang akan dilakukan, kita sudah punya estimasi kapan perulangan itu berjalan dan perulangan ini sedikit berbeda dengan <code>while</code> karena perulangan ini tidak menggunakan pengondisian untuk menjalankan statement yang ada di dalam perulangan, tetapi menggunakan rentang. Selama masih ada dalam rentang perulangan maka akan terus terjadi perulangan. Supaya lebih mudah memahaminya, kita dapat melihat contoh sebagai berikut:</p>
+<ol>
+<li>User memasukkan beberapa nilai integer secara acak</li>
+<li>Program akan mencari nilai terkecil dari sekumpulan nilai integer acak tersebut</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="n">user_input</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()))</span>
+</span></span><span class="line"><span class="cl"><span class="n">min_val</span> <span class="o">=</span> <span class="n">user_input</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">user_input</span><span class="p">)):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">user_input</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">min_val</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">min_val</span> <span class="o">=</span> <span class="n">user_input</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">continue</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">min_val</span><span class="p">)</span>
+</span></span></code></pre></div><p>Input:</p>
+<pre tabindex="0"><code>2 4 5 6 3 1
+7 10 20 11
+</code></pre><p>Output:</p>
+<pre tabindex="0"><code>1
+7
+</code></pre><p>Sekian bahasan kali ini tentang perulangan. Sampai ketemu lagi pada kesempatan berikutnya. Apabila ada kiritk, saran, ataupun masukan dapat menghubungi saya melalui halaman kontak diatas yaa. Terima kasih.</p>
+</div>
+      <nav class="prevnext" aria-label="seri"><a href="/tulisan/belajar-python-kondisional/"><small>← 2 · sebelumnya</small><strong>Belajar Python - Kondisional</strong></a><a class="next" href="/tulisan/belajar-python-fungsi/"><small>4 · berikutnya →</small><strong>Belajar Python - Fungsi</strong></a>
+      </nav>
+    </article>
+  </div>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap wide">
+    <span>© 2026 Bagas Wibowo · dibangun dengan Hugo</span>
+    <nav aria-label="Tautan">
+      <a href="https://github.com/bagaswibowo25" rel="me">github</a>
+      <a href="https://www.linkedin.com/in/bagas-wibowo/" rel="me">linkedin</a>
+      <a href="https://bagas-awibowo.medium.com/" rel="me">medium</a><a href="/index.xml">rss</a>
+    </nav>
+  </div>
+</footer>
+
+<dialog class="search-dialog" data-search-dialog data-index="/index.json" aria-label="Cari tulisan">
+  <form method="dialog" role="search">
+    <label class="sr-only" for="q">Cari tulisan</label>
+    <input id="q" type="search" autocomplete="off" placeholder="ketik kata kunci…" data-search-input>
+    <button class="icon-btn" value="close" aria-label="Tutup">esc</button>
+  </form>
+  <ul class="search-results" data-search-results aria-live="polite"></ul>
+  <p class="search-empty" data-search-empty hidden>Tidak ada tulisan yang cocok.</p>
+</dialog>
+<script src="/js/site.min.db68160976a9c41b245729bba54cf58daadf89fe32425bff7771d7ae64c00ac8.js" integrity="sha256-22gWCXapxBskVym7pUz1jarfif4yQlv/d3HXrmTACsg=" defer></script>
+</body>
+</html>

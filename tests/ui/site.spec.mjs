@@ -22,9 +22,10 @@ test('S5 navigasi seri bisa disembunyikan dan dibuka lagi (diingat)', async ({ p
   await expect(nav).toBeVisible();
 });
 
-for (const url of ['/', ARTICLE, '/tentang/', '/en/']) {
-  test(`S8 ponsel tanpa geser ke samping: ${url}`, async ({ page }) => {
-    await page.setViewportSize({ width: 390, height: 844 });
+const PAGES = ['/', '/tulisan/', '/tag/python/', '/seri/python-dasar/', '/tag/', ARTICLE, '/tentang/', '/kontak/', '/en/', '/en/about/', '/404.html'];
+for (const width of [320, 360, 390, 768]) for (const url of PAGES) {
+  test(`S8 ponsel ${width}px tanpa geser ke samping: ${url}`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 800 });
     await page.goto(url);
     await expect(page.locator('.menu summary')).toBeVisible();
     await expect(page.locator('.site-header .nav')).toBeHidden();
@@ -32,6 +33,15 @@ for (const url of ['/', ARTICLE, '/tentang/', '/en/']) {
     expect(overflow).toBeLessThanOrEqual(0);
   });
 }
+
+test('S8 ponsel 320px: tema & bahasa pindah ke menu', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 700 });
+  await page.goto('/');
+  await expect(page.locator('.header-extra [data-theme-toggle]')).toBeHidden();
+  await page.locator('.menu summary').click();
+  await expect(page.locator('.menu-extra [data-theme-toggle]')).toBeVisible();
+  await expect(page.locator('.menu-extra .lang-switch')).toBeVisible();
+});
 
 test('S8 ponsel: kartu seri bisa dibuka-tutup, sidebar disembunyikan', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
@@ -59,11 +69,11 @@ test('S10 tombol ganti mode, pilihan diingat', async ({ browser }) => {
   const ctx = await browser.newContext({ colorScheme: 'light' });
   const page = await ctx.newPage();
   await page.goto('/');
-  await page.locator('[data-theme-toggle]').click();
+  await page.locator('.header-extra [data-theme-toggle]').click();
   await expect(page.locator('body')).toHaveCSS('background-color', 'rgb(10, 10, 10)');
   await page.goto(ARTICLE);
   await expect(page.locator('body')).toHaveCSS('background-color', 'rgb(10, 10, 10)');
-  await page.locator('[data-theme-toggle]').click();
+  await page.locator('.header-extra [data-theme-toggle]').click();
   await page.reload();
   await expect(page.locator('body')).toHaveCSS('background-color', 'rgb(250, 250, 250)');
   await ctx.close();

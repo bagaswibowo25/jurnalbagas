@@ -69,6 +69,9 @@ img { max-width: 100%; height: auto; }
 .menu summary::-webkit-details-marker { display: none; }
 .menu-panel { position: absolute; right: 0; top: 52px; min-width: 200px; background: var(--surface); border: 1px solid var(--border2); border-radius: 8px; padding: 6px; z-index: 5; display: flex; flex-direction: column; font: 400 14px var(--mono); }
 .menu-panel a { padding: 12px; color: var(--body); text-decoration: none; }
+.menu-panel .menu-extra { display: none; gap: 6px; padding: 8px 6px 4px; border-top: 1px solid var(--border); }
+.menu-panel .menu-extra a { padding: 0 12px; color: var(--muted); }
+.header-extra { display: contents; }
 
 /* Beranda / feed */
 .feed { max-width: 720px; margin: 0 auto; padding: 56px 24px 80px; }
@@ -77,9 +80,9 @@ img { max-width: 100%; height: auto; }
 .whoami { margin: 6px 0 0; font-size: 17px; }
 .whoami strong { color: var(--text); font-weight: 600; }
 .feed-head { margin-top: 36px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
-.feed-head h1, .feed-head h2 { margin: 0; font: 400 15px var(--mono); color: var(--dim); }
+.feed-head h1, .feed-head h2 { flex: none; margin: 0; font: 400 15px var(--mono); color: var(--dim); }
 .feed-head h1 span, .feed-head h2 span { color: var(--text); }
-.chips { display: flex; flex-wrap: nowrap; overflow-x: auto; max-width: 100%; gap: 6px; font: 400 12px var(--mono); }
+.chips { display: flex; flex-wrap: nowrap; overflow-x: auto; max-width: 100%; min-width: 0; gap: 6px; font: 400 12px var(--mono); }
 .chip { flex: none; display: inline-flex; align-items: center; min-height: 32px; padding: 0 12px; border: 1px solid var(--border2); border-radius: 99px; color: var(--muted); text-decoration: none; }
 .chip[aria-current="page"] { background: var(--chip); border-color: var(--accent); color: var(--accent); }
 .entries { margin-top: 28px; display: flex; flex-direction: column; gap: 32px; }
@@ -194,4 +197,10 @@ img { max-width: 100%; height: auto; }
   .prose h1 { font-size: 26px; }
   .page { padding: 32px 16px 56px; }
   .page h1 { font-size: 26px; }
+}
+@media (max-width: 480px) {
+  .header-extra { display: none; }
+  .menu-panel .menu-extra { display: flex; }
+  .logo { font-size: 15px; }
+  .header-tools { gap: 4px; }
 }
