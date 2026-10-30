@@ -24,7 +24,8 @@ test('S5 navigasi seri bisa disembunyikan dan dibuka lagi (diingat)', async ({ p
 
 const PAGES = ['/', '/tulisan/', '/tag/python/', '/seri/python-dasar/', '/tag/', ARTICLE, '/tentang/', '/kontak/', '/en/', '/en/about/', '/404.html',
   '/en/posts/kubernetes-logs-observability-with-clickstack/', '/en/posts/effortless-kubernetes-delivery-with-zuul-ci/', '/en/posts/helm-templating-network-policy/',
-  '/tulisan/windows-hello-di-opensuse/', '/en/posts/windows-hello-on-opensuse/', '/seri/linux-tips/'];
+  '/tulisan/windows-hello-di-opensuse/', '/en/posts/windows-hello-on-opensuse/', '/seri/linux-tips/',
+  '/tulisan/menyalakan-pc-dengan-esp32-telegram/', '/en/posts/wake-pc-with-esp32-telegram/', '/seri/home-lab/'];
 for (const width of [320, 360, 390, 768]) for (const url of PAGES) {
   test(`S8 ponsel ${width}px tanpa geser ke samping: ${url}`, async ({ page }) => {
     await page.setViewportSize({ width, height: 800 });
@@ -99,7 +100,7 @@ test('S3 tampilkan lebih lama memuat tulisan berikutnya di halaman yang sama', a
   await page.locator('[data-load-more]').click();
   await expect(entries).toHaveCount(10);
   await page.locator('[data-load-more]').click();
-  await expect(entries).toHaveCount(12);  // 9 id + 3 en Medium (#16 menambah 1)
+  await expect(entries).toHaveCount(13);  // 10 id + 3 en Medium (#16, #18 masing-masing menambah 1)
   await expect(page).toHaveURL(/\/$/);
   await expect(page.locator('[data-load-more]')).toHaveCount(0);
 });
@@ -143,6 +144,28 @@ for (const [home, q, title] of [['/', 'howdy', 'Windows Hello di openSUSE'], ['/
 
 for (const url of ['/tulisan/windows-hello-di-opensuse/', '/en/posts/windows-hello-on-opensuse/']) {
   test(`#16 S8 blok kode panjang bergeser di kotaknya, gambar muat layar (ponsel): ${url}`, async ({ page }) => {
+    await page.setViewportSize({ width: 320, height: 800 });
+    await page.goto(url);
+    const scrollable = await page.locator('.content pre').evaluateAll((els) => els.some((e) => e.scrollWidth > e.clientWidth && getComputedStyle(e).overflowX === 'auto'));
+    expect(scrollable).toBe(true);
+    const imgs = await page.locator('.content img').evaluateAll((els) => els.map((e) => e.getBoundingClientRect().width <= document.documentElement.clientWidth));
+    expect(imgs).toEqual([true, true]);
+    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+    expect(overflow).toBeLessThanOrEqual(0);
+  });
+}
+
+for (const [home, q, title] of [['/', 'esp32', 'Menyalakan PC dari Mana Saja'], ['/en/', 'wake-on-lan', 'Wake Your PC from Anywhere']]) {
+  test(`#18 S6 pencarian ${home} menemukan "${q}"`, async ({ page }) => {
+    await page.goto(home);
+    await page.locator('[data-search-open]').click();
+    await page.locator('[data-search-input]').fill(q);
+    await expect(page.locator('[data-search-results] a').first()).toContainText(title);
+  });
+}
+
+for (const url of ['/tulisan/menyalakan-pc-dengan-esp32-telegram/', '/en/posts/wake-pc-with-esp32-telegram/']) {
+  test(`#18 S8 blok kode dan tabel bergeser di kotaknya, gambar muat layar (ponsel): ${url}`, async ({ page }) => {
     await page.setViewportSize({ width: 320, height: 800 });
     await page.goto(url);
     const scrollable = await page.locator('.content pre').evaluateAll((els) => els.some((e) => e.scrollWidth > e.clientWidth && getComputedStyle(e).overflowX === 'auto'));

@@ -35,7 +35,7 @@ cek lama yang memakai jumlah tetap atau "tulisan teratas" (#16) disesuaikan.
 ```yaml
 # index.md
 title: "Menyalakan PC dari Mana Saja dengan ESP32 dan Telegram"
-date: 2026-10-30T22:00:00+07:00
+date: 2026-10-30T21:00:00+07:00
 slug: menyalakan-pc-dengan-esp32-telegram
 tags: ["esp32", "iot", "telegram", "wake-on-lan"]
 series: ["home-lab"]
@@ -103,3 +103,14 @@ UI "tampilkan lebih lama" 12 → 13 tulisan.
 - Rollback: revert PR (hanya konten + cek).
 
 ## 10. Catatan pengerjaan
+
+- Jam terbit dimajukan 22:00 → 21:00: Hugo tidak membangun tulisan bertanggal masa depan, dan build pertama jalan
+  pukul 21:15, sehingga tulisan tidak muncul sama sekali dan semua cek #18 gagal.
+- Slug pertama yang memuat angka (`esp32`): regex cek lama `href=/[a-z/-]+/` dan `/en/posts/[a-z-]*/` tidak cocok
+  dengan angka, sehingga diperluas ke `[a-z0-9…]`.
+- Beranda en kini 5 tulisan en, sehingga `belajar-python-dictionary` terdorong ke halaman 2; cek S12 memakai
+  `count_feed` (semua halaman), bukan hanya halaman 1.
+- Cek data pribadi #18 lebih ketat daripada #16: pola token bot, alamat MAC selain contoh `AA:BB:…`, ID/username
+  Telegram, dan nama bot.
+- Versi en menambahkan satu kalimat dalam kurung yang menerjemahkan balasan bot (balasannya memang berbahasa
+  Indonesia); blok percakapan tetap seperti aslinya.
