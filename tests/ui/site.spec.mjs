@@ -177,6 +177,27 @@ for (const url of ['/tulisan/menyalakan-pc-dengan-esp32-telegram/', '/en/posts/w
   });
 }
 
+for (const url of ['/tulisan/windows-hello-di-opensuse/', '/en/posts/windows-hello-on-opensuse/',
+  '/tulisan/menyalakan-pc-dengan-esp32-telegram/', '/en/posts/wake-pc-with-esp32-telegram/']) {
+  test(`#19 S1 gambar sempit di tengah kolom: ${url}`, async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 900 });
+    await page.goto(url);
+    const gaps = await page.locator('.content img').evaluateAll((els) => els.map((e) => {
+      const c = e.closest('.content').getBoundingClientRect(), r = e.getBoundingClientRect();
+      return { narrow: r.width < c.width - 20, diff: Math.abs((r.left - c.left) - (c.right - r.right)) };
+    }));
+    expect(gaps.length).toBe(2);
+    for (const g of gaps) { expect(g.narrow).toBe(true); expect(g.diff).toBeLessThanOrEqual(1); }
+  });
+}
+
+test('#19 S2 gambar lebar tetap selebar kolom', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto('/en/posts/effortless-kubernetes-delivery-with-zuul-ci/');
+  const diff = await page.locator('.content img').first().evaluate((e) => Math.abs(e.closest('.content').getBoundingClientRect().width - e.getBoundingClientRect().width));
+  expect(diff).toBeLessThanOrEqual(1);
+});
+
 test('#6 S7 blok kode panjang bergeser di dalam kotaknya sendiri (ponsel)', async ({ page }) => {
   await page.setViewportSize({ width: 360, height: 800 });
   await page.goto('/en/posts/helm-templating-network-policy/');

@@ -36,3 +36,4 @@ terang. Standar tampilannya: [`docs/reference/design.md`](../reference/design.md
 |---|---|---|
 | [Tampilan baru, dua bahasa](../specs/5-redesign/spec.md) | #5 | #7 (agar terbit ke situs live) |
 | [Navigasi atas muncul saat scroll ke atas](../specs/13-header-sticky/spec.md) | #13 | #5 |
+| [Gambar di dalam tulisan ditampilkan di tengah](../specs/19-gambar-tengah/spec.md) | #19 | #5 |
