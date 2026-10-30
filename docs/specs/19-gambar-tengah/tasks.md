@@ -9,5 +9,5 @@ issue: 19
 
 ## Penutup
 - [x] T3 `scripts/build.sh ui` hijau
-- [ ] T4 Preview untuk owner (`scripts/build.sh serve`)
-- [ ] T5 `scripts/worktree.sh diff` bersih, PR dibuka (`Closes #19`)
+- [x] T4 Preview untuk owner (`scripts/build.sh serve`)
+- [x] T5 `scripts/worktree.sh diff` bersih, PR dibuka (`Closes #19`)
