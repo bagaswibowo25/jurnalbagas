@@ -50,7 +50,7 @@ Tidak ada perubahan.
 
 | Skenario | Cek |
 |---|---|
-| 1 gambar sempit di tengah | UI 1280 px: tiap gambar di isi tulisan Wake-on-LAN (id + en) dan Howdy, jarak kiri dan kanan ke tepi kolom sama (selisih ≤ 1 px) |
+| 1 gambar sempit di tengah | UI 1280 px: tiap gambar di isi tulisan Howdy dan Wake-on-LAN (id + en), jarak kiri dan kanan ke tepi kolom sama (selisih ≤ 1 px) |
 | 2 gambar lebar | UI 1280 px: gambar pertama tulisan Zuul CI selebar kolom (selisih ≤ 1 px) |
 | 3 ponsel | Sudah: daftar `PAGES` tanpa geser samping 320–768 px; #16 S8/#18 S8 gambar muat layar |
 | 4 gelap/terang | Posisi tidak bergantung tema; UI dijalankan di skema bawaan |
@@ -62,3 +62,8 @@ Tidak ada perubahan.
   `<img>` sendirian di `<p>`). Rollback: revert PR.
 
 ## 10. Catatan pengerjaan
+
+- Tulisan Wake-on-LAN (#18) belum ada di `master` saat branch ini dibuat (PR #20 belum di-merge), jadi cek UI memakai
+  tulisan Howdy (id + en) yang gambarnya sama-sama sempit; aturan CSS-nya berlaku sama untuk tulisan #18.
+- Setelah PR #20 masuk `master`, branch di-rebase (konflik hanya di tes UI, kedua sisi dipertahankan) dan cek S1 diperluas
+  ke tulisan Wake-on-LAN (id + en).
